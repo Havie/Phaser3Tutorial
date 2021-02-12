@@ -6,6 +6,7 @@ class ExampleScene extends Phaser.Scene {
   preload () {
     // Loading is done in 'StartScene'
     // - 'sky' is background image
+    // this.load.image('sky', 'assets/skies/space3.png')
     // - 'red' is our particle
     // - 'logo' is the phaser3 logo
   }
@@ -54,7 +55,7 @@ class ExampleScene extends Phaser.Scene {
 
     // Load and play background music
     this.music = this.sound.addAudioSprite('gameAudio')
-    this.music.play('freeVertexStudioTrack2')
+    this.music.play('BGMTrack2')
 
     // Create a sound instance for sfx
     this.sfx = this.sound.addAudioSprite('gameAudio')
