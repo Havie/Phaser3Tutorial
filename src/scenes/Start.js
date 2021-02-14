@@ -30,8 +30,9 @@ class StartScene extends Phaser.Scene {
       { frameWidth: 32, frameHeight: 32 })
     this.load.spritesheet('slime', 'assets/sprites/Slime.png',
         { frameWidth: 32, frameHeight: 42 })
-    this.load.spritesheet('hatGuy', 'assets/sprites/HighHatGuyIdle.png',
+     this.load.spritesheet('hatGuy', 'assets/sprites/HighHatGuyIdle.png',
         { frameWidth: 32, frameHeight: 32 })
+
 
     // Pre-load the entire audio sprite
     this.load.audioSprite('gameAudio', 'assets/audio/gameAudioSprite.json', [
@@ -59,7 +60,7 @@ class StartScene extends Phaser.Scene {
     )
 
     // Add a callback when a key is released
-    // this.input.keyboard.on('keyup', this.keyReleased, this)
+    this.input.keyboard.on('keyup', this.keyReleased, this)
 
     // Add some sprites
     this.witch = new Witch(this, 100, 100)
@@ -68,10 +69,9 @@ class StartScene extends Phaser.Scene {
     this.witch3 = new Witch(this, 100, 200)
 
     this.slime1 = new Slime(this, 300, 300)
-    this.slime2 = new Slime(this, 300, 400)
+   this.slime2 = new Slime(this, 300, 400)
 
     this.hatGuy = new HatGuy(this, 330, 155)
-
     // Start animation
     this.witch.anims.play('witchWalkDown')
     this.witch1.anims.play('witchWalkUp')
@@ -84,14 +84,13 @@ class StartScene extends Phaser.Scene {
     this.slime2.anims.play('slimeWalkHoriz')
     this.slime2.setFlipX(true)
 
-
     this.hatGuy.anims.play('hatGuyIDLE')
 
     this.cursors = this.input.keyboard.createCursorKeys()
 
     // Load and play background music
-    // this.music = this.sound.addAudioSprite('gameAudio')
-    // this.music.play('freeVertexStudioTrack1')
+    //this.music = this.sound.addAudioSprite('gameAudio')
+    //this.music.play('BGMTrack1')
   }
 
   update () {
@@ -109,8 +108,7 @@ class StartScene extends Phaser.Scene {
       direction.y += 1
     }
 
-      this.witch.move(direction.x, direction.y)
-      this.hatGuy.move(-direction.x, -direction.y)
+    this.witch.move(direction.x, direction.y)
   }
 
   keyReleased () {

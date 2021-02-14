@@ -7,6 +7,8 @@ import CONFIG from './config.js'
 import ExampleScene from './scenes/Example.js'
 import StartScene from './scenes/Start.js'
 import HUDScene from './scenes/HUD.js'
+import Stage1 from './scenes/Stage1.js'
+
 
 const config = {
   // Configure Phaser graphics settings
@@ -35,13 +37,5 @@ const game = new Phaser.Game(config)
 game.scene.add('StartScene', StartScene)
 game.scene.add('ExampleScene', ExampleScene)
 game.scene.add('HUDScene', HUDScene)
-game.scene.start('StartScene')
-
-///CTNRL + ~  CMD 
-/// npm install 
-/// npm run dev 
-/// npm run dev 
-
-
-// https://vimeo.com/showcase/7909742
-// https://github.com/UWStout/phaser3-esbuild-es6-template/releases/tag/tutorial-8
+game.scene.add('Stage1', Stage1)
+game.scene.start('Stage1')

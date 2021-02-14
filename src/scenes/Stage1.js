@@ -15,7 +15,7 @@ class Stage1Scene extends TilemapScene {
       { frameWidth: 96, frameHeight: 96 })
 
     // Load JSON data
-    this.load.tilemapTiledJSON('mapData', 'assets/tilemaps/ExampleStage1.json')
+    this.load.tilemapTiledJSON('mapData', 'assets/tilemaps/ExampleStage2.json')
 
     // Pre-load the entire audio sprite
     this.load.audioSprite('gameAudio', 'assets/audio/gameAudioSprite.json', [
@@ -35,7 +35,7 @@ class Stage1Scene extends TilemapScene {
     this.parseTilemapJson('mapData')
 
     // Create any tilesets
-    this.createTileset('platformPack', 'platformTiles')
+      this.createTileset('platformPack2', 'platformTiles') //RAWASSETS platformPack2 /in JSON file
 
     // Parse tile layers
     this.platformLayer = this.createTileLayer('Platforms', true)
@@ -70,7 +70,7 @@ class Stage1Scene extends TilemapScene {
 
     // Load and play background music
     this.music = this.sound.addAudioSprite('gameAudio')
-    this.music.play('Stage1', { volume: 0.05 })
+    //this.music.play('Stage1', { volume: 0.05 })
   }
 
   spikeHit () {
