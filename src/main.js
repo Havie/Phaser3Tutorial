@@ -36,3 +36,12 @@ game.scene.add('StartScene', StartScene)
 game.scene.add('ExampleScene', ExampleScene)
 game.scene.add('HUDScene', HUDScene)
 game.scene.start('StartScene')
+
+///CTNRL + ~  CMD 
+/// npm install 
+/// npm run dev 
+/// npm run dev 
+
+
+// https://vimeo.com/showcase/7909742
+// https://github.com/UWStout/phaser3-esbuild-es6-template/releases/tag/tutorial-8
