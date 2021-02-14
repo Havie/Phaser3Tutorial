@@ -3,6 +3,8 @@ import CONFIG from '../config.js'
 
 import Witch from '../sprites/Witch.js'
 import Slime from '../sprites/Slime.js'
+import HatGuy from '../sprites/HatGuy.js'
+
 
 class StartScene extends Phaser.Scene {
   init () {
@@ -27,7 +29,9 @@ class StartScene extends Phaser.Scene {
     this.load.spritesheet('witch', 'assets/sprites/WitchWalk.png',
       { frameWidth: 32, frameHeight: 32 })
     this.load.spritesheet('slime', 'assets/sprites/Slime.png',
-      { frameWidth: 32, frameHeight: 42 })
+        { frameWidth: 32, frameHeight: 42 })
+    this.load.spritesheet('hatGuy', 'assets/sprites/HighHatGuyIdle.png',
+        { frameWidth: 32, frameHeight: 32 })
 
     // Pre-load the entire audio sprite
     this.load.audioSprite('gameAudio', 'assets/audio/gameAudioSprite.json', [
@@ -66,6 +70,8 @@ class StartScene extends Phaser.Scene {
     this.slime1 = new Slime(this, 300, 300)
     this.slime2 = new Slime(this, 300, 400)
 
+    this.hatGuy = new HatGuy(this, 330, 155)
+
     // Start animation
     this.witch.anims.play('witchWalkDown')
     this.witch1.anims.play('witchWalkUp')
@@ -77,6 +83,9 @@ class StartScene extends Phaser.Scene {
     this.slime1.anims.play('slimeWalkHoriz')
     this.slime2.anims.play('slimeWalkHoriz')
     this.slime2.setFlipX(true)
+
+
+    this.hatGuy.anims.play('hatGuyIDLE')
 
     this.cursors = this.input.keyboard.createCursorKeys()
 
@@ -100,7 +109,8 @@ class StartScene extends Phaser.Scene {
       direction.y += 1
     }
 
-    this.witch.move(direction.x, direction.y)
+      this.witch.move(direction.x, direction.y)
+      this.hatGuy.move(-direction.x, -direction.y)
   }
 
   keyReleased () {
