@@ -15,33 +15,43 @@ class HatGuySprite extends Phaser.Physics.Arcade.Sprite {
     // Enable physics
     scene.physics.world.enableBody(this, Phaser.Physics.Arcade.DYNAMIC_BODY)
     this.setImmovable(true) //Player controlled , not moved by physics
-    this.body.setAllowGravity(false) 
+    //this.body.setAllowGravity(true) 
     this.body.setCollideWorldBounds(true)
 
     // Add self to the given scene
     scene.add.existing(this)
   }
-
-  move (x, y) {
-    if (Math.abs(x) > 0) {
-        this.anims.play('hatGuyIDLE', true)
-      if (x < 0) {
-        this.setFlipX(true)
-      } else {
-        this.setFlipX(false)
-      }
-    } else {
-      if (y < 0) {
-          this.anims.play('hatGuyIDLE', true)
-      } else if (y > 0) {
-          this.anims.play('hatGuyIDLE', true)
-      } else {
-          this.anims.play('hatGuyIDLE', true)
-      }
+    printMsg(msg) {
+        console.log("HatGuy Says: " + msg);
     }
 
-    this.setVelocity(x * CONFIG.WALK_SPEED, y * CONFIG.WALK_SPEED)
-  }
+    move(x, y) {
+        // Don't allow movement during reset
+        if (this.resetTween && this.resetTween.totalProgress < 1.0) {
+            return
+        }
+
+        // Movement
+        if (Math.abs(x) > 0) {
+            if (this.body.onFloor()) {
+                this.anims.play('hatGuyIDLE', true)
+            }
+            this.setFlipX(x < 0)
+            this.setVelocityX(x * CONFIG.WALK_SPEED)
+        } else {
+            if (this.body.onFloor()) {
+                this.anims.play('hatGuyIDLE', true)
+            }
+            this.setVelocityX(0)
+        }
+
+        // Jump Input
+        if (y < 0 && this.body.onFloor()) {
+            this.anims.play('hatGuyIDLE', true)
+            this.sfx.play('jumpSound', { volume: 0.05 })
+            this.setVelocityY(y * CONFIG.JUMP_SPEED)
+        }
+    }
 }
 
 // Sprite animation configuration as static members

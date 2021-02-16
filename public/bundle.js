@@ -73472,28 +73472,33 @@
       }
       scene.physics.world.enableBody(this, phaser7.default.Physics.Arcade.DYNAMIC_BODY);
       this.setImmovable(true);
-      this.body.setAllowGravity(false);
       this.body.setCollideWorldBounds(true);
       scene.add.existing(this);
     }
+    printMsg(msg) {
+      console.log("HatGuy Says: " + msg);
+    }
     move(x, y) {
-      if (Math.abs(x) > 0) {
-        this.anims.play("hatGuyIDLE", true);
-        if (x < 0) {
-          this.setFlipX(true);
-        } else {
-          this.setFlipX(false);
-        }
-      } else {
-        if (y < 0) {
-          this.anims.play("hatGuyIDLE", true);
-        } else if (y > 0) {
-          this.anims.play("hatGuyIDLE", true);
-        } else {
-          this.anims.play("hatGuyIDLE", true);
-        }
+      if (this.resetTween && this.resetTween.totalProgress < 1) {
+        return;
       }
-      this.setVelocity(x * config_default.WALK_SPEED, y * config_default.WALK_SPEED);
+      if (Math.abs(x) > 0) {
+        if (this.body.onFloor()) {
+          this.anims.play("hatGuyIDLE", true);
+        }
+        this.setFlipX(x < 0);
+        this.setVelocityX(x * config_default.WALK_SPEED);
+      } else {
+        if (this.body.onFloor()) {
+          this.anims.play("hatGuyIDLE", true);
+        }
+        this.setVelocityX(0);
+      }
+      if (y < 0 && this.body.onFloor()) {
+        this.anims.play("hatGuyIDLE", true);
+        this.sfx.play("jumpSound", {volume: 0.05});
+        this.setVelocityY(y * config_default.JUMP_SPEED);
+      }
     }
   }
   HatGuySprite.animInitialized = false;
@@ -73744,6 +73749,7 @@
       this.load.image("background", "assets/skies/background.png");
       this.load.spritesheet("platformTiles", "assets/tilesets/platformPack_tilesheet.png", {frameWidth: 64, frameHeight: 64});
       this.load.spritesheet("kenney", "assets/sprites/kenney_player.png", {frameWidth: 96, frameHeight: 96});
+      this.load.spritesheet("hatGuy", "assets/sprites/HighHatGuyIdle.png", {frameWidth: 32, frameHeight: 32});
       this.load.tilemapTiledJSON("mapData", "assets/tilemaps/ExampleStage2.json");
       this.load.audioSprite("gameAudio", "assets/audio/gameAudioSprite.json", [
         "assets/audio/gameAudioSprite.ogg",
@@ -73769,14 +73775,21 @@
       });
       background.setScale(this.mapData.widthInPixels / background.width, this.mapData.heightInPixels / background.height);
       this.kenney = new Kenney_default(this, 50, 300);
+      this.hatGuy = new HatGuy_default(this, 50, 100);
       this.physics.add.collider(this.kenney, this.platformLayer);
       this.physics.add.collider(this.kenney, this.blockLayer);
-      this.physics.add.collider(this.kenney, this.spikes, this.spikeHit, null, this);
+      this.physics.add.collider(this.kenney, this.spikes, this.spikeHitBad, null, this);
+      this.physics.add.collider(this.hatGuy, this.platformLayer);
+      this.physics.add.collider(this.hatGuy, this.blockLayer);
+      this.physics.add.collider(this.hatGuy, this.spikes, this.spikeHitGood, null, this);
       this.cursors = this.input.keyboard.createCursorKeys();
       this.music = this.sound.addAudioSprite("gameAudio");
     }
-    spikeHit() {
+    spikeHitBad() {
       this.kenney.reset(50, 300);
+    }
+    spikeHitGood() {
+      this.hatGuy.printMsg("I am Immune to pain!");
     }
     update() {
       const direction = {x: 0, y: 0};
@@ -73790,6 +73803,7 @@
         direction.x -= 1;
       }
       this.kenney.move(direction.x, direction.y);
+      this.hatGuy.move(direction.x, direction.y);
     }
   }
   var Stage1_default = Stage1Scene;

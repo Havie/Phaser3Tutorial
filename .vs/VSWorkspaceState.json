@@ -1,8 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\public",
+    "\\public\\assets",
+    "\\public\\assets\\tilemaps",
+    "\\public\\assets\\tilesets",
+    "\\raw_assets\\tilemaps",
+    "\\src",
+    "\\src\\scenes",
+    "\\src\\sprites"
   ],
-  "SelectedNode": "\\raw_assets",
+  "SelectedNode": "\\public\\assets\\tilesets\\platformPack_tilesheet.png",
   "PreviewInSolutionExplorer": false
 }
