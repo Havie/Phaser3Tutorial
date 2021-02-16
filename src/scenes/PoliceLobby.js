@@ -14,7 +14,8 @@ class PoliceLobbyScene extends TilemapScene {
 
     // Load character spritesheet
     this.load.spritesheet('ghost', 'assets/sprites/ghost-sheet.png', { frameWidth: 290, frameHeight: 290 })
-
+    this.load.spritesheet('hatGuy', 'assets/sprites/HighHatGuyIdle.png',
+          { frameWidth: 32, frameHeight: 32 })
     // Load JSON data
     this.load.tilemapTiledJSON('mapData', 'assets/tilemaps/ExampleRoom.json')
   }
@@ -30,12 +31,17 @@ class PoliceLobbyScene extends TilemapScene {
     // Create Colliders
     this.colliderGroup = this.parseColliderObjects('Colliders')
 
+      this.hatGuy = new HatGuy(this,
+          this.mapData.widthInPixels / 2,
+          this.mapData.heightInPixels / 2
+      )
     // Make a new ghost for the player
     this.player = new Ghost(this,
       this.mapData.widthInPixels / 2,
       this.mapData.heightInPixels / 2
     )
-    this.player.setScale(0.333)
+      this.player.setScale(0.333)
+      this.hatGuy.setScale(1.333)
 
     // Configure collision checks
     this.colliderGroup.getChildren().forEach((curCollider) => {
@@ -70,7 +76,8 @@ class PoliceLobbyScene extends TilemapScene {
       direction.y += 1
     }
 
-    this.player.move(direction.x, direction.y)
+     // this.player.move(direction.x, direction.y)
+      this.hatGuy.move(direction.x, direction.y)
     this.player.update()
   }
 }

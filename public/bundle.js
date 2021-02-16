@@ -73852,6 +73852,7 @@
       }
       scene.physics.world.enableBody(this, phaser8.default.Physics.Arcade.DYNAMIC_BODY);
       this.setImmovable(true);
+      this.body.setAllowGravity(false);
       this.body.setCollideWorldBounds(true);
       scene.add.existing(this);
     }
@@ -73859,26 +73860,28 @@
       console.log("HatGuy Says: " + msg);
     }
     move(x, y) {
-      if (this.resetTween && this.resetTween.totalProgress < 1) {
-        return;
-      }
       if (Math.abs(x) > 0) {
-        if (this.body.onFloor()) {
+        if (this.facingForward) {
+          this.anims.play("hatGuyIDLE", true);
+        } else {
           this.anims.play("hatGuyIDLE", true);
         }
-        this.setFlipX(x < 0);
-        this.setVelocityX(x * config_default.WALK_SPEED);
       } else {
-        if (this.body.onFloor()) {
+        if (y < 0) {
+          this.facingForward = false;
           this.anims.play("hatGuyIDLE", true);
+        } else if (y > 0) {
+          this.facingForward = true;
+          this.anims.play("hatGuyIDLE", true);
+        } else {
+          if (this.facingForward) {
+            this.anims.play("hatGuyIDLE", true);
+          } else {
+            this.anims.play("hatGuyIDLE", true);
+          }
         }
-        this.setVelocityX(0);
       }
-      if (y < 0 && this.body.onFloor()) {
-        this.anims.play("hatGuyIDLE", true);
-        this.sfx.play("jumpSound", {volume: 0.05});
-        this.setVelocityY(y * config_default.JUMP_SPEED);
-      }
+      this.setVelocity(x * config_default.WALK_SPEED, y * config_default.WALK_SPEED);
     }
   }
   HatGuySprite.animInitialized = false;
@@ -73891,6 +73894,7 @@
     });
     HatGuySprite.animInitialized = true;
   };
+  var HatGuy_default = HatGuySprite;
 
   // src/scenes/PoliceLobby.js
   class PoliceLobbyScene extends TilemapScene_default {
@@ -73902,14 +73906,17 @@
       this.load.image("policeHumanBottomLeft", "assets/tilesets/police-human-bottomLeft.png");
       this.load.image("policeHumanBottomRight", "assets/tilesets/police-human-bottomRight.png");
       this.load.spritesheet("ghost", "assets/sprites/ghost-sheet.png", {frameWidth: 290, frameHeight: 290});
+      this.load.spritesheet("hatGuy", "assets/sprites/HighHatGuyIdle.png", {frameWidth: 32, frameHeight: 32});
       this.load.tilemapTiledJSON("mapData", "assets/tilemaps/ExampleRoom.json");
     }
     create() {
       this.parseTilemapJson("mapData");
       const [humanImage, humanProps] = this.parseImageAndPropsLayers("Human", "policeHuman");
       this.colliderGroup = this.parseColliderObjects("Colliders");
+      this.hatGuy = new HatGuy_default(this, this.mapData.widthInPixels / 2, this.mapData.heightInPixels / 2);
       this.player = new Ghost_default(this, this.mapData.widthInPixels / 2, this.mapData.heightInPixels / 2);
       this.player.setScale(0.333);
+      this.hatGuy.setScale(1.333);
       this.colliderGroup.getChildren().forEach((curCollider) => {
         if (curCollider.isEntrance) {
           console.log("setting up entrance callback");
@@ -73937,7 +73944,7 @@
       if (this.cursors.down.isDown) {
         direction.y += 1;
       }
-      this.player.move(direction.x, direction.y);
+      this.hatGuy.move(direction.x, direction.y);
       this.player.update();
     }
   }

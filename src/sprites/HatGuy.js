@@ -15,7 +15,7 @@ class HatGuySprite extends Phaser.Physics.Arcade.Sprite {
     // Enable physics
     scene.physics.world.enableBody(this, Phaser.Physics.Arcade.DYNAMIC_BODY)
     this.setImmovable(true) //Player controlled , not moved by physics
-    //this.body.setAllowGravity(true) 
+    this.body.setAllowGravity(false) 
     this.body.setCollideWorldBounds(true)
 
     // Add self to the given scene
@@ -26,31 +26,29 @@ class HatGuySprite extends Phaser.Physics.Arcade.Sprite {
     }
 
     move(x, y) {
-        // Don't allow movement during reset
-        if (this.resetTween && this.resetTween.totalProgress < 1.0) {
-            return
-        }
-
-        // Movement
         if (Math.abs(x) > 0) {
-            if (this.body.onFloor()) {
+            if (this.facingForward) {
+                this.anims.play('hatGuyIDLE', true)
+            } else {
                 this.anims.play('hatGuyIDLE', true)
             }
-            this.setFlipX(x < 0)
-            this.setVelocityX(x * CONFIG.WALK_SPEED)
         } else {
-            if (this.body.onFloor()) {
+            if (y < 0) {
+                this.facingForward = false
                 this.anims.play('hatGuyIDLE', true)
+            } else if (y > 0) {
+                this.facingForward = true
+                this.anims.play('hatGuyIDLE', true)
+            } else {
+                if (this.facingForward) {
+                    this.anims.play('hatGuyIDLE', true)
+                } else {
+                    this.anims.play('hatGuyIDLE', true)
+                }
             }
-            this.setVelocityX(0)
         }
 
-        // Jump Input
-        if (y < 0 && this.body.onFloor()) {
-            this.anims.play('hatGuyIDLE', true)
-            this.sfx.play('jumpSound', { volume: 0.05 })
-            this.setVelocityY(y * CONFIG.JUMP_SPEED)
-        }
+        this.setVelocity(x * CONFIG.WALK_SPEED, y * CONFIG.WALK_SPEED)
     }
 }
 
