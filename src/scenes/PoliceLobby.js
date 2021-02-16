@@ -1,7 +1,7 @@
 import TilemapScene from './TilemapScene'
 
 import Ghost from '../sprites/Ghost.js'
-
+import HatGuy from '../sprites/HatGuy'
 class PoliceLobbyScene extends TilemapScene {
   preload () {
     // Load images

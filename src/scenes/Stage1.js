@@ -4,7 +4,6 @@ import TilemapScene from './TilemapScene'
 import CONFIG from '../config.js'
 
 import Kenney from '../sprites/Kenney'
-import HatGuy from '../sprites/HatGuy.js'
 
 class Stage1Scene extends TilemapScene {
   preload () {
@@ -14,10 +13,9 @@ class Stage1Scene extends TilemapScene {
       { frameWidth: 64, frameHeight: 64 })
     this.load.spritesheet('kenney', 'assets/sprites/kenney_player.png',
       { frameWidth: 96, frameHeight: 96 })
-    this.load.spritesheet('hatGuy', 'assets/sprites/HighHatGuyIdle.png',
-          { frameWidth: 32, frameHeight: 32 })
+
     // Load JSON data
-    this.load.tilemapTiledJSON('mapData', 'assets/tilemaps/ExampleStage2.json')
+    this.load.tilemapTiledJSON('mapData', 'assets/tilemaps/ExampleStage1.json')
 
     // Pre-load the entire audio sprite
     this.load.audioSprite('gameAudio', 'assets/audio/gameAudioSprite.json', [
@@ -37,7 +35,7 @@ class Stage1Scene extends TilemapScene {
     this.parseTilemapJson('mapData')
 
     // Create any tilesets
-    this.createTileset('platformPack2', 'platformTiles') //RAWASSETS platformPack2 /in JSON file
+    this.createTileset('platformPack', 'platformTiles')
 
     // Parse tile layers
     this.platformLayer = this.createTileLayer('Platforms', true)
@@ -59,35 +57,25 @@ class Stage1Scene extends TilemapScene {
       this.mapData.heightInPixels / background.height
     )
 
-      // Make kenney
-      this.kenney = new Kenney(this, 50, 300)
-      this.hatGuy = new HatGuy(this, 50, 100)
+    // Make kenney
+    this.kenney = new Kenney(this, 50, 300)
 
     // Turn on layer collisions
     this.physics.add.collider(this.kenney, this.platformLayer)
     this.physics.add.collider(this.kenney, this.blockLayer)
-      this.physics.add.collider(this.kenney, this.spikes, this.spikeHitBad, null, this)
-
-    this.physics.add.collider(this.hatGuy, this.platformLayer)
-    this.physics.add.collider(this.hatGuy, this.blockLayer)
-      this.physics.add.collider(this.hatGuy, this.spikes, this.spikeHitGood, null, this)
-
+    this.physics.add.collider(this.kenney, this.spikes, this.spikeHit, null, this)
 
     // Create basic cursors
     this.cursors = this.input.keyboard.createCursorKeys()
 
     // Load and play background music
     this.music = this.sound.addAudioSprite('gameAudio')
-    //this.music.play('Stage1', { volume: 0.05 })
+    this.music.play('Stage1', { volume: 0.05 })
   }
 
-  spikeHitBad () {
-      this.kenney.reset(50, 300)
+  spikeHit () {
+    this.kenney.reset(50, 300)
   }
-
-    spikeHitGood() {
-        this.hatGuy.printMsg("I am Immune to pain!")
-    }
 
   update () {
     const direction = { x: 0, y: 0 }
@@ -101,8 +89,7 @@ class Stage1Scene extends TilemapScene {
       direction.x -= 1
     }
 
-      this.kenney.move(direction.x, direction.y)
-      this.hatGuy.move(direction.x, direction.y)
+    this.kenney.move(direction.x, direction.y)
   }
 }
 

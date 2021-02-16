@@ -1868,33 +1868,33 @@
            */
           var BlendModes = __webpack_require__(52);
           var GetAdvancedValue = __webpack_require__(15);
-          var BuildGameObject = function(scene, gameObject, config11) {
-            gameObject.x = GetAdvancedValue(config11, "x", 0);
-            gameObject.y = GetAdvancedValue(config11, "y", 0);
-            gameObject.depth = GetAdvancedValue(config11, "depth", 0);
-            gameObject.flipX = GetAdvancedValue(config11, "flipX", false);
-            gameObject.flipY = GetAdvancedValue(config11, "flipY", false);
-            var scale = GetAdvancedValue(config11, "scale", null);
+          var BuildGameObject = function(scene, gameObject, config12) {
+            gameObject.x = GetAdvancedValue(config12, "x", 0);
+            gameObject.y = GetAdvancedValue(config12, "y", 0);
+            gameObject.depth = GetAdvancedValue(config12, "depth", 0);
+            gameObject.flipX = GetAdvancedValue(config12, "flipX", false);
+            gameObject.flipY = GetAdvancedValue(config12, "flipY", false);
+            var scale = GetAdvancedValue(config12, "scale", null);
             if (typeof scale === "number") {
               gameObject.setScale(scale);
             } else if (scale !== null) {
               gameObject.scaleX = GetAdvancedValue(scale, "x", 1);
               gameObject.scaleY = GetAdvancedValue(scale, "y", 1);
             }
-            var scrollFactor = GetAdvancedValue(config11, "scrollFactor", null);
+            var scrollFactor = GetAdvancedValue(config12, "scrollFactor", null);
             if (typeof scrollFactor === "number") {
               gameObject.setScrollFactor(scrollFactor);
             } else if (scrollFactor !== null) {
               gameObject.scrollFactorX = GetAdvancedValue(scrollFactor, "x", 1);
               gameObject.scrollFactorY = GetAdvancedValue(scrollFactor, "y", 1);
             }
-            gameObject.rotation = GetAdvancedValue(config11, "rotation", 0);
-            var angle = GetAdvancedValue(config11, "angle", null);
+            gameObject.rotation = GetAdvancedValue(config12, "rotation", 0);
+            var angle = GetAdvancedValue(config12, "angle", null);
             if (angle !== null) {
               gameObject.angle = angle;
             }
-            gameObject.alpha = GetAdvancedValue(config11, "alpha", 1);
-            var origin = GetAdvancedValue(config11, "origin", null);
+            gameObject.alpha = GetAdvancedValue(config12, "alpha", 1);
+            var origin = GetAdvancedValue(config12, "origin", null);
             if (typeof origin === "number") {
               gameObject.setOrigin(origin);
             } else if (origin !== null) {
@@ -1902,9 +1902,9 @@
               var oy = GetAdvancedValue(origin, "y", 0.5);
               gameObject.setOrigin(ox, oy);
             }
-            gameObject.blendMode = GetAdvancedValue(config11, "blendMode", BlendModes.NORMAL);
-            gameObject.visible = GetAdvancedValue(config11, "visible", true);
-            var add = GetAdvancedValue(config11, "add", true);
+            gameObject.blendMode = GetAdvancedValue(config12, "blendMode", BlendModes.NORMAL);
+            gameObject.visible = GetAdvancedValue(config12, "visible", true);
+            var add = GetAdvancedValue(config12, "add", true);
             if (add) {
               scene.sys.displayList.add(gameObject);
             }
@@ -3595,12 +3595,12 @@
             initialize: function JSONFile2(loader, key, url, xhrSettings, dataKey) {
               var extension = "json";
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                url = GetFastValue(config11, "url");
-                xhrSettings = GetFastValue(config11, "xhrSettings");
-                extension = GetFastValue(config11, "extension", extension);
-                dataKey = GetFastValue(config11, "dataKey", dataKey);
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                url = GetFastValue(config12, "url");
+                xhrSettings = GetFastValue(config12, "xhrSettings");
+                extension = GetFastValue(config12, "extension", extension);
+                dataKey = GetFastValue(config12, "dataKey", dataKey);
               }
               var fileConfig = {
                 type: "json",
@@ -5091,13 +5091,13 @@
               var extension = "png";
               var normalMapURL;
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                url = GetFastValue(config11, "url");
-                normalMapURL = GetFastValue(config11, "normalMap");
-                xhrSettings = GetFastValue(config11, "xhrSettings");
-                extension = GetFastValue(config11, "extension", extension);
-                frameConfig = GetFastValue(config11, "frameConfig");
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                url = GetFastValue(config12, "url");
+                normalMapURL = GetFastValue(config12, "normalMap");
+                xhrSettings = GetFastValue(config12, "xhrSettings");
+                extension = GetFastValue(config12, "extension", extension);
+                frameConfig = GetFastValue(config12, "frameConfig");
               }
               if (Array.isArray(url)) {
                 normalMapURL = url[1];
@@ -7184,41 +7184,41 @@
           var Set = __webpack_require__(133);
           var Sprite = __webpack_require__(75);
           var Group = new Class({
-            initialize: function Group2(scene, children, config11) {
-              if (config11) {
+            initialize: function Group2(scene, children, config12) {
+              if (config12) {
                 if (children && !Array.isArray(children)) {
                   children = [children];
                 }
               } else if (Array.isArray(children)) {
                 if (IsPlainObject(children[0])) {
-                  config11 = children;
+                  config12 = children;
                   children = null;
                 }
               } else if (IsPlainObject(children)) {
-                config11 = children;
+                config12 = children;
                 children = null;
               }
               this.scene = scene;
               this.children = new Set();
               this.isParent = true;
               this.type = "Group";
-              this.classType = GetFastValue(config11, "classType", Sprite);
-              this.name = GetFastValue(config11, "name", "");
-              this.active = GetFastValue(config11, "active", true);
-              this.maxSize = GetFastValue(config11, "maxSize", -1);
-              this.defaultKey = GetFastValue(config11, "defaultKey", null);
-              this.defaultFrame = GetFastValue(config11, "defaultFrame", null);
-              this.runChildUpdate = GetFastValue(config11, "runChildUpdate", false);
-              this.createCallback = GetFastValue(config11, "createCallback", null);
-              this.removeCallback = GetFastValue(config11, "removeCallback", null);
-              this.createMultipleCallback = GetFastValue(config11, "createMultipleCallback", null);
-              this.internalCreateCallback = GetFastValue(config11, "internalCreateCallback", null);
-              this.internalRemoveCallback = GetFastValue(config11, "internalRemoveCallback", null);
+              this.classType = GetFastValue(config12, "classType", Sprite);
+              this.name = GetFastValue(config12, "name", "");
+              this.active = GetFastValue(config12, "active", true);
+              this.maxSize = GetFastValue(config12, "maxSize", -1);
+              this.defaultKey = GetFastValue(config12, "defaultKey", null);
+              this.defaultFrame = GetFastValue(config12, "defaultFrame", null);
+              this.runChildUpdate = GetFastValue(config12, "runChildUpdate", false);
+              this.createCallback = GetFastValue(config12, "createCallback", null);
+              this.removeCallback = GetFastValue(config12, "removeCallback", null);
+              this.createMultipleCallback = GetFastValue(config12, "createMultipleCallback", null);
+              this.internalCreateCallback = GetFastValue(config12, "internalCreateCallback", null);
+              this.internalRemoveCallback = GetFastValue(config12, "internalRemoveCallback", null);
               if (children) {
                 this.addMultiple(children);
               }
-              if (config11) {
-                this.createMultiple(config11);
+              if (config12) {
+                this.createMultiple(config12);
               }
             },
             create: function(x, y, key, frame, visible, active) {
@@ -7253,17 +7253,17 @@
               this.add(child);
               return child;
             },
-            createMultiple: function(config11) {
+            createMultiple: function(config12) {
               if (this.isFull()) {
                 return [];
               }
-              if (!Array.isArray(config11)) {
-                config11 = [config11];
+              if (!Array.isArray(config12)) {
+                config12 = [config12];
               }
               var output = [];
-              if (config11[0].key) {
-                for (var i = 0; i < config11.length; i++) {
-                  var entries = this.createFromConfig(config11[i]);
+              if (config12[0].key) {
+                for (var i = 0; i < config12.length; i++) {
+                  var entries = this.createFromConfig(config12[i]);
                   output = output.concat(entries);
                 }
               }
@@ -7902,30 +7902,30 @@
           var Class = __webpack_require__(0);
           var GetFastValue = __webpack_require__(2);
           var LayerData = new Class({
-            initialize: function LayerData2(config11) {
-              if (config11 === void 0) {
-                config11 = {};
+            initialize: function LayerData2(config12) {
+              if (config12 === void 0) {
+                config12 = {};
               }
-              this.name = GetFastValue(config11, "name", "layer");
-              this.x = GetFastValue(config11, "x", 0);
-              this.y = GetFastValue(config11, "y", 0);
-              this.width = GetFastValue(config11, "width", 0);
-              this.height = GetFastValue(config11, "height", 0);
-              this.tileWidth = GetFastValue(config11, "tileWidth", 0);
-              this.tileHeight = GetFastValue(config11, "tileHeight", 0);
-              this.baseTileWidth = GetFastValue(config11, "baseTileWidth", this.tileWidth);
-              this.baseTileHeight = GetFastValue(config11, "baseTileHeight", this.tileHeight);
-              this.widthInPixels = GetFastValue(config11, "widthInPixels", this.width * this.baseTileWidth);
-              this.heightInPixels = GetFastValue(config11, "heightInPixels", this.height * this.baseTileHeight);
-              this.alpha = GetFastValue(config11, "alpha", 1);
-              this.visible = GetFastValue(config11, "visible", true);
-              this.properties = GetFastValue(config11, "properties", []);
-              this.indexes = GetFastValue(config11, "indexes", []);
-              this.collideIndexes = GetFastValue(config11, "collideIndexes", []);
-              this.callbacks = GetFastValue(config11, "callbacks", []);
-              this.bodies = GetFastValue(config11, "bodies", []);
-              this.data = GetFastValue(config11, "data", []);
-              this.tilemapLayer = GetFastValue(config11, "tilemapLayer", null);
+              this.name = GetFastValue(config12, "name", "layer");
+              this.x = GetFastValue(config12, "x", 0);
+              this.y = GetFastValue(config12, "y", 0);
+              this.width = GetFastValue(config12, "width", 0);
+              this.height = GetFastValue(config12, "height", 0);
+              this.tileWidth = GetFastValue(config12, "tileWidth", 0);
+              this.tileHeight = GetFastValue(config12, "tileHeight", 0);
+              this.baseTileWidth = GetFastValue(config12, "baseTileWidth", this.tileWidth);
+              this.baseTileHeight = GetFastValue(config12, "baseTileHeight", this.tileHeight);
+              this.widthInPixels = GetFastValue(config12, "widthInPixels", this.width * this.baseTileWidth);
+              this.heightInPixels = GetFastValue(config12, "heightInPixels", this.height * this.baseTileHeight);
+              this.alpha = GetFastValue(config12, "alpha", 1);
+              this.visible = GetFastValue(config12, "visible", true);
+              this.properties = GetFastValue(config12, "properties", []);
+              this.indexes = GetFastValue(config12, "indexes", []);
+              this.collideIndexes = GetFastValue(config12, "collideIndexes", []);
+              this.callbacks = GetFastValue(config12, "callbacks", []);
+              this.bodies = GetFastValue(config12, "bodies", []);
+              this.data = GetFastValue(config12, "data", []);
+              this.tilemapLayer = GetFastValue(config12, "tilemapLayer", null);
             }
           });
           module2.exports = LayerData;
@@ -7939,30 +7939,30 @@
           var Class = __webpack_require__(0);
           var GetFastValue = __webpack_require__(2);
           var MapData = new Class({
-            initialize: function MapData2(config11) {
-              if (config11 === void 0) {
-                config11 = {};
+            initialize: function MapData2(config12) {
+              if (config12 === void 0) {
+                config12 = {};
               }
-              this.name = GetFastValue(config11, "name", "map");
-              this.width = GetFastValue(config11, "width", 0);
-              this.height = GetFastValue(config11, "height", 0);
-              this.infinite = GetFastValue(config11, "infinite", false);
-              this.tileWidth = GetFastValue(config11, "tileWidth", 0);
-              this.tileHeight = GetFastValue(config11, "tileHeight", 0);
-              this.widthInPixels = GetFastValue(config11, "widthInPixels", this.width * this.tileWidth);
-              this.heightInPixels = GetFastValue(config11, "heightInPixels", this.height * this.tileHeight);
-              this.format = GetFastValue(config11, "format", null);
-              this.orientation = GetFastValue(config11, "orientation", "orthogonal");
-              this.renderOrder = GetFastValue(config11, "renderOrder", "right-down");
-              this.version = GetFastValue(config11, "version", "1");
-              this.properties = GetFastValue(config11, "properties", {});
-              this.layers = GetFastValue(config11, "layers", []);
-              this.images = GetFastValue(config11, "images", []);
-              this.objects = GetFastValue(config11, "objects", {});
-              this.collision = GetFastValue(config11, "collision", {});
-              this.tilesets = GetFastValue(config11, "tilesets", []);
-              this.imageCollections = GetFastValue(config11, "imageCollections", []);
-              this.tiles = GetFastValue(config11, "tiles", []);
+              this.name = GetFastValue(config12, "name", "map");
+              this.width = GetFastValue(config12, "width", 0);
+              this.height = GetFastValue(config12, "height", 0);
+              this.infinite = GetFastValue(config12, "infinite", false);
+              this.tileWidth = GetFastValue(config12, "tileWidth", 0);
+              this.tileHeight = GetFastValue(config12, "tileHeight", 0);
+              this.widthInPixels = GetFastValue(config12, "widthInPixels", this.width * this.tileWidth);
+              this.heightInPixels = GetFastValue(config12, "heightInPixels", this.height * this.tileHeight);
+              this.format = GetFastValue(config12, "format", null);
+              this.orientation = GetFastValue(config12, "orientation", "orthogonal");
+              this.renderOrder = GetFastValue(config12, "renderOrder", "right-down");
+              this.version = GetFastValue(config12, "version", "1");
+              this.properties = GetFastValue(config12, "properties", {});
+              this.layers = GetFastValue(config12, "layers", []);
+              this.images = GetFastValue(config12, "images", []);
+              this.objects = GetFastValue(config12, "objects", {});
+              this.collision = GetFastValue(config12, "collision", {});
+              this.tilesets = GetFastValue(config12, "tilesets", []);
+              this.imageCollections = GetFastValue(config12, "imageCollections", []);
+              this.tiles = GetFastValue(config12, "tiles", []);
             }
           });
           module2.exports = MapData;
@@ -9228,17 +9228,17 @@
               game2.events.once(GameEvents.DESTROY, this.destroy, this);
             },
             add: NOOP,
-            addAudioSprite: function(key, config11) {
-              if (config11 === void 0) {
-                config11 = {};
+            addAudioSprite: function(key, config12) {
+              if (config12 === void 0) {
+                config12 = {};
               }
-              var sound = this.add(key, config11);
+              var sound = this.add(key, config12);
               sound.spritemap = this.jsonCache.get(key).spritemap;
               for (var markerName in sound.spritemap) {
                 if (!sound.spritemap.hasOwnProperty(markerName)) {
                   continue;
                 }
-                var markerConfig = Clone(config11);
+                var markerConfig = Clone(config12);
                 var marker = sound.spritemap[markerName];
                 markerConfig.loop = marker.hasOwnProperty("loop") ? marker.loop : false;
                 sound.addMarker({
@@ -9270,10 +9270,10 @@
                 return sound.play();
               }
             },
-            playAudioSprite: function(key, spriteName, config11) {
+            playAudioSprite: function(key, spriteName, config12) {
               var sound = this.addAudioSprite(key);
               sound.once(Events.COMPLETE, sound.destroy, sound);
-              return sound.play(spriteName, config11);
+              return sound.play(spriteName, config12);
             },
             remove: function(sound) {
               var index = this.sounds.indexOf(sound);
@@ -9424,7 +9424,7 @@
           var NOOP = __webpack_require__(1);
           var BaseSound = new Class({
             Extends: EventEmitter,
-            initialize: function BaseSound2(manager, key, config11) {
+            initialize: function BaseSound2(manager, key, config12) {
               EventEmitter.call(this);
               this.manager = manager;
               this.key = key;
@@ -9443,7 +9443,7 @@
                 delay: 0
               };
               this.currentConfig = this.config;
-              this.config = Extend(this.config, config11);
+              this.config = Extend(this.config, config12);
               this.markers = {};
               this.currentMarker = null;
               this.pendingRemove = false;
@@ -9492,12 +9492,12 @@
               this.markers[markerName] = null;
               return marker;
             },
-            play: function(markerName, config11) {
+            play: function(markerName, config12) {
               if (markerName === void 0) {
                 markerName = "";
               }
               if (typeof markerName === "object") {
-                config11 = markerName;
+                config12 = markerName;
                 markerName = "";
               }
               if (typeof markerName !== "string") {
@@ -9517,7 +9517,7 @@
                 this.duration = this.currentMarker.duration;
               }
               this.resetConfig();
-              this.currentConfig = Extend(this.currentConfig, config11);
+              this.currentConfig = Extend(this.currentConfig, config12);
               this.isPlaying = true;
               this.isPaused = false;
               return true;
@@ -10351,13 +10351,13 @@
           InputPluginCache.install = function(target) {
             var sys = target.scene.sys;
             var settings = sys.settings.input;
-            var config11 = sys.game.config;
+            var config12 = sys.game.config;
             for (var key in inputPlugins) {
               var source = inputPlugins[key].plugin;
               var mapping = inputPlugins[key].mapping;
               var settingsKey = inputPlugins[key].settingsKey;
               var configKey = inputPlugins[key].configKey;
-              if (GetValue(settings, settingsKey, config11[configKey])) {
+              if (GetValue(settings, settingsKey, config12[configKey])) {
                 target[mapping] = new source(target);
               }
             }
@@ -10642,22 +10642,22 @@
           var GetValueOp = __webpack_require__(229);
           var Tween = __webpack_require__(231);
           var TweenData = __webpack_require__(233);
-          var TweenBuilder = function(parent, config11, defaults) {
+          var TweenBuilder = function(parent, config12, defaults) {
             if (defaults === void 0) {
               defaults = Defaults;
             }
-            var targets = defaults.targets ? defaults.targets : GetTargets(config11);
-            var props = GetProps(config11);
-            var delay = GetNewValue(config11, "delay", defaults.delay);
-            var duration = GetNewValue(config11, "duration", defaults.duration);
-            var easeParams = GetValue(config11, "easeParams", defaults.easeParams);
-            var ease = GetEaseFunction(GetValue(config11, "ease", defaults.ease), easeParams);
-            var hold = GetNewValue(config11, "hold", defaults.hold);
-            var repeat = GetNewValue(config11, "repeat", defaults.repeat);
-            var repeatDelay = GetNewValue(config11, "repeatDelay", defaults.repeatDelay);
-            var yoyo = GetBoolean(config11, "yoyo", defaults.yoyo);
-            var flipX = GetBoolean(config11, "flipX", defaults.flipX);
-            var flipY = GetBoolean(config11, "flipY", defaults.flipY);
+            var targets = defaults.targets ? defaults.targets : GetTargets(config12);
+            var props = GetProps(config12);
+            var delay = GetNewValue(config12, "delay", defaults.delay);
+            var duration = GetNewValue(config12, "duration", defaults.duration);
+            var easeParams = GetValue(config12, "easeParams", defaults.easeParams);
+            var ease = GetEaseFunction(GetValue(config12, "ease", defaults.ease), easeParams);
+            var hold = GetNewValue(config12, "hold", defaults.hold);
+            var repeat = GetNewValue(config12, "repeat", defaults.repeat);
+            var repeatDelay = GetNewValue(config12, "repeatDelay", defaults.repeatDelay);
+            var yoyo = GetBoolean(config12, "yoyo", defaults.yoyo);
+            var flipX = GetBoolean(config12, "flipX", defaults.flipX);
+            var flipY = GetBoolean(config12, "flipY", defaults.flipY);
             var data = [];
             for (var p = 0; p < props.length; p++) {
               var key = props[p].key;
@@ -10669,21 +10669,21 @@
               }
             }
             var tween = new Tween(parent, data, targets);
-            tween.offset = GetAdvancedValue(config11, "offset", null);
-            tween.completeDelay = GetAdvancedValue(config11, "completeDelay", 0);
-            tween.loop = Math.round(GetAdvancedValue(config11, "loop", 0));
-            tween.loopDelay = Math.round(GetAdvancedValue(config11, "loopDelay", 0));
-            tween.paused = GetBoolean(config11, "paused", false);
-            tween.useFrames = GetBoolean(config11, "useFrames", false);
-            var scope = GetValue(config11, "callbackScope", tween);
+            tween.offset = GetAdvancedValue(config12, "offset", null);
+            tween.completeDelay = GetAdvancedValue(config12, "completeDelay", 0);
+            tween.loop = Math.round(GetAdvancedValue(config12, "loop", 0));
+            tween.loopDelay = Math.round(GetAdvancedValue(config12, "loopDelay", 0));
+            tween.paused = GetBoolean(config12, "paused", false);
+            tween.useFrames = GetBoolean(config12, "useFrames", false);
+            var scope = GetValue(config12, "callbackScope", tween);
             var tweenArray = [tween, null];
             var callbacks = Tween.TYPES;
             for (var i = 0; i < callbacks.length; i++) {
               var type = callbacks[i];
-              var callback = GetValue(config11, type, false);
+              var callback = GetValue(config12, type, false);
               if (callback) {
-                var callbackScope = GetValue(config11, type + "Scope", scope);
-                var callbackParams = GetValue(config11, type + "Params", []);
+                var callbackScope = GetValue(config12, type + "Scope", scope);
+                var callbackParams = GetValue(config12, type + "Params", []);
                 tween.setCallback(type, callback, tweenArray.concat(callbackParams), callbackScope);
               }
             }
@@ -10701,25 +10701,25 @@
           var Class = __webpack_require__(0);
           var Utils = __webpack_require__(9);
           var WebGLPipeline = new Class({
-            initialize: function WebGLPipeline2(config11) {
+            initialize: function WebGLPipeline2(config12) {
               this.name = "WebGLPipeline";
-              this.game = config11.game;
-              this.view = config11.game.canvas;
+              this.game = config12.game;
+              this.view = config12.game.canvas;
               this.resolution = 1;
               this.width = 0;
               this.height = 0;
-              this.gl = config11.gl;
+              this.gl = config12.gl;
               this.vertexCount = 0;
-              this.vertexCapacity = config11.vertexCapacity;
-              this.renderer = config11.renderer;
-              this.vertexData = config11.vertices ? config11.vertices : new ArrayBuffer(config11.vertexCapacity * config11.vertexSize);
-              this.vertexBuffer = this.renderer.createVertexBuffer(config11.vertices ? config11.vertices : this.vertexData.byteLength, this.gl.STREAM_DRAW);
-              this.program = this.renderer.createProgram(config11.vertShader, config11.fragShader);
-              this.attributes = config11.attributes;
-              this.vertexSize = config11.vertexSize;
-              this.topology = config11.topology;
+              this.vertexCapacity = config12.vertexCapacity;
+              this.renderer = config12.renderer;
+              this.vertexData = config12.vertices ? config12.vertices : new ArrayBuffer(config12.vertexCapacity * config12.vertexSize);
+              this.vertexBuffer = this.renderer.createVertexBuffer(config12.vertices ? config12.vertices : this.vertexData.byteLength, this.gl.STREAM_DRAW);
+              this.program = this.renderer.createProgram(config12.vertShader, config12.fragShader);
+              this.attributes = config12.attributes;
+              this.vertexSize = config12.vertexSize;
+              this.topology = config12.topology;
               this.bytes = new Uint8Array(this.vertexData);
-              this.vertexComponentCount = Utils.getComponentCount(config11.attributes, this.gl);
+              this.vertexComponentCount = Utils.getComponentCount(config12.attributes, this.gl);
               this.flushLocked = false;
               this.active = false;
             },
@@ -11189,14 +11189,14 @@
           var GetValue = __webpack_require__(6);
           var Animation = new Class({
             Extends: EventEmitter,
-            initialize: function Animation2(manager, key, config11) {
+            initialize: function Animation2(manager, key, config12) {
               EventEmitter.call(this);
               this.manager = manager;
               this.key = key;
               this.type = "frame";
-              this.frames = this.getFrames(manager.textureManager, GetValue(config11, "frames", []), GetValue(config11, "defaultTextureKey", null));
-              this.frameRate = GetValue(config11, "frameRate", null);
-              this.duration = GetValue(config11, "duration", null);
+              this.frames = this.getFrames(manager.textureManager, GetValue(config12, "frames", []), GetValue(config12, "defaultTextureKey", null));
+              this.frameRate = GetValue(config12, "frameRate", null);
+              this.duration = GetValue(config12, "duration", null);
               if (this.duration === null && this.frameRate === null) {
                 this.frameRate = 24;
                 this.duration = this.frameRate / this.frames.length * 1e3;
@@ -11206,22 +11206,22 @@
                 this.duration = this.frames.length / this.frameRate * 1e3;
               }
               this.msPerFrame = 1e3 / this.frameRate;
-              this.skipMissedFrames = GetValue(config11, "skipMissedFrames", true);
-              this.delay = GetValue(config11, "delay", 0);
-              this.repeat = GetValue(config11, "repeat", 0);
-              this.repeatDelay = GetValue(config11, "repeatDelay", 0);
-              this.yoyo = GetValue(config11, "yoyo", false);
-              this.showOnStart = GetValue(config11, "showOnStart", false);
-              this.hideOnComplete = GetValue(config11, "hideOnComplete", false);
+              this.skipMissedFrames = GetValue(config12, "skipMissedFrames", true);
+              this.delay = GetValue(config12, "delay", 0);
+              this.repeat = GetValue(config12, "repeat", 0);
+              this.repeatDelay = GetValue(config12, "repeatDelay", 0);
+              this.yoyo = GetValue(config12, "yoyo", false);
+              this.showOnStart = GetValue(config12, "showOnStart", false);
+              this.hideOnComplete = GetValue(config12, "hideOnComplete", false);
               this.paused = false;
               this.manager.on(Events.PAUSE_ALL, this.pause, this);
               this.manager.on(Events.RESUME_ALL, this.resume, this);
             },
-            addFrame: function(config11) {
-              return this.addFrameAt(this.frames.length, config11);
+            addFrame: function(config12) {
+              return this.addFrameAt(this.frames.length, config12);
             },
-            addFrameAt: function(index, config11) {
-              var newFrames = this.getFrames(this.manager.textureManager, config11);
+            addFrameAt: function(index, config12) {
+              var newFrames = this.getFrames(this.manager.textureManager, config12);
               if (newFrames.length > 0) {
                 if (index === 0) {
                   this.frames = newFrames.concat(this.frames);
@@ -12668,14 +12668,14 @@
           var NOOP = __webpack_require__(1);
           var Settings = __webpack_require__(375);
           var Systems = new Class({
-            initialize: function Systems2(scene, config11) {
+            initialize: function Systems2(scene, config12) {
               this.scene = scene;
               this.game;
               this.renderer;
               if (false) {
               }
-              this.config = config11;
-              this.settings = Settings.create(config11);
+              this.config = config12;
+              this.settings = Settings.create(config12);
               this.canvas;
               this.context;
               this.anims;
@@ -14371,8 +14371,8 @@
             addEmitter: function(emitter) {
               return this.emitters.add(emitter);
             },
-            createEmitter: function(config11) {
-              return this.addEmitter(new ParticleEmitter(this, config11));
+            createEmitter: function(config12) {
+              return this.addEmitter(new ParticleEmitter(this, config12));
             },
             removeEmitter: function(emitter) {
               return this.emitters.remove(emitter, true);
@@ -14380,8 +14380,8 @@
             addGravityWell: function(well) {
               return this.wells.add(well);
             },
-            createGravityWell: function(config11) {
-              return this.addGravityWell(new GravityWell(config11));
+            createGravityWell: function(config12) {
+              return this.addGravityWell(new GravityWell(config12));
             },
             emitParticle: function(count, x, y) {
               var emitters = this.emitters.list;
@@ -15576,22 +15576,22 @@
             },
             setPadding: function(left, top, right, bottom) {
               if (typeof left === "object") {
-                var config11 = left;
-                var x = GetValue(config11, "x", null);
+                var config12 = left;
+                var x = GetValue(config12, "x", null);
                 if (x !== null) {
                   left = x;
                   right = x;
                 } else {
-                  left = GetValue(config11, "left", 0);
-                  right = GetValue(config11, "right", left);
+                  left = GetValue(config12, "left", 0);
+                  right = GetValue(config12, "right", left);
                 }
-                var y = GetValue(config11, "y", null);
+                var y = GetValue(config12, "y", null);
                 if (y !== null) {
                   top = y;
                   bottom = y;
                 } else {
-                  top = GetValue(config11, "top", 0);
-                  bottom = GetValue(config11, "bottom", top);
+                  top = GetValue(config12, "top", 0);
+                  bottom = GetValue(config12, "bottom", top);
                 }
               } else {
                 if (left === void 0) {
@@ -17687,11 +17687,11 @@
             initialize: function XMLFile2(loader, key, url, xhrSettings) {
               var extension = "xml";
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                url = GetFastValue(config11, "url");
-                xhrSettings = GetFastValue(config11, "xhrSettings");
-                extension = GetFastValue(config11, "extension", extension);
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                url = GetFastValue(config12, "url");
+                xhrSettings = GetFastValue(config12, "xhrSettings");
+                extension = GetFastValue(config12, "extension", extension);
               }
               var fileConfig = {
                 type: "xml",
@@ -18288,8 +18288,8 @@
            * @license      {@link https://opensource.org/licenses/MIT|MIT License}
            */
           var GetValue = __webpack_require__(6);
-          var GetTargets = function(config11) {
-            var targets = GetValue(config11, "targets", null);
+          var GetTargets = function(config12) {
+            var targets = GetValue(config12, "targets", null);
             if (targets === null) {
               return targets;
             }
@@ -19027,11 +19027,11 @@
             "onUpdate",
             "onYoyo"
           ];
-          GameObjectFactory.register("tween", function(config11) {
-            return this.scene.sys.tweens.add(config11);
+          GameObjectFactory.register("tween", function(config12) {
+            return this.scene.sys.tweens.add(config12);
           });
-          GameObjectCreator.register("tween", function(config11) {
-            return this.scene.sys.tweens.create(config11);
+          GameObjectCreator.register("tween", function(config12) {
+            return this.scene.sys.tweens.create(config12);
           });
           module2.exports = Tween;
         },
@@ -19161,43 +19161,43 @@
             Mixins: [
               ModelViewProjection
             ],
-            initialize: function TextureTintPipeline2(config11) {
-              var rendererConfig = config11.renderer.config;
+            initialize: function TextureTintPipeline2(config12) {
+              var rendererConfig = config12.renderer.config;
               WebGLPipeline.call(this, {
-                game: config11.game,
-                renderer: config11.renderer,
-                gl: config11.renderer.gl,
-                topology: GetFastValue(config11, "topology", config11.renderer.gl.TRIANGLES),
-                vertShader: GetFastValue(config11, "vertShader", ShaderSourceVS),
-                fragShader: GetFastValue(config11, "fragShader", ShaderSourceFS),
-                vertexCapacity: GetFastValue(config11, "vertexCapacity", 6 * rendererConfig.batchSize),
-                vertexSize: GetFastValue(config11, "vertexSize", Float32Array.BYTES_PER_ELEMENT * 5 + Uint8Array.BYTES_PER_ELEMENT * 4),
+                game: config12.game,
+                renderer: config12.renderer,
+                gl: config12.renderer.gl,
+                topology: GetFastValue(config12, "topology", config12.renderer.gl.TRIANGLES),
+                vertShader: GetFastValue(config12, "vertShader", ShaderSourceVS),
+                fragShader: GetFastValue(config12, "fragShader", ShaderSourceFS),
+                vertexCapacity: GetFastValue(config12, "vertexCapacity", 6 * rendererConfig.batchSize),
+                vertexSize: GetFastValue(config12, "vertexSize", Float32Array.BYTES_PER_ELEMENT * 5 + Uint8Array.BYTES_PER_ELEMENT * 4),
                 attributes: [
                   {
                     name: "inPosition",
                     size: 2,
-                    type: config11.renderer.gl.FLOAT,
+                    type: config12.renderer.gl.FLOAT,
                     normalized: false,
                     offset: 0
                   },
                   {
                     name: "inTexCoord",
                     size: 2,
-                    type: config11.renderer.gl.FLOAT,
+                    type: config12.renderer.gl.FLOAT,
                     normalized: false,
                     offset: Float32Array.BYTES_PER_ELEMENT * 2
                   },
                   {
                     name: "inTintEffect",
                     size: 1,
-                    type: config11.renderer.gl.FLOAT,
+                    type: config12.renderer.gl.FLOAT,
                     normalized: false,
                     offset: Float32Array.BYTES_PER_ELEMENT * 4
                   },
                   {
                     name: "inTint",
                     size: 4,
-                    type: config11.renderer.gl.UNSIGNED_BYTE,
+                    type: config12.renderer.gl.UNSIGNED_BYTE,
                     normalized: true,
                     offset: Float32Array.BYTES_PER_ELEMENT * 5
                   }
@@ -21959,13 +21959,13 @@
             exists: function(key) {
               return this.anims.has(key);
             },
-            create: function(config11) {
-              var key = config11.key;
+            create: function(config12) {
+              var key = config12.key;
               var anim = false;
               if (key) {
                 anim = this.get(key);
                 if (!anim) {
-                  anim = new Animation(this, key, config11);
+                  anim = new Animation(this, key, config12);
                   this.anims.set(key, anim);
                   this.emit(Events.ADD_ANIMATION, key, anim);
                 }
@@ -21995,14 +21995,14 @@
               }
               return output;
             },
-            generateFrameNames: function(key, config11) {
-              var prefix = GetValue(config11, "prefix", "");
-              var start = GetValue(config11, "start", 0);
-              var end = GetValue(config11, "end", 0);
-              var suffix = GetValue(config11, "suffix", "");
-              var zeroPad = GetValue(config11, "zeroPad", 0);
-              var out = GetValue(config11, "outputArray", []);
-              var frames = GetValue(config11, "frames", false);
+            generateFrameNames: function(key, config12) {
+              var prefix = GetValue(config12, "prefix", "");
+              var start = GetValue(config12, "start", 0);
+              var end = GetValue(config12, "end", 0);
+              var suffix = GetValue(config12, "suffix", "");
+              var zeroPad = GetValue(config12, "zeroPad", 0);
+              var out = GetValue(config12, "outputArray", []);
+              var frames = GetValue(config12, "frames", false);
               var texture = this.textureManager.get(key);
               if (!texture) {
                 return out;
@@ -22011,7 +22011,7 @@
               end += diff;
               var i;
               var frame;
-              if (!config11) {
+              if (!config12) {
                 frames = texture.getFrameNames();
                 for (i = 0; i < frames.length; i++) {
                   out.push({key, frame: frames[i]});
@@ -22033,12 +22033,12 @@
               }
               return out;
             },
-            generateFrameNumbers: function(key, config11) {
-              var startFrame = GetValue(config11, "start", 0);
-              var endFrame = GetValue(config11, "end", -1);
-              var firstFrame = GetValue(config11, "first", false);
-              var out = GetValue(config11, "outputArray", []);
-              var frames = GetValue(config11, "frames", false);
+            generateFrameNumbers: function(key, config12) {
+              var startFrame = GetValue(config12, "start", 0);
+              var endFrame = GetValue(config12, "end", -1);
+              var firstFrame = GetValue(config12, "first", false);
+              var out = GetValue(config12, "outputArray", []);
+              var frames = GetValue(config12, "frames", false);
               var texture = this.textureManager.get(key);
               if (!texture) {
                 return out;
@@ -22880,9 +22880,9 @@
           var DefaultPlugins = __webpack_require__(175);
           var ValueToColor = __webpack_require__(164);
           var Config = new Class({
-            initialize: function Config2(config11) {
-              if (config11 === void 0) {
-                config11 = {};
+            initialize: function Config2(config12) {
+              if (config12 === void 0) {
+                config12 = {};
               }
               var defaultBannerColor = [
                 "#ff0000",
@@ -22892,22 +22892,22 @@
                 "#000000"
               ];
               var defaultBannerTextColor = "#ffffff";
-              this.width = GetValue(config11, "width", 1024);
-              this.height = GetValue(config11, "height", 768);
-              this.zoom = GetValue(config11, "zoom", 1);
-              this.resolution = GetValue(config11, "resolution", 1);
-              this.parent = GetValue(config11, "parent", void 0);
-              this.scaleMode = GetValue(config11, "scaleMode", 0);
-              this.expandParent = GetValue(config11, "expandParent", true);
-              this.autoRound = GetValue(config11, "autoRound", false);
-              this.autoCenter = GetValue(config11, "autoCenter", 0);
-              this.resizeInterval = GetValue(config11, "resizeInterval", 500);
-              this.fullscreenTarget = GetValue(config11, "fullscreenTarget", null);
-              this.minWidth = GetValue(config11, "minWidth", 0);
-              this.maxWidth = GetValue(config11, "maxWidth", 0);
-              this.minHeight = GetValue(config11, "minHeight", 0);
-              this.maxHeight = GetValue(config11, "maxHeight", 0);
-              var scaleConfig = GetValue(config11, "scale", null);
+              this.width = GetValue(config12, "width", 1024);
+              this.height = GetValue(config12, "height", 768);
+              this.zoom = GetValue(config12, "zoom", 1);
+              this.resolution = GetValue(config12, "resolution", 1);
+              this.parent = GetValue(config12, "parent", void 0);
+              this.scaleMode = GetValue(config12, "scaleMode", 0);
+              this.expandParent = GetValue(config12, "expandParent", true);
+              this.autoRound = GetValue(config12, "autoRound", false);
+              this.autoCenter = GetValue(config12, "autoCenter", 0);
+              this.resizeInterval = GetValue(config12, "resizeInterval", 500);
+              this.fullscreenTarget = GetValue(config12, "fullscreenTarget", null);
+              this.minWidth = GetValue(config12, "minWidth", 0);
+              this.maxWidth = GetValue(config12, "maxWidth", 0);
+              this.minHeight = GetValue(config12, "minHeight", 0);
+              this.maxHeight = GetValue(config12, "maxHeight", 0);
+              var scaleConfig = GetValue(config12, "scale", null);
               if (scaleConfig) {
                 this.width = GetValue(scaleConfig, "width", this.width);
                 this.height = GetValue(scaleConfig, "height", this.height);
@@ -22925,45 +22925,45 @@
                 this.minHeight = GetValue(scaleConfig, "min.height", this.minHeight);
                 this.maxHeight = GetValue(scaleConfig, "max.height", this.maxHeight);
               }
-              this.renderType = GetValue(config11, "type", CONST.AUTO);
-              this.canvas = GetValue(config11, "canvas", null);
-              this.context = GetValue(config11, "context", null);
-              this.canvasStyle = GetValue(config11, "canvasStyle", null);
-              this.customEnvironment = GetValue(config11, "customEnvironment", false);
-              this.sceneConfig = GetValue(config11, "scene", null);
-              this.seed = GetValue(config11, "seed", [(Date.now() * Math.random()).toString()]);
+              this.renderType = GetValue(config12, "type", CONST.AUTO);
+              this.canvas = GetValue(config12, "canvas", null);
+              this.context = GetValue(config12, "context", null);
+              this.canvasStyle = GetValue(config12, "canvasStyle", null);
+              this.customEnvironment = GetValue(config12, "customEnvironment", false);
+              this.sceneConfig = GetValue(config12, "scene", null);
+              this.seed = GetValue(config12, "seed", [(Date.now() * Math.random()).toString()]);
               PhaserMath.RND = new PhaserMath.RandomDataGenerator(this.seed);
-              this.gameTitle = GetValue(config11, "title", "");
-              this.gameURL = GetValue(config11, "url", "https://phaser.io");
-              this.gameVersion = GetValue(config11, "version", "");
-              this.autoFocus = GetValue(config11, "autoFocus", true);
-              this.domCreateContainer = GetValue(config11, "dom.createContainer", false);
-              this.domBehindCanvas = GetValue(config11, "dom.behindCanvas", false);
-              this.inputKeyboard = GetValue(config11, "input.keyboard", true);
-              this.inputKeyboardEventTarget = GetValue(config11, "input.keyboard.target", window);
-              this.inputKeyboardCapture = GetValue(config11, "input.keyboard.capture", []);
-              this.inputMouse = GetValue(config11, "input.mouse", true);
-              this.inputMouseEventTarget = GetValue(config11, "input.mouse.target", null);
-              this.inputMouseCapture = GetValue(config11, "input.mouse.capture", true);
-              this.inputTouch = GetValue(config11, "input.touch", Device.input.touch);
-              this.inputTouchEventTarget = GetValue(config11, "input.touch.target", null);
-              this.inputTouchCapture = GetValue(config11, "input.touch.capture", true);
-              this.inputActivePointers = GetValue(config11, "input.activePointers", 1);
-              this.inputSmoothFactor = GetValue(config11, "input.smoothFactor", 0);
-              this.inputWindowEvents = GetValue(config11, "input.windowEvents", true);
-              this.inputGamepad = GetValue(config11, "input.gamepad", false);
-              this.inputGamepadEventTarget = GetValue(config11, "input.gamepad.target", window);
-              this.disableContextMenu = GetValue(config11, "disableContextMenu", false);
-              this.audio = GetValue(config11, "audio");
-              this.hideBanner = GetValue(config11, "banner", null) === false;
-              this.hidePhaser = GetValue(config11, "banner.hidePhaser", false);
-              this.bannerTextColor = GetValue(config11, "banner.text", defaultBannerTextColor);
-              this.bannerBackgroundColor = GetValue(config11, "banner.background", defaultBannerColor);
+              this.gameTitle = GetValue(config12, "title", "");
+              this.gameURL = GetValue(config12, "url", "https://phaser.io");
+              this.gameVersion = GetValue(config12, "version", "");
+              this.autoFocus = GetValue(config12, "autoFocus", true);
+              this.domCreateContainer = GetValue(config12, "dom.createContainer", false);
+              this.domBehindCanvas = GetValue(config12, "dom.behindCanvas", false);
+              this.inputKeyboard = GetValue(config12, "input.keyboard", true);
+              this.inputKeyboardEventTarget = GetValue(config12, "input.keyboard.target", window);
+              this.inputKeyboardCapture = GetValue(config12, "input.keyboard.capture", []);
+              this.inputMouse = GetValue(config12, "input.mouse", true);
+              this.inputMouseEventTarget = GetValue(config12, "input.mouse.target", null);
+              this.inputMouseCapture = GetValue(config12, "input.mouse.capture", true);
+              this.inputTouch = GetValue(config12, "input.touch", Device.input.touch);
+              this.inputTouchEventTarget = GetValue(config12, "input.touch.target", null);
+              this.inputTouchCapture = GetValue(config12, "input.touch.capture", true);
+              this.inputActivePointers = GetValue(config12, "input.activePointers", 1);
+              this.inputSmoothFactor = GetValue(config12, "input.smoothFactor", 0);
+              this.inputWindowEvents = GetValue(config12, "input.windowEvents", true);
+              this.inputGamepad = GetValue(config12, "input.gamepad", false);
+              this.inputGamepadEventTarget = GetValue(config12, "input.gamepad.target", window);
+              this.disableContextMenu = GetValue(config12, "disableContextMenu", false);
+              this.audio = GetValue(config12, "audio");
+              this.hideBanner = GetValue(config12, "banner", null) === false;
+              this.hidePhaser = GetValue(config12, "banner.hidePhaser", false);
+              this.bannerTextColor = GetValue(config12, "banner.text", defaultBannerTextColor);
+              this.bannerBackgroundColor = GetValue(config12, "banner.background", defaultBannerColor);
               if (this.gameTitle === "" && this.hidePhaser) {
                 this.hideBanner = true;
               }
-              this.fps = GetValue(config11, "fps", null);
-              var renderConfig = GetValue(config11, "render", config11);
+              this.fps = GetValue(config12, "fps", null);
+              var renderConfig = GetValue(config12, "render", config12);
               this.antialias = GetValue(renderConfig, "antialias", true);
               this.antialiasGL = GetValue(renderConfig, "antialiasGL", true);
               this.mipmapFilter = GetValue(renderConfig, "mipmapFilter", "LINEAR");
@@ -22981,28 +22981,28 @@
               this.powerPreference = GetValue(renderConfig, "powerPreference", "default");
               this.batchSize = GetValue(renderConfig, "batchSize", 2e3);
               this.maxLights = GetValue(renderConfig, "maxLights", 10);
-              var bgc = GetValue(config11, "backgroundColor", 0);
+              var bgc = GetValue(config12, "backgroundColor", 0);
               this.backgroundColor = ValueToColor(bgc);
               if (bgc === 0 && this.transparent) {
                 this.backgroundColor.alpha = 0;
               }
-              this.preBoot = GetValue(config11, "callbacks.preBoot", NOOP);
-              this.postBoot = GetValue(config11, "callbacks.postBoot", NOOP);
-              this.physics = GetValue(config11, "physics", {});
+              this.preBoot = GetValue(config12, "callbacks.preBoot", NOOP);
+              this.postBoot = GetValue(config12, "callbacks.postBoot", NOOP);
+              this.physics = GetValue(config12, "physics", {});
               this.defaultPhysicsSystem = GetValue(this.physics, "default", false);
-              this.loaderBaseURL = GetValue(config11, "loader.baseURL", "");
-              this.loaderPath = GetValue(config11, "loader.path", "");
-              this.loaderMaxParallelDownloads = GetValue(config11, "loader.maxParallelDownloads", 32);
-              this.loaderCrossOrigin = GetValue(config11, "loader.crossOrigin", void 0);
-              this.loaderResponseType = GetValue(config11, "loader.responseType", "");
-              this.loaderAsync = GetValue(config11, "loader.async", true);
-              this.loaderUser = GetValue(config11, "loader.user", "");
-              this.loaderPassword = GetValue(config11, "loader.password", "");
-              this.loaderTimeout = GetValue(config11, "loader.timeout", 0);
-              this.loaderWithCredentials = GetValue(config11, "loader.withCredentials", false);
+              this.loaderBaseURL = GetValue(config12, "loader.baseURL", "");
+              this.loaderPath = GetValue(config12, "loader.path", "");
+              this.loaderMaxParallelDownloads = GetValue(config12, "loader.maxParallelDownloads", 32);
+              this.loaderCrossOrigin = GetValue(config12, "loader.crossOrigin", void 0);
+              this.loaderResponseType = GetValue(config12, "loader.responseType", "");
+              this.loaderAsync = GetValue(config12, "loader.async", true);
+              this.loaderUser = GetValue(config12, "loader.user", "");
+              this.loaderPassword = GetValue(config12, "loader.password", "");
+              this.loaderTimeout = GetValue(config12, "loader.timeout", 0);
+              this.loaderWithCredentials = GetValue(config12, "loader.withCredentials", false);
               this.installGlobalPlugins = [];
               this.installScenePlugins = [];
-              var plugins = GetValue(config11, "plugins", null);
+              var plugins = GetValue(config12, "plugins", null);
               var defaultPlugins = DefaultPlugins.DefaultScene;
               if (plugins) {
                 if (Array.isArray(plugins)) {
@@ -23019,8 +23019,8 @@
               }
               this.defaultPlugins = defaultPlugins;
               var pngPrefix = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAg";
-              this.defaultImage = GetValue(config11, "images.default", pngPrefix + "AQMAAABJtOi3AAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAABVJREFUeF7NwIEAAAAAgKD9qdeocAMAoAABm3DkcAAAAABJRU5ErkJggg==");
-              this.missingImage = GetValue(config11, "images.missing", pngPrefix + "CAIAAAD8GO2jAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJ9JREFUeNq01ssOwyAMRFG46v//Mt1ESmgh+DFmE2GPOBARKb2NVjo+17PXLD8a1+pl5+A+wSgFygymWYHBb0FtsKhJDdZlncG2IzJ4ayoMDv20wTmSMzClEgbWYNTAkQ0Z+OJ+A/eWnAaR9+oxCF4Os0H8htsMUp+pwcgBBiMNnAwF8GqIgL2hAzaGFFgZauDPKABmowZ4GL369/0rwACp2yA/ttmvsQAAAABJRU5ErkJggg==");
+              this.defaultImage = GetValue(config12, "images.default", pngPrefix + "AQMAAABJtOi3AAAAA1BMVEX///+nxBvIAAAAAXRSTlMAQObYZgAAABVJREFUeF7NwIEAAAAAgKD9qdeocAMAoAABm3DkcAAAAABJRU5ErkJggg==");
+              this.missingImage = GetValue(config12, "images.missing", pngPrefix + "CAIAAAD8GO2jAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJ9JREFUeNq01ssOwyAMRFG46v//Mt1ESmgh+DFmE2GPOBARKb2NVjo+17PXLD8a1+pl5+A+wSgFygymWYHBb0FtsKhJDdZlncG2IzJ4ayoMDv20wTmSMzClEgbWYNTAkQ0Z+OJ+A/eWnAaR9+oxCF4Os0H8htsMUp+pwcgBBiMNnAwF8GqIgL2hAzaGFFgZauDPKABmowZ4GL369/0rwACp2yA/ttmvsQAAAABJRU5ErkJggg==");
               if (window) {
                 if (window.FORCE_WEBGL) {
                   this.renderType = CONST.WEBGL;
@@ -25025,41 +25025,41 @@
           var CONST = __webpack_require__(33);
           var Features = __webpack_require__(169);
           var CreateRenderer = function(game2) {
-            var config11 = game2.config;
-            if ((config11.customEnvironment || config11.canvas) && config11.renderType === CONST.AUTO) {
+            var config12 = game2.config;
+            if ((config12.customEnvironment || config12.canvas) && config12.renderType === CONST.AUTO) {
               throw new Error("Must set explicit renderType in custom environment");
             }
-            if (!config11.customEnvironment && !config11.canvas && config11.renderType !== CONST.HEADLESS) {
-              if (config11.renderType === CONST.CANVAS || config11.renderType !== CONST.CANVAS && !Features.webGL) {
+            if (!config12.customEnvironment && !config12.canvas && config12.renderType !== CONST.HEADLESS) {
+              if (config12.renderType === CONST.CANVAS || config12.renderType !== CONST.CANVAS && !Features.webGL) {
                 if (Features.canvas) {
-                  config11.renderType = CONST.CANVAS;
+                  config12.renderType = CONST.CANVAS;
                 } else {
                   throw new Error("Cannot create Canvas or WebGL context, aborting.");
                 }
               } else {
-                config11.renderType = CONST.WEBGL;
+                config12.renderType = CONST.WEBGL;
               }
             }
-            if (!config11.antialias) {
+            if (!config12.antialias) {
               CanvasPool.disableSmoothing();
             }
             var baseSize = game2.scale.baseSize;
             var width = baseSize.width;
             var height = baseSize.height;
-            if (config11.canvas) {
-              game2.canvas = config11.canvas;
+            if (config12.canvas) {
+              game2.canvas = config12.canvas;
               game2.canvas.width = width;
               game2.canvas.height = height;
             } else {
-              game2.canvas = CanvasPool.create(game2, width, height, config11.renderType);
+              game2.canvas = CanvasPool.create(game2, width, height, config12.renderType);
             }
-            if (config11.canvasStyle) {
-              game2.canvas.style = config11.canvasStyle;
+            if (config12.canvasStyle) {
+              game2.canvas.style = config12.canvasStyle;
             }
-            if (!config11.antialias) {
+            if (!config12.antialias) {
               CanvasInterpolation.setCrisp(game2.canvas);
             }
-            if (config11.renderType === CONST.HEADLESS) {
+            if (config12.renderType === CONST.HEADLESS) {
               return;
             }
             var CanvasRenderer;
@@ -25067,7 +25067,7 @@
             if (true) {
               CanvasRenderer = __webpack_require__(505);
               WebGLRenderer = __webpack_require__(508);
-              if (config11.renderType === CONST.WEBGL) {
+              if (config12.renderType === CONST.WEBGL) {
                 game2.renderer = new WebGLRenderer(game2);
               } else {
                 game2.renderer = new CanvasRenderer(game2);
@@ -25183,17 +25183,17 @@
            */
           var CONST = __webpack_require__(33);
           var DebugHeader = function(game2) {
-            var config11 = game2.config;
-            if (config11.hideBanner) {
+            var config12 = game2.config;
+            if (config12.hideBanner) {
               return;
             }
             var renderType = "WebGL";
-            if (config11.renderType === CONST.CANVAS) {
+            if (config12.renderType === CONST.CANVAS) {
               renderType = "Canvas";
-            } else if (config11.renderType === CONST.HEADLESS) {
+            } else if (config12.renderType === CONST.HEADLESS) {
               renderType = "Headless";
             }
-            var audioConfig = config11.audio;
+            var audioConfig = config12.audio;
             var deviceAudio = game2.device.audio;
             var audioType;
             if (deviceAudio.webAudio && !(audioConfig && audioConfig.disableWebAudio)) {
@@ -25206,33 +25206,33 @@
             if (!game2.device.browser.ie) {
               var c = "";
               var args = [c];
-              if (Array.isArray(config11.bannerBackgroundColor)) {
+              if (Array.isArray(config12.bannerBackgroundColor)) {
                 var lastColor;
-                config11.bannerBackgroundColor.forEach(function(color) {
+                config12.bannerBackgroundColor.forEach(function(color) {
                   c = c.concat("%c ");
                   args.push("background: " + color);
                   lastColor = color;
                 });
-                args[args.length - 1] = "color: " + config11.bannerTextColor + "; background: " + lastColor;
+                args[args.length - 1] = "color: " + config12.bannerTextColor + "; background: " + lastColor;
               } else {
                 c = c.concat("%c ");
-                args.push("color: " + config11.bannerTextColor + "; background: " + config11.bannerBackgroundColor);
+                args.push("color: " + config12.bannerTextColor + "; background: " + config12.bannerBackgroundColor);
               }
               args.push("background: #fff");
-              if (config11.gameTitle) {
-                c = c.concat(config11.gameTitle);
-                if (config11.gameVersion) {
-                  c = c.concat(" v" + config11.gameVersion);
+              if (config12.gameTitle) {
+                c = c.concat(config12.gameTitle);
+                if (config12.gameVersion) {
+                  c = c.concat(" v" + config12.gameVersion);
                 }
-                if (!config11.hidePhaser) {
+                if (!config12.hidePhaser) {
                   c = c.concat(" / ");
                 }
               }
               var fb = "";
-              if (!config11.hidePhaser) {
+              if (!config12.hidePhaser) {
                 c = c.concat("Phaser v" + CONST.VERSION + fb + " (" + renderType + " | " + audioType + ")");
               }
-              c = c.concat(" %c " + config11.gameURL);
+              c = c.concat(" %c " + config12.gameURL);
               args[0] = c;
               console.log.apply(console, args);
             } else if (window["console"]) {
@@ -25252,20 +25252,20 @@
           var NOOP = __webpack_require__(1);
           var RequestAnimationFrame = __webpack_require__(344);
           var TimeStep = new Class({
-            initialize: function TimeStep2(game2, config11) {
+            initialize: function TimeStep2(game2, config12) {
               this.game = game2;
               this.raf = new RequestAnimationFrame();
               this.started = false;
               this.running = false;
-              this.minFps = GetValue(config11, "min", 5);
-              this.targetFps = GetValue(config11, "target", 60);
+              this.minFps = GetValue(config12, "min", 5);
+              this.targetFps = GetValue(config12, "target", 60);
               this._min = 1e3 / this.minFps;
               this._target = 1e3 / this.targetFps;
               this.actualFps = this.targetFps;
               this.nextFpsUpdate = 0;
               this.framesThisSecond = 0;
               this.callback = NOOP;
-              this.forceSetTimeOut = GetValue(config11, "forceSetTimeOut", false);
+              this.forceSetTimeOut = GetValue(config12, "forceSetTimeOut", false);
               this.time = 0;
               this.startTime = 0;
               this.lastTime = 0;
@@ -25276,11 +25276,11 @@
               this.delta = 0;
               this.deltaIndex = 0;
               this.deltaHistory = [];
-              this.deltaSmoothingMax = GetValue(config11, "deltaHistory", 10);
-              this.panicMax = GetValue(config11, "panicMax", 120);
+              this.deltaSmoothingMax = GetValue(config12, "deltaHistory", 10);
+              this.panicMax = GetValue(config12, "panicMax", 120);
               this.rawDelta = 0;
               this.now = 0;
-              this.smoothStep = GetValue(config11, "smoothStep", true);
+              this.smoothStep = GetValue(config12, "smoothStep", true);
             },
             blur: function() {
               this.inFocus = false;
@@ -25522,16 +25522,16 @@
           var Arne16 = __webpack_require__(347);
           var CanvasPool = __webpack_require__(26);
           var GetValue = __webpack_require__(6);
-          var GenerateTexture = function(config11) {
-            var data = GetValue(config11, "data", []);
-            var canvas = GetValue(config11, "canvas", null);
-            var palette = GetValue(config11, "palette", Arne16);
-            var pixelWidth = GetValue(config11, "pixelWidth", 1);
-            var pixelHeight = GetValue(config11, "pixelHeight", pixelWidth);
-            var resizeCanvas = GetValue(config11, "resizeCanvas", true);
-            var clearCanvas = GetValue(config11, "clearCanvas", true);
-            var preRender = GetValue(config11, "preRender", null);
-            var postRender = GetValue(config11, "postRender", null);
+          var GenerateTexture = function(config12) {
+            var data = GetValue(config12, "data", []);
+            var canvas = GetValue(config12, "canvas", null);
+            var palette = GetValue(config12, "palette", Arne16);
+            var pixelWidth = GetValue(config12, "pixelWidth", 1);
+            var pixelHeight = GetValue(config12, "pixelHeight", pixelWidth);
+            var resizeCanvas = GetValue(config12, "resizeCanvas", true);
+            var clearCanvas = GetValue(config12, "clearCanvas", true);
+            var preRender = GetValue(config12, "preRender", null);
+            var postRender = GetValue(config12, "postRender", null);
             var width = Math.floor(Math.abs(data[0].length * pixelWidth));
             var height = Math.floor(Math.abs(data.length * pixelHeight));
             if (!canvas) {
@@ -25691,15 +25691,15 @@
             Extends: Curve,
             initialize: function EllipseCurve2(x, y, xRadius, yRadius, startAngle, endAngle, clockwise, rotation) {
               if (typeof x === "object") {
-                var config11 = x;
-                x = GetValue(config11, "x", 0);
-                y = GetValue(config11, "y", 0);
-                xRadius = GetValue(config11, "xRadius", 0);
-                yRadius = GetValue(config11, "yRadius", xRadius);
-                startAngle = GetValue(config11, "startAngle", 0);
-                endAngle = GetValue(config11, "endAngle", 360);
-                clockwise = GetValue(config11, "clockwise", false);
-                rotation = GetValue(config11, "rotation", 0);
+                var config12 = x;
+                x = GetValue(config12, "x", 0);
+                y = GetValue(config12, "y", 0);
+                xRadius = GetValue(config12, "xRadius", 0);
+                yRadius = GetValue(config12, "yRadius", xRadius);
+                startAngle = GetValue(config12, "startAngle", 0);
+                endAngle = GetValue(config12, "endAngle", 360);
+                clockwise = GetValue(config12, "clockwise", false);
+                rotation = GetValue(config12, "rotation", 0);
               } else {
                 if (yRadius === void 0) {
                   yRadius = xRadius;
@@ -26441,29 +26441,29 @@
           var TransformMatrix = __webpack_require__(29);
           var TransformXY = __webpack_require__(333);
           var InputManager = new Class({
-            initialize: function InputManager2(game2, config11) {
+            initialize: function InputManager2(game2, config12) {
               this.game = game2;
               this.scaleManager;
               this.canvas;
-              this.config = config11;
+              this.config = config12;
               this.enabled = true;
               this.events = new EventEmitter();
               this.isOver = true;
               this.defaultCursor = "";
-              this.keyboard = config11.inputKeyboard ? new Keyboard(this) : null;
-              this.mouse = config11.inputMouse ? new Mouse(this) : null;
-              this.touch = config11.inputTouch ? new Touch(this) : null;
+              this.keyboard = config12.inputKeyboard ? new Keyboard(this) : null;
+              this.mouse = config12.inputMouse ? new Mouse(this) : null;
+              this.touch = config12.inputTouch ? new Touch(this) : null;
               this.pointers = [];
-              this.pointersTotal = config11.inputActivePointers;
-              if (config11.inputTouch && this.pointersTotal === 1) {
+              this.pointersTotal = config12.inputActivePointers;
+              if (config12.inputTouch && this.pointersTotal === 1) {
                 this.pointersTotal = 2;
               }
               for (var i = 0; i <= this.pointersTotal; i++) {
                 var pointer = new Pointer(this, i);
-                pointer.smoothFactor = config11.inputSmoothFactor;
+                pointer.smoothFactor = config12.inputSmoothFactor;
                 this.pointers.push(pointer);
               }
-              this.mousePointer = config11.inputMouse ? this.pointers[0] : null;
+              this.mousePointer = config12.inputMouse ? this.pointers[0] : null;
               this.activePointer = this.pointers[0];
               this.globalTopOnly = true;
               this.time = 0;
@@ -26784,10 +26784,10 @@
               inputManager.events.once(InputEvents.MANAGER_BOOT, this.boot, this);
             },
             boot: function() {
-              var config11 = this.manager.config;
-              this.enabled = config11.inputKeyboard;
-              this.target = config11.inputKeyboardEventTarget;
-              this.addCapture(config11.inputKeyboardCapture);
+              var config12 = this.manager.config;
+              this.enabled = config12.inputKeyboard;
+              this.target = config12.inputKeyboardEventTarget;
+              this.addCapture(config12.inputKeyboardCapture);
               if (!this.target && window) {
                 this.target = window;
               }
@@ -26921,16 +26921,16 @@
               inputManager.events.once(InputEvents.MANAGER_BOOT, this.boot, this);
             },
             boot: function() {
-              var config11 = this.manager.config;
-              this.enabled = config11.inputMouse;
-              this.target = config11.inputMouseEventTarget;
-              this.capture = config11.inputMouseCapture;
+              var config12 = this.manager.config;
+              this.enabled = config12.inputMouse;
+              this.target = config12.inputMouseEventTarget;
+              this.capture = config12.inputMouseCapture;
               if (!this.target) {
                 this.target = this.manager.game.canvas;
               } else if (typeof this.target === "string") {
                 this.target = document.getElementById(this.target);
               }
-              if (config11.disableContextMenu) {
+              if (config12.disableContextMenu) {
                 this.disableContextMenu();
               }
               if (this.enabled && this.target) {
@@ -27413,14 +27413,14 @@
               inputManager.events.once(InputEvents.MANAGER_BOOT, this.boot, this);
             },
             boot: function() {
-              var config11 = this.manager.config;
-              this.enabled = config11.inputTouch;
-              this.target = config11.inputTouchEventTarget;
-              this.capture = config11.inputTouchCapture;
+              var config12 = this.manager.config;
+              this.enabled = config12.inputTouch;
+              this.target = config12.inputTouchEventTarget;
+              this.capture = config12.inputTouchCapture;
               if (!this.target) {
                 this.target = this.manager.game.canvas;
               }
-              if (config11.disableContextMenu) {
+              if (config12.disableContextMenu) {
                 this.disableContextMenu();
               }
               if (this.enabled && this.target) {
@@ -27577,8 +27577,8 @@
               var start;
               var mapping;
               var data;
-              var config11 = this.game.config;
-              var list = config11.installGlobalPlugins;
+              var config12 = this.game.config;
+              var list = config12.installGlobalPlugins;
               list = list.concat(this._pendingGlobal);
               for (i = 0; i < list.length; i++) {
                 entry = list[i];
@@ -27595,7 +27595,7 @@
                   }
                 }
               }
-              list = config11.installScenePlugins;
+              list = config12.installScenePlugins;
               list = list.concat(this._pendingScene);
               for (i = 0; i < list.length; i++) {
                 entry = list[i];
@@ -27934,15 +27934,15 @@
               game2.events.once(GameEvents.DESTROY, this.destroy, this);
               this.startListeners();
             },
-            parseConfig: function(config11) {
-              this.getParent(config11);
+            parseConfig: function(config12) {
+              this.getParent(config12);
               this.getParentBounds();
-              var width = config11.width;
-              var height = config11.height;
-              var scaleMode = config11.scaleMode;
-              var resolution = config11.resolution;
-              var zoom = config11.zoom;
-              var autoRound = config11.autoRound;
+              var width = config12.width;
+              var height = config12.height;
+              var scaleMode = config12.scaleMode;
+              var resolution = config12.resolution;
+              var zoom = config12.zoom;
+              var autoRound = config12.autoRound;
               if (typeof width === "string") {
                 var parentWidth = this.parentSize.width;
                 if (parentWidth === 0) {
@@ -27962,8 +27962,8 @@
               this.resolution = 1;
               this.scaleMode = scaleMode;
               this.autoRound = autoRound;
-              this.autoCenter = config11.autoCenter;
-              this.resizeInterval = config11.resizeInterval;
+              this.autoCenter = config12.autoCenter;
+              this.resizeInterval = config12.resizeInterval;
               if (autoRound) {
                 width = Math.floor(width);
                 height = Math.floor(height);
@@ -27981,23 +27981,23 @@
                 this.baseSize.width = Math.floor(this.baseSize.width);
                 this.baseSize.height = Math.floor(this.baseSize.height);
               }
-              if (config11.minWidth > 0) {
-                this.displaySize.setMin(config11.minWidth * zoom, config11.minHeight * zoom);
+              if (config12.minWidth > 0) {
+                this.displaySize.setMin(config12.minWidth * zoom, config12.minHeight * zoom);
               }
-              if (config11.maxWidth > 0) {
-                this.displaySize.setMax(config11.maxWidth * zoom, config11.maxHeight * zoom);
+              if (config12.maxWidth > 0) {
+                this.displaySize.setMax(config12.maxWidth * zoom, config12.maxHeight * zoom);
               }
               this.displaySize.setSize(width, height);
               this.orientation = GetScreenOrientation(width, height);
             },
-            getParent: function(config11) {
-              var parent = config11.parent;
+            getParent: function(config12) {
+              var parent = config12.parent;
               if (parent === null) {
                 return;
               }
               this.parent = GetTarget(parent);
               this.parentIsWindow = this.parent === document.body;
-              if (config11.expandParent && config11.scaleMode !== CONST.SCALE_MODE.NONE) {
+              if (config12.expandParent && config12.scaleMode !== CONST.SCALE_MODE.NONE) {
                 var DOMRect = this.parent.getBoundingClientRect();
                 if (this.parentIsWindow || DOMRect.height === 0) {
                   document.documentElement.style.height = "100%";
@@ -28010,8 +28010,8 @@
                   }
                 }
               }
-              if (config11.fullscreenTarget && !this.fullscreenTarget) {
-                this.fullscreenTarget = GetTarget(config11.fullscreenTarget);
+              if (config12.fullscreenTarget && !this.fullscreenTarget) {
+                this.fullscreenTarget = GetTarget(config12.fullscreenTarget);
               }
             },
             getParentBounds: function() {
@@ -29282,8 +29282,8 @@
           var Class = __webpack_require__(0);
           var Systems = __webpack_require__(180);
           var Scene = new Class({
-            initialize: function Scene2(config11) {
-              this.sys = new Systems(this, config11);
+            initialize: function Scene2(config12) {
+              this.sys = new Systems(this, config12);
               this.game;
               this.anims;
               this.cache;
@@ -29325,30 +29325,30 @@
           var Merge = __webpack_require__(126);
           var InjectionMap = __webpack_require__(882);
           var Settings = {
-            create: function(config11) {
-              if (typeof config11 === "string") {
-                config11 = {key: config11};
-              } else if (config11 === void 0) {
-                config11 = {};
+            create: function(config12) {
+              if (typeof config12 === "string") {
+                config12 = {key: config12};
+              } else if (config12 === void 0) {
+                config12 = {};
               }
               return {
                 status: CONST.PENDING,
-                key: GetValue(config11, "key", ""),
-                active: GetValue(config11, "active", false),
-                visible: GetValue(config11, "visible", true),
+                key: GetValue(config12, "key", ""),
+                active: GetValue(config12, "active", false),
+                visible: GetValue(config12, "visible", true),
                 isBooted: false,
                 isTransition: false,
                 transitionFrom: null,
                 transitionDuration: 0,
                 transitionAllowInput: true,
                 data: {},
-                pack: GetValue(config11, "pack", false),
-                cameras: GetValue(config11, "cameras", null),
-                map: GetValue(config11, "map", Merge(InjectionMap, GetValue(config11, "mapAdd", {}))),
-                physics: GetValue(config11, "physics", {}),
-                loader: GetValue(config11, "loader", {}),
-                plugins: GetValue(config11, "plugins", false),
-                input: GetValue(config11, "input", {})
+                pack: GetValue(config12, "pack", false),
+                cameras: GetValue(config12, "cameras", null),
+                map: GetValue(config12, "map", Merge(InjectionMap, GetValue(config12, "mapAdd", {}))),
+                physics: GetValue(config12, "physics", {}),
+                loader: GetValue(config12, "loader", {}),
+                plugins: GetValue(config12, "plugins", false),
+                input: GetValue(config12, "input", {})
               };
             }
           };
@@ -29496,11 +29496,11 @@
               }
               return texture;
             },
-            generate: function(key, config11) {
+            generate: function(key, config12) {
               if (this.checkKey(key)) {
                 var canvas = CanvasPool.create(this, 1, 1);
-                config11.canvas = canvas;
-                GenerateTexture(config11);
+                config12.canvas = canvas;
+                GenerateTexture(config12);
                 return this.addCanvas(key, canvas);
               } else {
                 return null;
@@ -29602,23 +29602,23 @@
               }
               return texture;
             },
-            addSpriteSheet: function(key, source, config11) {
+            addSpriteSheet: function(key, source, config12) {
               var texture = null;
               if (this.checkKey(key)) {
                 texture = this.create(key, source);
                 var width = texture.source[0].width;
                 var height = texture.source[0].height;
-                Parser.SpriteSheet(texture, 0, 0, 0, width, height, config11);
+                Parser.SpriteSheet(texture, 0, 0, 0, width, height, config12);
                 this.emit(Events.ADD, key, texture);
               }
               return texture;
             },
-            addSpriteSheetFromAtlas: function(key, config11) {
+            addSpriteSheetFromAtlas: function(key, config12) {
               if (!this.checkKey(key)) {
                 return null;
               }
-              var atlasKey = GetValue(config11, "atlas", null);
-              var atlasFrame = GetValue(config11, "frame", null);
+              var atlasKey = GetValue(config12, "atlas", null);
+              var atlasFrame = GetValue(config12, "frame", null);
               if (!atlasKey || !atlasFrame) {
                 return;
               }
@@ -29627,9 +29627,9 @@
               if (sheet) {
                 var texture = this.create(key, sheet.source.image);
                 if (sheet.trimmed) {
-                  Parser.SpriteSheetFromAtlas(texture, sheet, config11);
+                  Parser.SpriteSheetFromAtlas(texture, sheet, config12);
                 } else {
-                  Parser.SpriteSheet(texture, 0, sheet.cutX, sheet.cutY, sheet.cutWidth, sheet.cutHeight, config11);
+                  Parser.SpriteSheet(texture, 0, sheet.cutX, sheet.cutY, sheet.cutWidth, sheet.cutHeight, config12);
                 }
                 this.emit(Events.ADD, key, texture);
                 return texture;
@@ -30144,8 +30144,8 @@
               this._volume = 1;
               BaseSoundManager.call(this, game2);
             },
-            add: function(key, config11) {
-              var sound = new HTML5AudioSound(this, key, config11);
+            add: function(key, config12) {
+              var sound = new HTML5AudioSound(this, key, config12);
               this.sounds.push(sound);
               return sound;
             },
@@ -30350,9 +30350,9 @@
           var Clamp = __webpack_require__(19);
           var HTML5AudioSound = new Class({
             Extends: BaseSound,
-            initialize: function HTML5AudioSound2(manager, key, config11) {
-              if (config11 === void 0) {
-                config11 = {};
+            initialize: function HTML5AudioSound2(manager, key, config12) {
+              if (config12 === void 0) {
+                config12 = {};
               }
               this.tags = manager.game.cache.audio.get(key);
               if (!this.tags) {
@@ -30363,13 +30363,13 @@
               this.previousTime = 0;
               this.duration = this.tags[0].duration;
               this.totalDuration = this.tags[0].duration;
-              BaseSound.call(this, manager, key, config11);
+              BaseSound.call(this, manager, key, config12);
             },
-            play: function(markerName, config11) {
-              if (this.manager.isLocked(this, "play", [markerName, config11])) {
+            play: function(markerName, config12) {
+              if (this.manager.isLocked(this, "play", [markerName, config12])) {
                 return false;
               }
-              if (!BaseSound.prototype.play.call(this, markerName, config11)) {
+              if (!BaseSound.prototype.play.call(this, markerName, config12)) {
                 return false;
               }
               if (!this.pickAndPlayAudioTag()) {
@@ -30720,20 +30720,20 @@
               this.pauseOnBlur = true;
               this.locked = false;
             },
-            add: function(key, config11) {
-              var sound = new NoAudioSound(this, key, config11);
+            add: function(key, config12) {
+              var sound = new NoAudioSound(this, key, config12);
               this.sounds.push(sound);
               return sound;
             },
-            addAudioSprite: function(key, config11) {
-              var sound = this.add(key, config11);
+            addAudioSprite: function(key, config12) {
+              var sound = this.add(key, config12);
               sound.spritemap = {};
               return sound;
             },
             play: function(key, extra) {
               return false;
             },
-            playAudioSprite: function(key, spriteName, config11) {
+            playAudioSprite: function(key, spriteName, config12) {
               return false;
             },
             remove: function(sound) {
@@ -30781,9 +30781,9 @@
           };
           var NoAudioSound = new Class({
             Extends: EventEmitter,
-            initialize: function NoAudioSound2(manager, key, config11) {
-              if (config11 === void 0) {
-                config11 = {};
+            initialize: function NoAudioSound2(manager, key, config12) {
+              if (config12 === void 0) {
+                config12 = {};
               }
               EventEmitter.call(this);
               this.manager = manager;
@@ -30801,7 +30801,7 @@
                 seek: 0,
                 loop: false,
                 delay: 0
-              }, config11);
+              }, config12);
               this.currentConfig = this.config;
               this.mute = false;
               this.volume = 1;
@@ -30885,8 +30885,8 @@
               this.destination = this.masterMuteNode;
               return this;
             },
-            add: function(key, config11) {
-              var sound = new WebAudioSound(this, key, config11);
+            add: function(key, config12) {
+              var sound = new WebAudioSound(this, key, config12);
               this.sounds.push(sound);
               return sound;
             },
@@ -31059,9 +31059,9 @@
           var Events = __webpack_require__(59);
           var WebAudioSound = new Class({
             Extends: BaseSound,
-            initialize: function WebAudioSound2(manager, key, config11) {
-              if (config11 === void 0) {
-                config11 = {};
+            initialize: function WebAudioSound2(manager, key, config12) {
+              if (config12 === void 0) {
+                config12 = {};
               }
               this.audioBuffer = manager.game.cache.audio.get(key);
               if (!this.audioBuffer) {
@@ -31081,10 +31081,10 @@
               this.volumeNode.connect(manager.destination);
               this.duration = this.audioBuffer.duration;
               this.totalDuration = this.audioBuffer.duration;
-              BaseSound.call(this, manager, key, config11);
+              BaseSound.call(this, manager, key, config12);
             },
-            play: function(markerName, config11) {
-              if (!BaseSound.prototype.play.call(this, markerName, config11)) {
+            play: function(markerName, config12) {
+              if (!BaseSound.prototype.play.call(this, markerName, config12)) {
                 return false;
               }
               this.stopAndRemoveBufferSource();
@@ -31521,8 +31521,8 @@
            * @license      {@link https://opensource.org/licenses/MIT|MIT License}
            */
           var GetAdvancedValue = __webpack_require__(15);
-          var BuildGameObjectAnimation = function(sprite, config11) {
-            var animConfig = GetAdvancedValue(config11, "anims", null);
+          var BuildGameObjectAnimation = function(sprite, config12) {
+            var animConfig = GetAdvancedValue(config12, "anims", null);
             if (animConfig === null) {
               return sprite;
             }
@@ -32124,12 +32124,12 @@
           var GravityWell = new Class({
             initialize: function GravityWell2(x, y, power, epsilon, gravity) {
               if (typeof x === "object") {
-                var config11 = x;
-                x = GetFastValue(config11, "x", 0);
-                y = GetFastValue(config11, "y", 0);
-                power = GetFastValue(config11, "power", 0);
-                epsilon = GetFastValue(config11, "epsilon", 100);
-                gravity = GetFastValue(config11, "gravity", 50);
+                var config12 = x;
+                x = GetFastValue(config12, "x", 0);
+                y = GetFastValue(config12, "y", 0);
+                power = GetFastValue(config12, "power", 0);
+                epsilon = GetFastValue(config12, "epsilon", 100);
+                gravity = GetFastValue(config12, "gravity", 50);
               } else {
                 if (x === void 0) {
                   x = 0;
@@ -32416,7 +32416,7 @@
               Components.ScrollFactor,
               Components.Visible
             ],
-            initialize: function ParticleEmitter2(manager, config11) {
+            initialize: function ParticleEmitter2(manager, config12) {
               this.manager = manager;
               this.texture = manager.texture;
               this.frames = [manager.defaultFrame];
@@ -32470,36 +32470,36 @@
               ];
               this.name = "";
               this.particleClass = Particle;
-              this.x = new EmitterOp(config11, "x", 0, true);
-              this.y = new EmitterOp(config11, "y", 0, true);
+              this.x = new EmitterOp(config12, "x", 0, true);
+              this.y = new EmitterOp(config12, "y", 0, true);
               this.radial = true;
               this.gravityX = 0;
               this.gravityY = 0;
               this.acceleration = false;
-              this.accelerationX = new EmitterOp(config11, "accelerationX", 0, true);
-              this.accelerationY = new EmitterOp(config11, "accelerationY", 0, true);
-              this.maxVelocityX = new EmitterOp(config11, "maxVelocityX", 1e4, true);
-              this.maxVelocityY = new EmitterOp(config11, "maxVelocityY", 1e4, true);
-              this.speedX = new EmitterOp(config11, "speedX", 0, true);
-              this.speedY = new EmitterOp(config11, "speedY", 0, true);
+              this.accelerationX = new EmitterOp(config12, "accelerationX", 0, true);
+              this.accelerationY = new EmitterOp(config12, "accelerationY", 0, true);
+              this.maxVelocityX = new EmitterOp(config12, "maxVelocityX", 1e4, true);
+              this.maxVelocityY = new EmitterOp(config12, "maxVelocityY", 1e4, true);
+              this.speedX = new EmitterOp(config12, "speedX", 0, true);
+              this.speedY = new EmitterOp(config12, "speedY", 0, true);
               this.moveTo = false;
-              this.moveToX = new EmitterOp(config11, "moveToX", 0, true);
-              this.moveToY = new EmitterOp(config11, "moveToY", 0, true);
-              this.bounce = new EmitterOp(config11, "bounce", 0, true);
-              this.scaleX = new EmitterOp(config11, "scaleX", 1);
-              this.scaleY = new EmitterOp(config11, "scaleY", 1);
-              this.tint = new EmitterOp(config11, "tint", 4294967295);
-              this.alpha = new EmitterOp(config11, "alpha", 1);
-              this.lifespan = new EmitterOp(config11, "lifespan", 1e3, true);
-              this.angle = new EmitterOp(config11, "angle", {min: 0, max: 360}, true);
-              this.rotate = new EmitterOp(config11, "rotate", 0);
+              this.moveToX = new EmitterOp(config12, "moveToX", 0, true);
+              this.moveToY = new EmitterOp(config12, "moveToY", 0, true);
+              this.bounce = new EmitterOp(config12, "bounce", 0, true);
+              this.scaleX = new EmitterOp(config12, "scaleX", 1);
+              this.scaleY = new EmitterOp(config12, "scaleY", 1);
+              this.tint = new EmitterOp(config12, "tint", 4294967295);
+              this.alpha = new EmitterOp(config12, "alpha", 1);
+              this.lifespan = new EmitterOp(config12, "lifespan", 1e3, true);
+              this.angle = new EmitterOp(config12, "angle", {min: 0, max: 360}, true);
+              this.rotate = new EmitterOp(config12, "rotate", 0);
               this.emitCallback = null;
               this.emitCallbackScope = null;
               this.deathCallback = null;
               this.deathCallbackScope = null;
               this.maxParticles = 0;
-              this.quantity = new EmitterOp(config11, "quantity", 1, true);
-              this.delay = new EmitterOp(config11, "delay", 0, true);
+              this.quantity = new EmitterOp(config12, "quantity", 1, true);
+              this.delay = new EmitterOp(config12, "delay", 0, true);
               this.frequency = 0;
               this.on = true;
               this.particleBringToTop = true;
@@ -32524,60 +32524,60 @@
               this.alive = [];
               this._counter = 0;
               this._frameCounter = 0;
-              if (config11) {
-                this.fromJSON(config11);
+              if (config12) {
+                this.fromJSON(config12);
               }
             },
-            fromJSON: function(config11) {
-              if (!config11) {
+            fromJSON: function(config12) {
+              if (!config12) {
                 return this;
               }
               var i = 0;
               var key = "";
               for (i = 0; i < this.configFastMap.length; i++) {
                 key = this.configFastMap[i];
-                if (HasValue(config11, key)) {
-                  this[key] = GetFastValue(config11, key);
+                if (HasValue(config12, key)) {
+                  this[key] = GetFastValue(config12, key);
                 }
               }
               for (i = 0; i < this.configOpMap.length; i++) {
                 key = this.configOpMap[i];
-                if (HasValue(config11, key)) {
-                  this[key].loadConfig(config11);
+                if (HasValue(config12, key)) {
+                  this[key].loadConfig(config12);
                 }
               }
               this.acceleration = this.accelerationX.propertyValue !== 0 || this.accelerationY.propertyValue !== 0;
               this.moveTo = this.moveToX.propertyValue !== 0 || this.moveToY.propertyValue !== 0;
-              if (HasValue(config11, "speed")) {
-                this.speedX.loadConfig(config11, "speed");
+              if (HasValue(config12, "speed")) {
+                this.speedX.loadConfig(config12, "speed");
                 this.speedY = null;
               }
-              if (HasAny(config11, ["speedX", "speedY"]) || this.moveTo) {
+              if (HasAny(config12, ["speedX", "speedY"]) || this.moveTo) {
                 this.radial = false;
               }
-              if (HasValue(config11, "scale")) {
-                this.scaleX.loadConfig(config11, "scale");
+              if (HasValue(config12, "scale")) {
+                this.scaleX.loadConfig(config12, "scale");
                 this.scaleY = null;
               }
-              if (HasValue(config11, "callbackScope")) {
-                var callbackScope = GetFastValue(config11, "callbackScope", null);
+              if (HasValue(config12, "callbackScope")) {
+                var callbackScope = GetFastValue(config12, "callbackScope", null);
                 this.emitCallbackScope = callbackScope;
                 this.deathCallbackScope = callbackScope;
               }
-              if (HasValue(config11, "emitZone")) {
-                this.setEmitZone(config11.emitZone);
+              if (HasValue(config12, "emitZone")) {
+                this.setEmitZone(config12.emitZone);
               }
-              if (HasValue(config11, "deathZone")) {
-                this.setDeathZone(config11.deathZone);
+              if (HasValue(config12, "deathZone")) {
+                this.setDeathZone(config12.deathZone);
               }
-              if (HasValue(config11, "bounds")) {
-                this.setBounds(config11.bounds);
+              if (HasValue(config12, "bounds")) {
+                this.setBounds(config12.bounds);
               }
-              if (HasValue(config11, "followOffset")) {
-                this.followOffset.setFromObject(GetFastValue(config11, "followOffset", 0));
+              if (HasValue(config12, "followOffset")) {
+                this.followOffset.setFromObject(GetFastValue(config12, "followOffset", 0));
               }
-              if (HasValue(config11, "frame")) {
-                this.setFrame(config11.frame);
+              if (HasValue(config12, "frame")) {
+                this.setFrame(config12.frame);
               }
               return this;
             },
@@ -35408,9 +35408,9 @@
           var ProcessKeyCombo = __webpack_require__(1225);
           var ResetKeyCombo = __webpack_require__(1227);
           var KeyCombo = new Class({
-            initialize: function KeyCombo2(keyboardPlugin, keys, config11) {
-              if (config11 === void 0) {
-                config11 = {};
+            initialize: function KeyCombo2(keyboardPlugin, keys, config12) {
+              if (config12 === void 0) {
+                config12 = {};
               }
               if (keys.length < 2) {
                 return false;
@@ -35434,10 +35434,10 @@
               this.timeLastMatched = 0;
               this.matched = false;
               this.timeMatched = 0;
-              this.resetOnWrongKey = GetFastValue(config11, "resetOnWrongKey", true);
-              this.maxKeyDelay = GetFastValue(config11, "maxKeyDelay", 0);
-              this.resetOnMatch = GetFastValue(config11, "resetOnMatch", false);
-              this.deleteOnMatch = GetFastValue(config11, "deleteOnMatch", false);
+              this.resetOnWrongKey = GetFastValue(config12, "resetOnWrongKey", true);
+              this.maxKeyDelay = GetFastValue(config12, "maxKeyDelay", 0);
+              this.resetOnMatch = GetFastValue(config12, "resetOnMatch", false);
+              this.deleteOnMatch = GetFastValue(config12, "deleteOnMatch", false);
               var _this = this;
               var onKeyDownHandler = function(event) {
                 if (_this.matched || !_this.enabled) {
@@ -35478,26 +35478,26 @@
            */
           var MergeXHRSettings = __webpack_require__(215);
           var XHRLoader = function(file, globalXHRSettings) {
-            var config11 = MergeXHRSettings(globalXHRSettings, file.xhrSettings);
+            var config12 = MergeXHRSettings(globalXHRSettings, file.xhrSettings);
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", file.src, config11.async, config11.user, config11.password);
+            xhr.open("GET", file.src, config12.async, config12.user, config12.password);
             xhr.responseType = file.xhrSettings.responseType;
-            xhr.timeout = config11.timeout;
-            if (config11.headers) {
-              for (var key in config11.headers) {
-                xhr.setRequestHeader(key, config11.headers[key]);
+            xhr.timeout = config12.timeout;
+            if (config12.headers) {
+              for (var key in config12.headers) {
+                xhr.setRequestHeader(key, config12.headers[key]);
               }
             }
-            if (config11.header && config11.headerValue) {
-              xhr.setRequestHeader(config11.header, config11.headerValue);
+            if (config12.header && config12.headerValue) {
+              xhr.setRequestHeader(config12.header, config12.headerValue);
             }
-            if (config11.requestedWith) {
-              xhr.setRequestHeader("X-Requested-With", config11.requestedWith);
+            if (config12.requestedWith) {
+              xhr.setRequestHeader("X-Requested-With", config12.requestedWith);
             }
-            if (config11.overrideMimeType) {
-              xhr.overrideMimeType(config11.overrideMimeType);
+            if (config12.overrideMimeType) {
+              xhr.overrideMimeType(config12.overrideMimeType);
             }
-            if (config11.withCredentials) {
+            if (config12.withCredentials) {
               xhr.withCredentials = true;
             }
             xhr.onload = file.onLoad.bind(file, xhr);
@@ -35525,10 +35525,10 @@
             Extends: File,
             initialize: function AudioFile2(loader, key, urlConfig, xhrSettings, audioContext) {
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                xhrSettings = GetFastValue(config11, "xhrSettings");
-                audioContext = GetFastValue(config11, "context", audioContext);
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                xhrSettings = GetFastValue(config12, "xhrSettings");
+                audioContext = GetFastValue(config12, "context", audioContext);
               }
               var fileConfig = {
                 type: "audio",
@@ -35555,13 +35555,13 @@
               this.config.context = null;
             }
           });
-          AudioFile.create = function(loader, key, urls, config11, xhrSettings) {
+          AudioFile.create = function(loader, key, urls, config12, xhrSettings) {
             var game2 = loader.systems.game;
             var audioConfig = game2.config.audio;
             var deviceAudio = game2.device.audio;
             if (IsPlainObject(key)) {
               urls = GetFastValue(key, "url", []);
-              config11 = GetFastValue(key, "config", {});
+              config12 = GetFastValue(key, "config", {});
             }
             var urlConfig = AudioFile.getAudioURL(game2, urls);
             if (!urlConfig) {
@@ -35570,7 +35570,7 @@
             if (deviceAudio.webAudio && !(audioConfig && audioConfig.disableWebAudio)) {
               return new AudioFile(loader, key, urlConfig, xhrSettings, game2.sound.context);
             } else {
-              return new HTML5AudioFile(loader, key, urlConfig, config11);
+              return new HTML5AudioFile(loader, key, urlConfig, config12);
             }
           };
           AudioFile.getAudioURL = function(game2, urls) {
@@ -35596,7 +35596,7 @@
             }
             return null;
           };
-          FileTypesManager.register("audio", function(key, urls, config11, xhrSettings) {
+          FileTypesManager.register("audio", function(key, urls, config12, xhrSettings) {
             var game2 = this.systems.game;
             var audioConfig = game2.config.audio;
             var deviceAudio = game2.device.audio;
@@ -35612,7 +35612,7 @@
                 }
               }
             } else {
-              audioFile = AudioFile.create(this, key, urls, config11, xhrSettings);
+              audioFile = AudioFile.create(this, key, urls, config12, xhrSettings);
               if (audioFile) {
                 this.addFile(audioFile);
               }
@@ -35637,9 +35637,9 @@
             Extends: File,
             initialize: function HTML5AudioFile2(loader, key, urlConfig, audioConfig) {
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                audioConfig = GetFastValue(config11, "config", audioConfig);
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                audioConfig = GetFastValue(config12, "config", audioConfig);
               }
               var fileConfig = {
                 type: "audio",
@@ -35735,11 +35735,11 @@
             initialize: function ScriptFile2(loader, key, url, xhrSettings) {
               var extension = "js";
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                url = GetFastValue(config11, "url");
-                xhrSettings = GetFastValue(config11, "xhrSettings");
-                extension = GetFastValue(config11, "extension", extension);
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                url = GetFastValue(config12, "url");
+                xhrSettings = GetFastValue(config12, "xhrSettings");
+                extension = GetFastValue(config12, "extension", extension);
               }
               var fileConfig = {
                 type: "script",
@@ -35792,11 +35792,11 @@
             initialize: function TextFile2(loader, key, url, xhrSettings) {
               var extension = "txt";
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                url = GetFastValue(config11, "url");
-                xhrSettings = GetFastValue(config11, "xhrSettings");
-                extension = GetFastValue(config11, "extension", extension);
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                url = GetFastValue(config12, "url");
+                xhrSettings = GetFastValue(config12, "xhrSettings");
+                extension = GetFastValue(config12, "extension", extension);
               }
               var fileConfig = {
                 type: "text",
@@ -35882,11 +35882,11 @@
               this.world.enableBody(sprite, CONST.DYNAMIC_BODY);
               return sprite;
             },
-            staticGroup: function(children, config11) {
-              return this.sys.updateList.add(new StaticPhysicsGroup(this.world, this.world.scene, children, config11));
+            staticGroup: function(children, config12) {
+              return this.sys.updateList.add(new StaticPhysicsGroup(this.world, this.world.scene, children, config12));
             },
-            group: function(children, config11) {
-              return this.sys.updateList.add(new PhysicsGroup(this.world, this.world.scene, children, config11));
+            group: function(children, config12) {
+              return this.sys.updateList.add(new PhysicsGroup(this.world, this.world.scene, children, config12));
             },
             destroy: function() {
               this.world = null;
@@ -35942,19 +35942,19 @@
           var IsPlainObject = __webpack_require__(7);
           var PhysicsGroup = new Class({
             Extends: Group,
-            initialize: function PhysicsGroup2(world, scene, children, config11) {
-              if (!children && !config11) {
-                config11 = {
+            initialize: function PhysicsGroup2(world, scene, children, config12) {
+              if (!children && !config12) {
+                config12 = {
                   internalCreateCallback: this.createCallbackHandler,
                   internalRemoveCallback: this.removeCallbackHandler
                 };
               } else if (IsPlainObject(children)) {
-                config11 = children;
+                config12 = children;
                 children = null;
-                config11.internalCreateCallback = this.createCallbackHandler;
-                config11.internalRemoveCallback = this.removeCallbackHandler;
+                config12.internalCreateCallback = this.createCallbackHandler;
+                config12.internalRemoveCallback = this.removeCallbackHandler;
               } else if (Array.isArray(children) && IsPlainObject(children[0])) {
-                config11 = children[0];
+                config12 = children[0];
                 var _this = this;
                 children.forEach(function(singleConfig) {
                   singleConfig.internalCreateCallback = _this.createCallbackHandler;
@@ -35962,40 +35962,40 @@
                 });
                 children = null;
               } else {
-                config11 = {
+                config12 = {
                   internalCreateCallback: this.createCallbackHandler,
                   internalRemoveCallback: this.removeCallbackHandler
                 };
               }
               this.world = world;
-              config11.classType = GetFastValue(config11, "classType", ArcadeSprite);
+              config12.classType = GetFastValue(config12, "classType", ArcadeSprite);
               this.physicsType = CONST.DYNAMIC_BODY;
               this.defaults = {
-                setCollideWorldBounds: GetFastValue(config11, "collideWorldBounds", false),
-                setBoundsRectangle: GetFastValue(config11, "customBoundsRectangle", null),
-                setAccelerationX: GetFastValue(config11, "accelerationX", 0),
-                setAccelerationY: GetFastValue(config11, "accelerationY", 0),
-                setAllowDrag: GetFastValue(config11, "allowDrag", true),
-                setAllowGravity: GetFastValue(config11, "allowGravity", true),
-                setAllowRotation: GetFastValue(config11, "allowRotation", true),
-                setBounceX: GetFastValue(config11, "bounceX", 0),
-                setBounceY: GetFastValue(config11, "bounceY", 0),
-                setDragX: GetFastValue(config11, "dragX", 0),
-                setDragY: GetFastValue(config11, "dragY", 0),
-                setEnable: GetFastValue(config11, "enable", true),
-                setGravityX: GetFastValue(config11, "gravityX", 0),
-                setGravityY: GetFastValue(config11, "gravityY", 0),
-                setFrictionX: GetFastValue(config11, "frictionX", 0),
-                setFrictionY: GetFastValue(config11, "frictionY", 0),
-                setVelocityX: GetFastValue(config11, "velocityX", 0),
-                setVelocityY: GetFastValue(config11, "velocityY", 0),
-                setAngularVelocity: GetFastValue(config11, "angularVelocity", 0),
-                setAngularAcceleration: GetFastValue(config11, "angularAcceleration", 0),
-                setAngularDrag: GetFastValue(config11, "angularDrag", 0),
-                setMass: GetFastValue(config11, "mass", 1),
-                setImmovable: GetFastValue(config11, "immovable", false)
+                setCollideWorldBounds: GetFastValue(config12, "collideWorldBounds", false),
+                setBoundsRectangle: GetFastValue(config12, "customBoundsRectangle", null),
+                setAccelerationX: GetFastValue(config12, "accelerationX", 0),
+                setAccelerationY: GetFastValue(config12, "accelerationY", 0),
+                setAllowDrag: GetFastValue(config12, "allowDrag", true),
+                setAllowGravity: GetFastValue(config12, "allowGravity", true),
+                setAllowRotation: GetFastValue(config12, "allowRotation", true),
+                setBounceX: GetFastValue(config12, "bounceX", 0),
+                setBounceY: GetFastValue(config12, "bounceY", 0),
+                setDragX: GetFastValue(config12, "dragX", 0),
+                setDragY: GetFastValue(config12, "dragY", 0),
+                setEnable: GetFastValue(config12, "enable", true),
+                setGravityX: GetFastValue(config12, "gravityX", 0),
+                setGravityY: GetFastValue(config12, "gravityY", 0),
+                setFrictionX: GetFastValue(config12, "frictionX", 0),
+                setFrictionY: GetFastValue(config12, "frictionY", 0),
+                setVelocityX: GetFastValue(config12, "velocityX", 0),
+                setVelocityY: GetFastValue(config12, "velocityY", 0),
+                setAngularVelocity: GetFastValue(config12, "angularVelocity", 0),
+                setAngularAcceleration: GetFastValue(config12, "angularAcceleration", 0),
+                setAngularDrag: GetFastValue(config12, "angularDrag", 0),
+                setMass: GetFastValue(config12, "mass", 1),
+                setImmovable: GetFastValue(config12, "immovable", false)
               };
-              Group.call(this, scene, children, config11);
+              Group.call(this, scene, children, config12);
               this.type = "PhysicsGroup";
             },
             createCallbackHandler: function(child) {
@@ -36059,39 +36059,39 @@
           var IsPlainObject = __webpack_require__(7);
           var StaticPhysicsGroup = new Class({
             Extends: Group,
-            initialize: function StaticPhysicsGroup2(world, scene, children, config11) {
-              if (!children && !config11) {
-                config11 = {
+            initialize: function StaticPhysicsGroup2(world, scene, children, config12) {
+              if (!children && !config12) {
+                config12 = {
                   internalCreateCallback: this.createCallbackHandler,
                   internalRemoveCallback: this.removeCallbackHandler,
                   createMultipleCallback: this.createMultipleCallbackHandler,
                   classType: ArcadeSprite
                 };
               } else if (IsPlainObject(children)) {
-                config11 = children;
+                config12 = children;
                 children = null;
-                config11.internalCreateCallback = this.createCallbackHandler;
-                config11.internalRemoveCallback = this.removeCallbackHandler;
-                config11.createMultipleCallback = this.createMultipleCallbackHandler;
-                config11.classType = GetFastValue(config11, "classType", ArcadeSprite);
+                config12.internalCreateCallback = this.createCallbackHandler;
+                config12.internalRemoveCallback = this.removeCallbackHandler;
+                config12.createMultipleCallback = this.createMultipleCallbackHandler;
+                config12.classType = GetFastValue(config12, "classType", ArcadeSprite);
               } else if (Array.isArray(children) && IsPlainObject(children[0])) {
-                config11 = children;
+                config12 = children;
                 children = null;
-                config11.forEach(function(singleConfig) {
+                config12.forEach(function(singleConfig) {
                   singleConfig.internalCreateCallback = this.createCallbackHandler;
                   singleConfig.internalRemoveCallback = this.removeCallbackHandler;
                   singleConfig.createMultipleCallback = this.createMultipleCallbackHandler;
                   singleConfig.classType = GetFastValue(singleConfig, "classType", ArcadeSprite);
                 });
               } else {
-                config11 = {
+                config12 = {
                   internalCreateCallback: this.createCallbackHandler,
                   internalRemoveCallback: this.removeCallbackHandler
                 };
               }
               this.world = world;
               this.physicsType = CONST.STATIC_BODY;
-              Group.call(this, scene, children, config11);
+              Group.call(this, scene, children, config12);
               this.type = "StaticPhysicsGroup";
             },
             createCallbackHandler: function(child) {
@@ -36198,45 +36198,45 @@
           var Wrap = __webpack_require__(58);
           var World = new Class({
             Extends: EventEmitter,
-            initialize: function World2(scene, config11) {
+            initialize: function World2(scene, config12) {
               EventEmitter.call(this);
               this.scene = scene;
               this.bodies = new Set();
               this.staticBodies = new Set();
               this.pendingDestroy = new Set();
               this.colliders = new ProcessQueue();
-              this.gravity = new Vector2(GetValue(config11, "gravity.x", 0), GetValue(config11, "gravity.y", 0));
-              this.bounds = new Rectangle(GetValue(config11, "x", 0), GetValue(config11, "y", 0), GetValue(config11, "width", scene.sys.scale.width), GetValue(config11, "height", scene.sys.scale.height));
+              this.gravity = new Vector2(GetValue(config12, "gravity.x", 0), GetValue(config12, "gravity.y", 0));
+              this.bounds = new Rectangle(GetValue(config12, "x", 0), GetValue(config12, "y", 0), GetValue(config12, "width", scene.sys.scale.width), GetValue(config12, "height", scene.sys.scale.height));
               this.checkCollision = {
-                up: GetValue(config11, "checkCollision.up", true),
-                down: GetValue(config11, "checkCollision.down", true),
-                left: GetValue(config11, "checkCollision.left", true),
-                right: GetValue(config11, "checkCollision.right", true)
+                up: GetValue(config12, "checkCollision.up", true),
+                down: GetValue(config12, "checkCollision.down", true),
+                left: GetValue(config12, "checkCollision.left", true),
+                right: GetValue(config12, "checkCollision.right", true)
               };
-              this.fps = GetValue(config11, "fps", 60);
+              this.fps = GetValue(config12, "fps", 60);
               this.fixedStep = true;
               this._elapsed = 0;
               this._frameTime = 1 / this.fps;
               this._frameTimeMS = 1e3 * this._frameTime;
               this.stepsLastFrame = 0;
-              this.timeScale = GetValue(config11, "timeScale", 1);
-              this.OVERLAP_BIAS = GetValue(config11, "overlapBias", 4);
-              this.TILE_BIAS = GetValue(config11, "tileBias", 16);
-              this.forceX = GetValue(config11, "forceX", false);
-              this.isPaused = GetValue(config11, "isPaused", false);
+              this.timeScale = GetValue(config12, "timeScale", 1);
+              this.OVERLAP_BIAS = GetValue(config12, "overlapBias", 4);
+              this.TILE_BIAS = GetValue(config12, "tileBias", 16);
+              this.forceX = GetValue(config12, "forceX", false);
+              this.isPaused = GetValue(config12, "isPaused", false);
               this._total = 0;
-              this.drawDebug = GetValue(config11, "debug", false);
+              this.drawDebug = GetValue(config12, "debug", false);
               this.debugGraphic;
               this.defaults = {
-                debugShowBody: GetValue(config11, "debugShowBody", true),
-                debugShowStaticBody: GetValue(config11, "debugShowStaticBody", true),
-                debugShowVelocity: GetValue(config11, "debugShowVelocity", true),
-                bodyDebugColor: GetValue(config11, "debugBodyColor", 16711935),
-                staticBodyDebugColor: GetValue(config11, "debugStaticBodyColor", 255),
-                velocityDebugColor: GetValue(config11, "debugVelocityColor", 65280)
+                debugShowBody: GetValue(config12, "debugShowBody", true),
+                debugShowStaticBody: GetValue(config12, "debugShowStaticBody", true),
+                debugShowVelocity: GetValue(config12, "debugShowVelocity", true),
+                bodyDebugColor: GetValue(config12, "debugBodyColor", 16711935),
+                staticBodyDebugColor: GetValue(config12, "debugStaticBodyColor", 255),
+                velocityDebugColor: GetValue(config12, "debugVelocityColor", 65280)
               };
-              this.maxEntries = GetValue(config11, "maxEntries", 16);
-              this.useTree = GetValue(config11, "useTree", true);
+              this.maxEntries = GetValue(config12, "maxEntries", 16);
+              this.useTree = GetValue(config12, "useTree", true);
               this.tree = new RTree(this.maxEntries);
               this.staticTree = new RTree(this.maxEntries);
               this.treeMinMax = {minX: 0, minY: 0, maxX: 0, maxY: 0};
@@ -39225,17 +39225,17 @@
           var Class = __webpack_require__(0);
           var GetFastValue = __webpack_require__(2);
           var ObjectLayer = new Class({
-            initialize: function ObjectLayer2(config11) {
-              if (config11 === void 0) {
-                config11 = {};
+            initialize: function ObjectLayer2(config12) {
+              if (config12 === void 0) {
+                config12 = {};
               }
-              this.name = GetFastValue(config11, "name", "object layer");
-              this.opacity = GetFastValue(config11, "opacity", 1);
-              this.properties = GetFastValue(config11, "properties", {});
-              this.propertyTypes = GetFastValue(config11, "propertytypes", {});
-              this.type = GetFastValue(config11, "type", "objectgroup");
-              this.visible = GetFastValue(config11, "visible", true);
-              this.objects = GetFastValue(config11, "objects", []);
+              this.name = GetFastValue(config12, "name", "object layer");
+              this.opacity = GetFastValue(config12, "opacity", 1);
+              this.properties = GetFastValue(config12, "properties", {});
+              this.propertyTypes = GetFastValue(config12, "propertytypes", {});
+              this.type = GetFastValue(config12, "type", "objectgroup");
+              this.visible = GetFastValue(config12, "visible", true);
+              this.objects = GetFastValue(config12, "objects", []);
             }
           });
           module2.exports = ObjectLayer;
@@ -39646,10 +39646,10 @@
                   found = true;
                 }
                 if (found) {
-                  var config11 = Extend({}, spriteConfig, obj.properties);
-                  config11.x = obj.x;
-                  config11.y = obj.y;
-                  var sprite = scene.make.sprite(config11);
+                  var config12 = Extend({}, spriteConfig, obj.properties);
+                  config12.x = obj.x;
+                  config12.y = obj.y;
+                  var sprite = scene.make.sprite(config12);
                   sprite.name = obj.name;
                   if (obj.width) {
                     sprite.displayWidth = obj.width;
@@ -40971,7 +40971,7 @@
           var Class = __webpack_require__(0);
           var GetFastValue = __webpack_require__(2);
           var TimerEvent = new Class({
-            initialize: function TimerEvent2(config11) {
+            initialize: function TimerEvent2(config12) {
               this.delay = 0;
               this.repeat = 0;
               this.repeatCount = 0;
@@ -40984,18 +40984,18 @@
               this.elapsed = 0;
               this.paused = false;
               this.hasDispatched = false;
-              this.reset(config11);
+              this.reset(config12);
             },
-            reset: function(config11) {
-              this.delay = GetFastValue(config11, "delay", 0);
-              this.repeat = GetFastValue(config11, "repeat", 0);
-              this.loop = GetFastValue(config11, "loop", false);
-              this.callback = GetFastValue(config11, "callback", void 0);
-              this.callbackScope = GetFastValue(config11, "callbackScope", this.callback);
-              this.args = GetFastValue(config11, "args", []);
-              this.timeScale = GetFastValue(config11, "timeScale", 1);
-              this.startAt = GetFastValue(config11, "startAt", 0);
-              this.paused = GetFastValue(config11, "paused", false);
+            reset: function(config12) {
+              this.delay = GetFastValue(config12, "delay", 0);
+              this.repeat = GetFastValue(config12, "repeat", 0);
+              this.loop = GetFastValue(config12, "loop", false);
+              this.callback = GetFastValue(config12, "callback", void 0);
+              this.callbackScope = GetFastValue(config12, "callbackScope", this.callback);
+              this.args = GetFastValue(config12, "args", []);
+              this.timeScale = GetFastValue(config12, "timeScale", 1);
+              this.startAt = GetFastValue(config12, "startAt", 0);
+              this.paused = GetFastValue(config12, "paused", false);
               this.elapsed = this.startAt;
               this.hasDispatched = false;
               this.repeatCount = this.repeat === -1 || this.loop ? 999999999999 : this.repeat;
@@ -41045,19 +41045,19 @@
            * @license      {@link https://opensource.org/licenses/MIT|MIT License}
            */
           var RESERVED = __webpack_require__(1357);
-          var GetProps = function(config11) {
+          var GetProps = function(config12) {
             var key;
             var keys = [];
-            if (config11.hasOwnProperty("props")) {
-              for (key in config11.props) {
+            if (config12.hasOwnProperty("props")) {
+              for (key in config12.props) {
                 if (key.substr(0, 1) !== "_") {
-                  keys.push({key, value: config11.props[key]});
+                  keys.push({key, value: config12.props[key]});
                 }
               }
             } else {
-              for (key in config11) {
+              for (key in config12) {
                 if (RESERVED.indexOf(key) === -1 && key.substr(0, 1) !== "_") {
-                  keys.push({key, value: config11[key]});
+                  keys.push({key, value: config12[key]});
                 }
               }
             }
@@ -41072,8 +41072,8 @@
            * @license      {@link https://opensource.org/licenses/MIT|MIT License}
            */
           var GetValue = __webpack_require__(6);
-          var GetTweens = function(config11) {
-            var tweens = GetValue(config11, "tweens", null);
+          var GetTweens = function(config12) {
+            var tweens = GetValue(config12, "tweens", null);
             if (tweens === null) {
               return [];
             } else if (typeof tweens === "function") {
@@ -41101,21 +41101,21 @@
           var GetValueOp = __webpack_require__(229);
           var Tween = __webpack_require__(231);
           var TweenData = __webpack_require__(233);
-          var NumberTweenBuilder = function(parent, config11, defaults) {
+          var NumberTweenBuilder = function(parent, config12, defaults) {
             if (defaults === void 0) {
               defaults = Defaults;
             }
-            var from = GetValue(config11, "from", 0);
-            var to = GetValue(config11, "to", 1);
+            var from = GetValue(config12, "from", 0);
+            var to = GetValue(config12, "to", 1);
             var targets = [{value: from}];
-            var delay = GetNewValue(config11, "delay", defaults.delay);
-            var duration = GetNewValue(config11, "duration", defaults.duration);
-            var easeParams = GetValue(config11, "easeParams", defaults.easeParams);
-            var ease = GetEaseFunction(GetValue(config11, "ease", defaults.ease), easeParams);
-            var hold = GetNewValue(config11, "hold", defaults.hold);
-            var repeat = GetNewValue(config11, "repeat", defaults.repeat);
-            var repeatDelay = GetNewValue(config11, "repeatDelay", defaults.repeatDelay);
-            var yoyo = GetBoolean(config11, "yoyo", defaults.yoyo);
+            var delay = GetNewValue(config12, "delay", defaults.delay);
+            var duration = GetNewValue(config12, "duration", defaults.duration);
+            var easeParams = GetValue(config12, "easeParams", defaults.easeParams);
+            var ease = GetEaseFunction(GetValue(config12, "ease", defaults.ease), easeParams);
+            var hold = GetNewValue(config12, "hold", defaults.hold);
+            var repeat = GetNewValue(config12, "repeat", defaults.repeat);
+            var repeatDelay = GetNewValue(config12, "repeatDelay", defaults.repeatDelay);
+            var yoyo = GetBoolean(config12, "yoyo", defaults.yoyo);
             var data = [];
             var ops = GetValueOp("value", to);
             var tweenData = TweenData(targets[0], 0, "value", ops.getEnd, ops.getStart, ops.getActive, ease, delay, duration, yoyo, hold, repeat, repeatDelay, false, false);
@@ -41124,21 +41124,21 @@
             tweenData.to = to;
             data.push(tweenData);
             var tween = new Tween(parent, data, targets);
-            tween.offset = GetAdvancedValue(config11, "offset", null);
-            tween.completeDelay = GetAdvancedValue(config11, "completeDelay", 0);
-            tween.loop = Math.round(GetAdvancedValue(config11, "loop", 0));
-            tween.loopDelay = Math.round(GetAdvancedValue(config11, "loopDelay", 0));
-            tween.paused = GetBoolean(config11, "paused", false);
-            tween.useFrames = GetBoolean(config11, "useFrames", false);
-            var scope = GetValue(config11, "callbackScope", tween);
+            tween.offset = GetAdvancedValue(config12, "offset", null);
+            tween.completeDelay = GetAdvancedValue(config12, "completeDelay", 0);
+            tween.loop = Math.round(GetAdvancedValue(config12, "loop", 0));
+            tween.loopDelay = Math.round(GetAdvancedValue(config12, "loopDelay", 0));
+            tween.paused = GetBoolean(config12, "paused", false);
+            tween.useFrames = GetBoolean(config12, "useFrames", false);
+            var scope = GetValue(config12, "callbackScope", tween);
             var tweenArray = [tween, null];
             var callbacks = Tween.TYPES;
             for (var i = 0; i < callbacks.length; i++) {
               var type = callbacks[i];
-              var callback = GetValue(config11, type, false);
+              var callback = GetValue(config12, type, false);
               if (callback) {
-                var callbackScope = GetValue(config11, type + "Scope", scope);
-                var callbackParams = GetValue(config11, type + "Params", []);
+                var callbackScope = GetValue(config12, type + "Scope", scope);
+                var callbackParams = GetValue(config12, type + "Params", []);
                 tween.setCallback(type, callback, tweenArray.concat(callbackParams), callbackScope);
               }
             }
@@ -41286,67 +41286,67 @@
           var GetValue = __webpack_require__(6);
           var Timeline = __webpack_require__(503);
           var TweenBuilder = __webpack_require__(146);
-          var TimelineBuilder = function(manager, config11) {
+          var TimelineBuilder = function(manager, config12) {
             var timeline = new Timeline(manager);
-            timeline.completeDelay = GetAdvancedValue(config11, "completeDelay", 0);
-            timeline.loop = Math.round(GetAdvancedValue(config11, "loop", 0));
-            timeline.loopDelay = Math.round(GetAdvancedValue(config11, "loopDelay", 0));
-            timeline.paused = GetBoolean(config11, "paused", false);
-            timeline.useFrames = GetBoolean(config11, "useFrames", false);
-            var scope = GetValue(config11, "callbackScope", timeline);
+            timeline.completeDelay = GetAdvancedValue(config12, "completeDelay", 0);
+            timeline.loop = Math.round(GetAdvancedValue(config12, "loop", 0));
+            timeline.loopDelay = Math.round(GetAdvancedValue(config12, "loopDelay", 0));
+            timeline.paused = GetBoolean(config12, "paused", false);
+            timeline.useFrames = GetBoolean(config12, "useFrames", false);
+            var scope = GetValue(config12, "callbackScope", timeline);
             var timelineArray = [timeline];
-            var onStart = GetValue(config11, "onStart", false);
+            var onStart = GetValue(config12, "onStart", false);
             if (onStart) {
-              var onStartScope = GetValue(config11, "onStartScope", scope);
-              var onStartParams = GetValue(config11, "onStartParams", []);
+              var onStartScope = GetValue(config12, "onStartScope", scope);
+              var onStartParams = GetValue(config12, "onStartParams", []);
               timeline.setCallback("onStart", onStart, timelineArray.concat(onStartParams), onStartScope);
             }
-            var onUpdate = GetValue(config11, "onUpdate", false);
+            var onUpdate = GetValue(config12, "onUpdate", false);
             if (onUpdate) {
-              var onUpdateScope = GetValue(config11, "onUpdateScope", scope);
-              var onUpdateParams = GetValue(config11, "onUpdateParams", []);
+              var onUpdateScope = GetValue(config12, "onUpdateScope", scope);
+              var onUpdateParams = GetValue(config12, "onUpdateParams", []);
               timeline.setCallback("onUpdate", onUpdate, timelineArray.concat(onUpdateParams), onUpdateScope);
             }
-            var onLoop = GetValue(config11, "onLoop", false);
+            var onLoop = GetValue(config12, "onLoop", false);
             if (onLoop) {
-              var onLoopScope = GetValue(config11, "onLoopScope", scope);
-              var onLoopParams = GetValue(config11, "onLoopParams", []);
+              var onLoopScope = GetValue(config12, "onLoopScope", scope);
+              var onLoopParams = GetValue(config12, "onLoopParams", []);
               timeline.setCallback("onLoop", onLoop, timelineArray.concat(onLoopParams), onLoopScope);
             }
-            var onYoyo = GetValue(config11, "onYoyo", false);
+            var onYoyo = GetValue(config12, "onYoyo", false);
             if (onYoyo) {
-              var onYoyoScope = GetValue(config11, "onYoyoScope", scope);
-              var onYoyoParams = GetValue(config11, "onYoyoParams", []);
+              var onYoyoScope = GetValue(config12, "onYoyoScope", scope);
+              var onYoyoParams = GetValue(config12, "onYoyoParams", []);
               timeline.setCallback("onYoyo", onYoyo, timelineArray.concat(null, onYoyoParams), onYoyoScope);
             }
-            var onComplete = GetValue(config11, "onComplete", false);
+            var onComplete = GetValue(config12, "onComplete", false);
             if (onComplete) {
-              var onCompleteScope = GetValue(config11, "onCompleteScope", scope);
-              var onCompleteParams = GetValue(config11, "onCompleteParams", []);
+              var onCompleteScope = GetValue(config12, "onCompleteScope", scope);
+              var onCompleteParams = GetValue(config12, "onCompleteParams", []);
               timeline.setCallback("onComplete", onComplete, timelineArray.concat(onCompleteParams), onCompleteScope);
             }
-            var tweens = GetTweens(config11);
+            var tweens = GetTweens(config12);
             if (tweens.length === 0) {
               timeline.paused = true;
               return timeline;
             }
             var defaults = Clone(Defaults);
-            defaults.targets = GetTargets(config11);
-            var totalDuration = GetAdvancedValue(config11, "totalDuration", 0);
+            defaults.targets = GetTargets(config12);
+            var totalDuration = GetAdvancedValue(config12, "totalDuration", 0);
             if (totalDuration > 0) {
               defaults.duration = Math.floor(totalDuration / tweens.length);
             } else {
-              defaults.duration = GetNewValue(config11, "duration", defaults.duration);
+              defaults.duration = GetNewValue(config12, "duration", defaults.duration);
             }
-            defaults.delay = GetNewValue(config11, "delay", defaults.delay);
-            defaults.easeParams = GetValue(config11, "easeParams", defaults.easeParams);
-            defaults.ease = GetEaseFunction(GetValue(config11, "ease", defaults.ease), defaults.easeParams);
-            defaults.hold = GetNewValue(config11, "hold", defaults.hold);
-            defaults.repeat = GetNewValue(config11, "repeat", defaults.repeat);
-            defaults.repeatDelay = GetNewValue(config11, "repeatDelay", defaults.repeatDelay);
-            defaults.yoyo = GetBoolean(config11, "yoyo", defaults.yoyo);
-            defaults.flipX = GetBoolean(config11, "flipX", defaults.flipX);
-            defaults.flipY = GetBoolean(config11, "flipY", defaults.flipY);
+            defaults.delay = GetNewValue(config12, "delay", defaults.delay);
+            defaults.easeParams = GetValue(config12, "easeParams", defaults.easeParams);
+            defaults.ease = GetEaseFunction(GetValue(config12, "ease", defaults.ease), defaults.easeParams);
+            defaults.hold = GetNewValue(config12, "hold", defaults.hold);
+            defaults.repeat = GetNewValue(config12, "repeat", defaults.repeat);
+            defaults.repeatDelay = GetNewValue(config12, "repeatDelay", defaults.repeatDelay);
+            defaults.yoyo = GetBoolean(config12, "yoyo", defaults.yoyo);
+            defaults.flipX = GetBoolean(config12, "flipX", defaults.flipX);
+            defaults.flipY = GetBoolean(config12, "flipY", defaults.flipY);
             for (var i = 0; i < tweens.length; i++) {
               timeline.queue(TweenBuilder(timeline, tweens[i], defaults));
             }
@@ -41414,8 +41414,8 @@
             isPlaying: function() {
               return this.state === TWEEN_CONST.ACTIVE;
             },
-            add: function(config11) {
-              return this.queue(TweenBuilder(this, config11));
+            add: function(config12) {
+              return this.queue(TweenBuilder(this, config12));
             },
             queue: function(tween) {
               if (!this.isPlaying()) {
@@ -42063,17 +42063,17 @@
             },
             preRender: function() {
               var ctx = this.gameContext;
-              var config11 = this.config;
+              var config12 = this.config;
               var width = this.width;
               var height = this.height;
               ctx.globalAlpha = 1;
               ctx.globalCompositeOperation = "source-over";
               ctx.setTransform(1, 0, 0, 1, 0, 0);
-              if (config11.clearBeforeRender) {
+              if (config12.clearBeforeRender) {
                 ctx.clearRect(0, 0, width, height);
               }
-              if (!config11.transparent) {
-                ctx.fillStyle = config11.backgroundColor.rgba;
+              if (!config12.transparent) {
+                ctx.fillStyle = config12.backgroundColor.rgba;
                 ctx.fillRect(0, 0, width, height);
               }
               ctx.save();
@@ -42282,15 +42282,15 @@
           var CanvasPool = __webpack_require__(26);
           var Color = __webpack_require__(31);
           var GetFastValue = __webpack_require__(2);
-          var CanvasSnapshot = function(canvas, config11) {
-            var callback = GetFastValue(config11, "callback");
-            var type = GetFastValue(config11, "type", "image/png");
-            var encoderOptions = GetFastValue(config11, "encoder", 0.92);
-            var x = Math.abs(Math.round(GetFastValue(config11, "x", 0)));
-            var y = Math.abs(Math.round(GetFastValue(config11, "y", 0)));
-            var width = GetFastValue(config11, "width", canvas.width);
-            var height = GetFastValue(config11, "height", canvas.height);
-            var getPixel = GetFastValue(config11, "getPixel", false);
+          var CanvasSnapshot = function(canvas, config12) {
+            var callback = GetFastValue(config12, "callback");
+            var type = GetFastValue(config12, "type", "image/png");
+            var encoderOptions = GetFastValue(config12, "encoder", 0.92);
+            var x = Math.abs(Math.round(GetFastValue(config12, "x", 0)));
+            var y = Math.abs(Math.round(GetFastValue(config12, "y", 0)));
+            var width = GetFastValue(config12, "width", canvas.width);
+            var height = GetFastValue(config12, "height", canvas.height);
+            var getPixel = GetFastValue(config12, "getPixel", false);
             if (getPixel) {
               var context = canvas.getContext("2d");
               var imageData = context.getImageData(x, y, 1, 1);
@@ -42479,15 +42479,15 @@
               this.mipmapFilter = null;
               this.init(this.config);
             },
-            init: function(config11) {
+            init: function(config12) {
               var gl;
               var game2 = this.game;
               var canvas = this.canvas;
-              var clearColor = config11.backgroundColor;
+              var clearColor = config12.backgroundColor;
               if (game2.config.context) {
                 gl = game2.config.context;
               } else {
-                gl = canvas.getContext("webgl", config11.contextCreation) || canvas.getContext("experimental-webgl", config11.contextCreation);
+                gl = canvas.getContext("webgl", config12.contextCreation) || canvas.getContext("experimental-webgl", config12.contextCreation);
               }
               if (!gl || gl.isContextLost()) {
                 this.contextLost = true;
@@ -42542,11 +42542,11 @@
                 "4iv": {func: gl.uniform4iv, length: 1}
               };
               var exts = gl.getSupportedExtensions();
-              if (!config11.maxTextures) {
-                config11.maxTextures = gl.getParameter(gl.MAX_TEXTURE_IMAGE_UNITS);
+              if (!config12.maxTextures) {
+                config12.maxTextures = gl.getParameter(gl.MAX_TEXTURE_IMAGE_UNITS);
               }
-              if (!config11.maxTextureSize) {
-                config11.maxTextureSize = gl.getParameter(gl.MAX_TEXTURE_SIZE);
+              if (!config12.maxTextureSize) {
+                config12.maxTextureSize = gl.getParameter(gl.MAX_TEXTURE_SIZE);
               }
               var extString = "WEBGL_compressed_texture_";
               var wkExtString = "WEBKIT_" + extString;
@@ -42558,7 +42558,7 @@
               gl.disable(gl.CULL_FACE);
               gl.enable(gl.BLEND);
               gl.clearColor(clearColor.redGL, clearColor.greenGL, clearColor.blueGL, clearColor.alphaGL);
-              this.mipmapFilter = gl[config11.mipmapFilter];
+              this.mipmapFilter = gl[config12.mipmapFilter];
               for (var index = 0; index < this.currentTextures.length; ++index) {
                 this.currentTextures[index] = null;
               }
@@ -42566,7 +42566,7 @@
               this.addPipeline("TextureTintPipeline", new TextureTintPipeline({game: game2, renderer: this}));
               this.addPipeline("TextureTintStripPipeline", new TextureTintStripPipeline({game: game2, renderer: this}));
               this.addPipeline("BitmapMaskPipeline", new BitmapMaskPipeline({game: game2, renderer: this}));
-              this.addPipeline("Light2D", new ForwardDiffuseLightPipeline({game: game2, renderer: this, maxLights: config11.maxLights}));
+              this.addPipeline("Light2D", new ForwardDiffuseLightPipeline({game: game2, renderer: this, maxLights: config12.maxLights}));
               this.setBlendMode(CONST.BlendModes.NORMAL);
               game2.textures.once(TextureEvents.READY, this.boot, this);
               return this;
@@ -43423,25 +43423,25 @@
           var CanvasPool = __webpack_require__(26);
           var Color = __webpack_require__(31);
           var GetFastValue = __webpack_require__(2);
-          var WebGLSnapshot = function(sourceCanvas, config11) {
+          var WebGLSnapshot = function(sourceCanvas, config12) {
             var gl = sourceCanvas.getContext("experimental-webgl");
-            var callback = GetFastValue(config11, "callback");
-            var type = GetFastValue(config11, "type", "image/png");
-            var encoderOptions = GetFastValue(config11, "encoder", 0.92);
-            var x = GetFastValue(config11, "x", 0);
-            var y = GetFastValue(config11, "y", 0);
-            var getPixel = GetFastValue(config11, "getPixel", false);
-            var isFramebuffer = GetFastValue(config11, "isFramebuffer", false);
-            var bufferWidth = isFramebuffer ? GetFastValue(config11, "bufferWidth", 1) : gl.drawingBufferWidth;
-            var bufferHeight = isFramebuffer ? GetFastValue(config11, "bufferHeight", 1) : gl.drawingBufferHeight;
+            var callback = GetFastValue(config12, "callback");
+            var type = GetFastValue(config12, "type", "image/png");
+            var encoderOptions = GetFastValue(config12, "encoder", 0.92);
+            var x = GetFastValue(config12, "x", 0);
+            var y = GetFastValue(config12, "y", 0);
+            var getPixel = GetFastValue(config12, "getPixel", false);
+            var isFramebuffer = GetFastValue(config12, "isFramebuffer", false);
+            var bufferWidth = isFramebuffer ? GetFastValue(config12, "bufferWidth", 1) : gl.drawingBufferWidth;
+            var bufferHeight = isFramebuffer ? GetFastValue(config12, "bufferHeight", 1) : gl.drawingBufferHeight;
             if (getPixel) {
               var pixel = new Uint8Array(4);
               var destY = isFramebuffer ? y : bufferHeight - y;
               gl.readPixels(x, destY, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, pixel);
               callback.call(null, new Color(pixel[0], pixel[1], pixel[2], pixel[3] / 255));
             } else {
-              var width = GetFastValue(config11, "width", bufferWidth);
-              var height = GetFastValue(config11, "height", bufferHeight);
+              var width = GetFastValue(config12, "width", bufferWidth);
+              var height = GetFastValue(config12, "height", bufferHeight);
               var total = width * height * 4;
               var pixels = new Uint8Array(total);
               gl.readPixels(x, bufferHeight - y - height, width, height, gl.RGBA, gl.UNSIGNED_BYTE, pixels);
@@ -43487,16 +43487,16 @@
           var WebGLPipeline = __webpack_require__(147);
           var BitmapMaskPipeline = new Class({
             Extends: WebGLPipeline,
-            initialize: function BitmapMaskPipeline2(config11) {
+            initialize: function BitmapMaskPipeline2(config12) {
               WebGLPipeline.call(this, {
-                game: config11.game,
-                renderer: config11.renderer,
-                gl: config11.renderer.gl,
-                topology: config11.topology ? config11.topology : config11.renderer.gl.TRIANGLES,
-                vertShader: config11.vertShader ? config11.vertShader : ShaderSourceVS,
-                fragShader: config11.fragShader ? config11.fragShader : ShaderSourceFS,
-                vertexCapacity: config11.vertexCapacity ? config11.vertexCapacity : 3,
-                vertexSize: config11.vertexSize ? config11.vertexSize : Float32Array.BYTES_PER_ELEMENT * 2,
+                game: config12.game,
+                renderer: config12.renderer,
+                gl: config12.renderer.gl,
+                topology: config12.topology ? config12.topology : config12.renderer.gl.TRIANGLES,
+                vertShader: config12.vertShader ? config12.vertShader : ShaderSourceVS,
+                fragShader: config12.fragShader ? config12.fragShader : ShaderSourceFS,
+                vertexCapacity: config12.vertexCapacity ? config12.vertexCapacity : 3,
+                vertexSize: config12.vertexSize ? config12.vertexSize : Float32Array.BYTES_PER_ELEMENT * 2,
                 vertices: new Float32Array([
                   -1,
                   1,
@@ -43509,7 +43509,7 @@
                   {
                     name: "inPosition",
                     size: 2,
-                    type: config11.renderer.gl.FLOAT,
+                    type: config12.renderer.gl.FLOAT,
                     normalized: false,
                     offset: 0
                   }
@@ -43598,10 +43598,10 @@
           var LIGHT_COUNT = 10;
           var ForwardDiffuseLightPipeline = new Class({
             Extends: TextureTintPipeline,
-            initialize: function ForwardDiffuseLightPipeline2(config11) {
-              LIGHT_COUNT = config11.maxLights;
-              config11.fragShader = ShaderSourceFS.replace("%LIGHT_COUNT%", LIGHT_COUNT.toString());
-              TextureTintPipeline.call(this, config11);
+            initialize: function ForwardDiffuseLightPipeline2(config12) {
+              LIGHT_COUNT = config12.maxLights;
+              config12.fragShader = ShaderSourceFS.replace("%LIGHT_COUNT%", LIGHT_COUNT.toString());
+              TextureTintPipeline.call(this, config12);
               this.defaultNormalMap;
               this.inverseRotationMatrix = new Float32Array([
                 1,
@@ -43836,43 +43836,43 @@
             Mixins: [
               ModelViewProjection
             ],
-            initialize: function TextureTintStripPipeline2(config11) {
-              var rendererConfig = config11.renderer.config;
+            initialize: function TextureTintStripPipeline2(config12) {
+              var rendererConfig = config12.renderer.config;
               WebGLPipeline.call(this, {
-                game: config11.game,
-                renderer: config11.renderer,
-                gl: config11.renderer.gl,
-                topology: config11.renderer.gl.TRIANGLE_STRIP,
-                vertShader: GetFastValue(config11, "vertShader", ShaderSourceVS),
-                fragShader: GetFastValue(config11, "fragShader", ShaderSourceFS),
-                vertexCapacity: GetFastValue(config11, "vertexCapacity", 6 * rendererConfig.batchSize),
-                vertexSize: GetFastValue(config11, "vertexSize", Float32Array.BYTES_PER_ELEMENT * 5 + Uint8Array.BYTES_PER_ELEMENT * 4),
+                game: config12.game,
+                renderer: config12.renderer,
+                gl: config12.renderer.gl,
+                topology: config12.renderer.gl.TRIANGLE_STRIP,
+                vertShader: GetFastValue(config12, "vertShader", ShaderSourceVS),
+                fragShader: GetFastValue(config12, "fragShader", ShaderSourceFS),
+                vertexCapacity: GetFastValue(config12, "vertexCapacity", 6 * rendererConfig.batchSize),
+                vertexSize: GetFastValue(config12, "vertexSize", Float32Array.BYTES_PER_ELEMENT * 5 + Uint8Array.BYTES_PER_ELEMENT * 4),
                 attributes: [
                   {
                     name: "inPosition",
                     size: 2,
-                    type: config11.renderer.gl.FLOAT,
+                    type: config12.renderer.gl.FLOAT,
                     normalized: false,
                     offset: 0
                   },
                   {
                     name: "inTexCoord",
                     size: 2,
-                    type: config11.renderer.gl.FLOAT,
+                    type: config12.renderer.gl.FLOAT,
                     normalized: false,
                     offset: Float32Array.BYTES_PER_ELEMENT * 2
                   },
                   {
                     name: "inTintEffect",
                     size: 1,
-                    type: config11.renderer.gl.FLOAT,
+                    type: config12.renderer.gl.FLOAT,
                     normalized: false,
                     offset: Float32Array.BYTES_PER_ELEMENT * 4
                   },
                   {
                     name: "inTint",
                     size: 4,
-                    type: config11.renderer.gl.UNSIGNED_BYTE,
+                    type: config12.renderer.gl.UNSIGNED_BYTE,
                     normalized: true,
                     offset: Float32Array.BYTES_PER_ELEMENT * 5
                   }
@@ -45372,17 +45372,17 @@
             pathTween: null,
             pathConfig: null,
             _prevDirection: TWEEN_CONST.PLAYING_FORWARD,
-            setPath: function(path, config11) {
-              if (config11 === void 0) {
-                config11 = this.pathConfig;
+            setPath: function(path, config12) {
+              if (config12 === void 0) {
+                config12 = this.pathConfig;
               }
               var tween = this.pathTween;
               if (tween && tween.isPlaying()) {
                 tween.stop();
               }
               this.path = path;
-              if (config11) {
-                this.startFollow(config11);
+              if (config12) {
+                this.startFollow(config12);
               }
               return this;
             },
@@ -45398,9 +45398,9 @@
               var tween = this.pathTween;
               return tween && tween.isPlaying();
             },
-            startFollow: function(config11, startAt) {
-              if (config11 === void 0) {
-                config11 = {};
+            startFollow: function(config12, startAt) {
+              if (config12 === void 0) {
+                config12 = {};
               }
               if (startAt === void 0) {
                 startAt = 0;
@@ -45409,17 +45409,17 @@
               if (tween && tween.isPlaying()) {
                 tween.stop();
               }
-              if (typeof config11 === "number") {
-                config11 = {duration: config11};
+              if (typeof config12 === "number") {
+                config12 = {duration: config12};
               }
-              config11.from = GetValue(config11, "from", 0);
-              config11.to = GetValue(config11, "to", 1);
-              var positionOnPath = GetBoolean(config11, "positionOnPath", false);
-              this.rotateToPath = GetBoolean(config11, "rotateToPath", false);
-              this.pathRotationOffset = GetValue(config11, "rotationOffset", 0);
-              var seek = GetValue(config11, "startAt", startAt);
+              config12.from = GetValue(config12, "from", 0);
+              config12.to = GetValue(config12, "to", 1);
+              var positionOnPath = GetBoolean(config12, "positionOnPath", false);
+              this.rotateToPath = GetBoolean(config12, "rotateToPath", false);
+              this.pathRotationOffset = GetValue(config12, "rotationOffset", 0);
+              var seek = GetValue(config12, "startAt", startAt);
               if (seek) {
-                config11.onStart = function(tween2) {
+                config12.onStart = function(tween2) {
                   var tweenData = tween2.data[0];
                   tweenData.progress = seek;
                   tweenData.elapsed = tweenData.duration * seek;
@@ -45438,7 +45438,7 @@
                 this.pathDelta = new Vector2();
               }
               this.pathDelta.reset();
-              this.pathTween = this.scene.sys.tweens.addCounter(config11);
+              this.pathTween = this.scene.sys.tweens.addCounter(config12);
               this.path.getStartPoint(this.pathOffset);
               if (positionOnPath) {
                 this.x = this.pathOffset.x;
@@ -45451,7 +45451,7 @@
                 var nextPoint = this.path.getPoint(0.1);
                 this.rotation = Math.atan2(nextPoint.y - this.y, nextPoint.x - this.x) + DegToRad(this.pathRotationOffset);
               }
-              this.pathConfig = config11;
+              this.pathConfig = config12;
               return this;
             },
             pauseFollow: function() {
@@ -46718,24 +46718,24 @@
           var Class = __webpack_require__(0);
           var GetValue = __webpack_require__(6);
           var FixedKeyControl = new Class({
-            initialize: function FixedKeyControl2(config11) {
-              this.camera = GetValue(config11, "camera", null);
-              this.left = GetValue(config11, "left", null);
-              this.right = GetValue(config11, "right", null);
-              this.up = GetValue(config11, "up", null);
-              this.down = GetValue(config11, "down", null);
-              this.zoomIn = GetValue(config11, "zoomIn", null);
-              this.zoomOut = GetValue(config11, "zoomOut", null);
-              this.zoomSpeed = GetValue(config11, "zoomSpeed", 0.01);
+            initialize: function FixedKeyControl2(config12) {
+              this.camera = GetValue(config12, "camera", null);
+              this.left = GetValue(config12, "left", null);
+              this.right = GetValue(config12, "right", null);
+              this.up = GetValue(config12, "up", null);
+              this.down = GetValue(config12, "down", null);
+              this.zoomIn = GetValue(config12, "zoomIn", null);
+              this.zoomOut = GetValue(config12, "zoomOut", null);
+              this.zoomSpeed = GetValue(config12, "zoomSpeed", 0.01);
               this.speedX = 0;
               this.speedY = 0;
-              var speed = GetValue(config11, "speed", null);
+              var speed = GetValue(config12, "speed", null);
               if (typeof speed === "number") {
                 this.speedX = speed;
                 this.speedY = speed;
               } else {
-                this.speedX = GetValue(config11, "speed.x", 0);
-                this.speedY = GetValue(config11, "speed.y", 0);
+                this.speedX = GetValue(config12, "speed.x", 0);
+                this.speedY = GetValue(config12, "speed.y", 0);
               }
               this._zoom = 0;
               this.active = this.camera !== null;
@@ -46800,44 +46800,44 @@
           var Class = __webpack_require__(0);
           var GetValue = __webpack_require__(6);
           var SmoothedKeyControl = new Class({
-            initialize: function SmoothedKeyControl2(config11) {
-              this.camera = GetValue(config11, "camera", null);
-              this.left = GetValue(config11, "left", null);
-              this.right = GetValue(config11, "right", null);
-              this.up = GetValue(config11, "up", null);
-              this.down = GetValue(config11, "down", null);
-              this.zoomIn = GetValue(config11, "zoomIn", null);
-              this.zoomOut = GetValue(config11, "zoomOut", null);
-              this.zoomSpeed = GetValue(config11, "zoomSpeed", 0.01);
+            initialize: function SmoothedKeyControl2(config12) {
+              this.camera = GetValue(config12, "camera", null);
+              this.left = GetValue(config12, "left", null);
+              this.right = GetValue(config12, "right", null);
+              this.up = GetValue(config12, "up", null);
+              this.down = GetValue(config12, "down", null);
+              this.zoomIn = GetValue(config12, "zoomIn", null);
+              this.zoomOut = GetValue(config12, "zoomOut", null);
+              this.zoomSpeed = GetValue(config12, "zoomSpeed", 0.01);
               this.accelX = 0;
               this.accelY = 0;
-              var accel = GetValue(config11, "acceleration", null);
+              var accel = GetValue(config12, "acceleration", null);
               if (typeof accel === "number") {
                 this.accelX = accel;
                 this.accelY = accel;
               } else {
-                this.accelX = GetValue(config11, "acceleration.x", 0);
-                this.accelY = GetValue(config11, "acceleration.y", 0);
+                this.accelX = GetValue(config12, "acceleration.x", 0);
+                this.accelY = GetValue(config12, "acceleration.y", 0);
               }
               this.dragX = 0;
               this.dragY = 0;
-              var drag = GetValue(config11, "drag", null);
+              var drag = GetValue(config12, "drag", null);
               if (typeof drag === "number") {
                 this.dragX = drag;
                 this.dragY = drag;
               } else {
-                this.dragX = GetValue(config11, "drag.x", 0);
-                this.dragY = GetValue(config11, "drag.y", 0);
+                this.dragX = GetValue(config12, "drag.x", 0);
+                this.dragY = GetValue(config12, "drag.y", 0);
               }
               this.maxSpeedX = 0;
               this.maxSpeedY = 0;
-              var maxSpeed = GetValue(config11, "maxSpeed", null);
+              var maxSpeed = GetValue(config12, "maxSpeed", null);
               if (typeof maxSpeed === "number") {
                 this.maxSpeedX = maxSpeed;
                 this.maxSpeedY = maxSpeed;
               } else {
-                this.maxSpeedX = GetValue(config11, "maxSpeed.x", 0);
-                this.maxSpeedY = GetValue(config11, "maxSpeed.y", 0);
+                this.maxSpeedX = GetValue(config12, "maxSpeed.x", 0);
+                this.maxSpeedY = GetValue(config12, "maxSpeed.y", 0);
               }
               this._speedX = 0;
               this._speedY = 0;
@@ -48441,14 +48441,14 @@
               }
               return total;
             },
-            fromJSON: function(config11) {
-              if (!Array.isArray(config11)) {
-                config11 = [config11];
+            fromJSON: function(config12) {
+              if (!Array.isArray(config12)) {
+                config12 = [config12];
               }
               var gameWidth = this.scene.sys.scale.width;
               var gameHeight = this.scene.sys.scale.height;
-              for (var i = 0; i < config11.length; i++) {
-                var cameraConfig = config11[i];
+              for (var i = 0; i < config12.length; i++) {
+                var cameraConfig = config12[i];
                 var x = GetFastValue(cameraConfig, "x", 0);
                 var y = GetFastValue(cameraConfig, "y", 0);
                 var width = GetFastValue(cameraConfig, "width", gameWidth);
@@ -51183,8 +51183,8 @@
             var FacebookInstantGamesPlugin;
           }
           var Game = new Class({
-            initialize: function Game2(config11) {
-              this.config = new Config(config11);
+            initialize: function Game2(config12) {
+              this.config = new Config(config12);
               this.renderer = null;
               this.domContainer = null;
               this.canvas = null;
@@ -51336,8 +51336,8 @@
            */
           var AddToDOM = __webpack_require__(122);
           var CreateDOMContainer = function(game2) {
-            var config11 = game2.config;
-            if (!config11.parent || !config11.domCreateContainer) {
+            var config12 = game2.config;
+            if (!config12.parent || !config12.domCreateContainer) {
               return;
             }
             var div = document.createElement("div");
@@ -51353,7 +51353,7 @@
               "transform-origin: left top;"
             ].join(" ");
             game2.domContainer = div;
-            AddToDOM(div, config11.parent);
+            AddToDOM(div, config12.parent);
           };
           module2.exports = CreateDOMContainer;
         },
@@ -52083,18 +52083,18 @@
            * @license      {@link https://opensource.org/licenses/MIT|MIT License}
            */
           var GetFastValue = __webpack_require__(2);
-          var SpriteSheet = function(texture, sourceIndex, x, y, width, height, config11) {
-            var frameWidth = GetFastValue(config11, "frameWidth", null);
-            var frameHeight = GetFastValue(config11, "frameHeight", frameWidth);
+          var SpriteSheet = function(texture, sourceIndex, x, y, width, height, config12) {
+            var frameWidth = GetFastValue(config12, "frameWidth", null);
+            var frameHeight = GetFastValue(config12, "frameHeight", frameWidth);
             if (frameWidth === null) {
               throw new Error("TextureManager.SpriteSheet: Invalid frameWidth given.");
             }
             var source = texture.source[sourceIndex];
             texture.add("__BASE", sourceIndex, 0, 0, source.width, source.height);
-            var startFrame = GetFastValue(config11, "startFrame", 0);
-            var endFrame = GetFastValue(config11, "endFrame", -1);
-            var margin = GetFastValue(config11, "margin", 0);
-            var spacing = GetFastValue(config11, "spacing", 0);
+            var startFrame = GetFastValue(config12, "startFrame", 0);
+            var endFrame = GetFastValue(config12, "endFrame", -1);
+            var margin = GetFastValue(config12, "margin", 0);
+            var spacing = GetFastValue(config12, "spacing", 0);
             var row = Math.floor((width - margin + spacing) / (frameWidth + spacing));
             var column = Math.floor((height - margin + spacing) / (frameHeight + spacing));
             var total = row * column;
@@ -52143,18 +52143,18 @@
            * @license      {@link https://opensource.org/licenses/MIT|MIT License}
            */
           var GetFastValue = __webpack_require__(2);
-          var SpriteSheetFromAtlas = function(texture, frame, config11) {
-            var frameWidth = GetFastValue(config11, "frameWidth", null);
-            var frameHeight = GetFastValue(config11, "frameHeight", frameWidth);
+          var SpriteSheetFromAtlas = function(texture, frame, config12) {
+            var frameWidth = GetFastValue(config12, "frameWidth", null);
+            var frameHeight = GetFastValue(config12, "frameHeight", frameWidth);
             if (!frameWidth) {
               throw new Error("TextureManager.SpriteSheetFromAtlas: Invalid frameWidth given.");
             }
             var source = texture.source[0];
             texture.add("__BASE", 0, 0, 0, source.width, source.height);
-            var startFrame = GetFastValue(config11, "startFrame", 0);
-            var endFrame = GetFastValue(config11, "endFrame", -1);
-            var margin = GetFastValue(config11, "margin", 0);
-            var spacing = GetFastValue(config11, "spacing", 0);
+            var startFrame = GetFastValue(config12, "startFrame", 0);
+            var endFrame = GetFastValue(config12, "endFrame", -1);
+            var margin = GetFastValue(config12, "margin", 0);
+            var spacing = GetFastValue(config12, "spacing", 0);
             var x = frame.cutX;
             var y = frame.cutY;
             var cutWidth = frame.cutWidth;
@@ -55098,7 +55098,7 @@
           var GetFastValue = __webpack_require__(2);
           var Wrap = __webpack_require__(58);
           var EmitterOp = new Class({
-            initialize: function EmitterOp2(config11, key, defaultValue, emitOnly) {
+            initialize: function EmitterOp2(config12, key, defaultValue, emitOnly) {
               if (emitOnly === void 0) {
                 emitOnly = false;
               }
@@ -55113,16 +55113,16 @@
               this.emitOnly = emitOnly;
               this.onEmit = this.defaultEmit;
               this.onUpdate = this.defaultUpdate;
-              this.loadConfig(config11);
+              this.loadConfig(config12);
             },
-            loadConfig: function(config11, newKey) {
-              if (config11 === void 0) {
-                config11 = {};
+            loadConfig: function(config12, newKey) {
+              if (config12 === void 0) {
+                config12 = {};
               }
               if (newKey) {
                 this.propertyKey = newKey;
               }
-              this.propertyValue = GetFastValue(config11, this.propertyKey, this.defaultValue);
+              this.propertyValue = GetFastValue(config12, this.propertyKey, this.defaultValue);
               this.setMethods();
               if (this.emitOnly) {
                 this.onUpdate = this.defaultUpdate;
@@ -55509,22 +55509,22 @@
            * @license      {@link https://opensource.org/licenses/MIT|MIT License}
            */
           var GetValue = __webpack_require__(6);
-          var ParseRetroFont = function(scene, config11) {
-            var w = config11.width;
-            var h = config11.height;
+          var ParseRetroFont = function(scene, config12) {
+            var w = config12.width;
+            var h = config12.height;
             var cx = Math.floor(w / 2);
             var cy = Math.floor(h / 2);
-            var letters = GetValue(config11, "chars", "");
+            var letters = GetValue(config12, "chars", "");
             if (letters === "") {
               return;
             }
-            var key = GetValue(config11, "image", "");
-            var offsetX = GetValue(config11, "offset.x", 0);
-            var offsetY = GetValue(config11, "offset.y", 0);
-            var spacingX = GetValue(config11, "spacing.x", 0);
-            var spacingY = GetValue(config11, "spacing.y", 0);
-            var lineSpacing = GetValue(config11, "lineSpacing", 0);
-            var charsPerRow = GetValue(config11, "charsPerRow", null);
+            var key = GetValue(config12, "image", "");
+            var offsetX = GetValue(config12, "offset.x", 0);
+            var offsetY = GetValue(config12, "offset.y", 0);
+            var spacingX = GetValue(config12, "spacing.x", 0);
+            var spacingY = GetValue(config12, "spacing.y", 0);
+            var lineSpacing = GetValue(config12, "lineSpacing", 0);
+            var charsPerRow = GetValue(config12, "charsPerRow", null);
             if (charsPerRow === null) {
               charsPerRow = scene.sys.textures.getFrame(key).width / w;
               if (charsPerRow > letters.length) {
@@ -57707,8 +57707,8 @@
            */
           var Graphics = __webpack_require__(191);
           var GameObjectFactory = __webpack_require__(5);
-          GameObjectFactory.register("graphics", function(config11) {
-            return this.displayList.add(new Graphics(this.scene, config11));
+          GameObjectFactory.register("graphics", function(config12) {
+            return this.displayList.add(new Graphics(this.scene, config12));
           });
         },
         function(module2, exports2, __webpack_require__) {
@@ -57719,8 +57719,8 @@
            */
           var Group = __webpack_require__(97);
           var GameObjectFactory = __webpack_require__(5);
-          GameObjectFactory.register("group", function(children, config11) {
-            return this.updateList.add(new Group(this.scene, children, config11));
+          GameObjectFactory.register("group", function(children, config12) {
+            return this.updateList.add(new Group(this.scene, children, config12));
           });
         },
         function(module2, exports2, __webpack_require__) {
@@ -58016,17 +58016,17 @@
           var BuildGameObject = __webpack_require__(27);
           var GameObjectCreator = __webpack_require__(16);
           var GetAdvancedValue = __webpack_require__(15);
-          GameObjectCreator.register("blitter", function(config11, addToScene) {
-            if (config11 === void 0) {
-              config11 = {};
+          GameObjectCreator.register("blitter", function(config12, addToScene) {
+            if (config12 === void 0) {
+              config12 = {};
             }
-            var key = GetAdvancedValue(config11, "key", null);
-            var frame = GetAdvancedValue(config11, "frame", null);
+            var key = GetAdvancedValue(config12, "key", null);
+            var frame = GetAdvancedValue(config12, "frame", null);
             var blitter = new Blitter(this.scene, 0, 0, key, frame);
             if (addToScene !== void 0) {
-              config11.add = addToScene;
+              config12.add = addToScene;
             }
-            BuildGameObject(this.scene, blitter, config11);
+            BuildGameObject(this.scene, blitter, config12);
             return blitter;
           });
         },
@@ -58041,17 +58041,17 @@
           var Container = __webpack_require__(189);
           var GameObjectCreator = __webpack_require__(16);
           var GetAdvancedValue = __webpack_require__(15);
-          GameObjectCreator.register("container", function(config11, addToScene) {
-            if (config11 === void 0) {
-              config11 = {};
+          GameObjectCreator.register("container", function(config12, addToScene) {
+            if (config12 === void 0) {
+              config12 = {};
             }
-            var x = GetAdvancedValue(config11, "x", 0);
-            var y = GetAdvancedValue(config11, "y", 0);
+            var x = GetAdvancedValue(config12, "x", 0);
+            var y = GetAdvancedValue(config12, "y", 0);
             var container = new Container(this.scene, x, y);
             if (addToScene !== void 0) {
-              config11.add = addToScene;
+              config12.add = addToScene;
             }
-            BuildGameObject(this.scene, container, config11);
+            BuildGameObject(this.scene, container, config12);
             return container;
           });
         },
@@ -58065,18 +58065,18 @@
           var BuildGameObject = __webpack_require__(27);
           var GameObjectCreator = __webpack_require__(16);
           var GetAdvancedValue = __webpack_require__(15);
-          GameObjectCreator.register("dynamicBitmapText", function(config11, addToScene) {
-            if (config11 === void 0) {
-              config11 = {};
+          GameObjectCreator.register("dynamicBitmapText", function(config12, addToScene) {
+            if (config12 === void 0) {
+              config12 = {};
             }
-            var font = GetAdvancedValue(config11, "font", "");
-            var text = GetAdvancedValue(config11, "text", "");
-            var size = GetAdvancedValue(config11, "size", false);
+            var font = GetAdvancedValue(config12, "font", "");
+            var text = GetAdvancedValue(config12, "text", "");
+            var size = GetAdvancedValue(config12, "size", false);
             var bitmapText = new BitmapText(this.scene, 0, 0, font, text, size);
             if (addToScene !== void 0) {
-              config11.add = addToScene;
+              config12.add = addToScene;
             }
-            BuildGameObject(this.scene, bitmapText, config11);
+            BuildGameObject(this.scene, bitmapText, config12);
             return bitmapText;
           });
         },
@@ -58088,15 +58088,15 @@
            */
           var GameObjectCreator = __webpack_require__(16);
           var Graphics = __webpack_require__(191);
-          GameObjectCreator.register("graphics", function(config11, addToScene) {
-            if (config11 === void 0) {
-              config11 = {};
+          GameObjectCreator.register("graphics", function(config12, addToScene) {
+            if (config12 === void 0) {
+              config12 = {};
             }
             if (addToScene !== void 0) {
-              config11.add = addToScene;
+              config12.add = addToScene;
             }
-            var graphics = new Graphics(this.scene, config11);
-            if (config11.add) {
+            var graphics = new Graphics(this.scene, config12);
+            if (config12.add) {
               this.scene.sys.displayList.add(graphics);
             }
             return graphics;
@@ -58110,8 +58110,8 @@
            */
           var GameObjectCreator = __webpack_require__(16);
           var Group = __webpack_require__(97);
-          GameObjectCreator.register("group", function(config11) {
-            return new Group(this.scene, null, config11);
+          GameObjectCreator.register("group", function(config12) {
+            return new Group(this.scene, null, config12);
           });
         },
         function(module2, exports2, __webpack_require__) {
@@ -58124,17 +58124,17 @@
           var GameObjectCreator = __webpack_require__(16);
           var GetAdvancedValue = __webpack_require__(15);
           var Image2 = __webpack_require__(107);
-          GameObjectCreator.register("image", function(config11, addToScene) {
-            if (config11 === void 0) {
-              config11 = {};
+          GameObjectCreator.register("image", function(config12, addToScene) {
+            if (config12 === void 0) {
+              config12 = {};
             }
-            var key = GetAdvancedValue(config11, "key", null);
-            var frame = GetAdvancedValue(config11, "frame", null);
+            var key = GetAdvancedValue(config12, "key", null);
+            var frame = GetAdvancedValue(config12, "frame", null);
             var image = new Image2(this.scene, 0, 0, key, frame);
             if (addToScene !== void 0) {
-              config11.add = addToScene;
+              config12.add = addToScene;
             }
-            BuildGameObject(this.scene, image, config11);
+            BuildGameObject(this.scene, image, config12);
             return image;
           });
         },
@@ -58148,18 +58148,18 @@
           var GetAdvancedValue = __webpack_require__(15);
           var GetFastValue = __webpack_require__(2);
           var ParticleEmitterManager = __webpack_require__(194);
-          GameObjectCreator.register("particles", function(config11, addToScene) {
-            if (config11 === void 0) {
-              config11 = {};
+          GameObjectCreator.register("particles", function(config12, addToScene) {
+            if (config12 === void 0) {
+              config12 = {};
             }
-            var key = GetAdvancedValue(config11, "key", null);
-            var frame = GetAdvancedValue(config11, "frame", null);
-            var emitters = GetFastValue(config11, "emitters", null);
+            var key = GetAdvancedValue(config12, "key", null);
+            var frame = GetAdvancedValue(config12, "frame", null);
+            var emitters = GetFastValue(config12, "emitters", null);
             var manager = new ParticleEmitterManager(this.scene, key, frame, emitters);
             if (addToScene !== void 0) {
-              config11.add = addToScene;
+              config12.add = addToScene;
             }
-            var add = GetFastValue(config11, "add", false);
+            var add = GetFastValue(config12, "add", false);
             if (add) {
               this.displayList.add(manager);
             }
@@ -58177,21 +58177,21 @@
           var GameObjectCreator = __webpack_require__(16);
           var GetAdvancedValue = __webpack_require__(15);
           var RenderTexture = __webpack_require__(195);
-          GameObjectCreator.register("renderTexture", function(config11, addToScene) {
-            if (config11 === void 0) {
-              config11 = {};
+          GameObjectCreator.register("renderTexture", function(config12, addToScene) {
+            if (config12 === void 0) {
+              config12 = {};
             }
-            var x = GetAdvancedValue(config11, "x", 0);
-            var y = GetAdvancedValue(config11, "y", 0);
-            var width = GetAdvancedValue(config11, "width", 32);
-            var height = GetAdvancedValue(config11, "height", 32);
-            var key = GetAdvancedValue(config11, "key", void 0);
-            var frame = GetAdvancedValue(config11, "frame", void 0);
+            var x = GetAdvancedValue(config12, "x", 0);
+            var y = GetAdvancedValue(config12, "y", 0);
+            var width = GetAdvancedValue(config12, "width", 32);
+            var height = GetAdvancedValue(config12, "height", 32);
+            var key = GetAdvancedValue(config12, "key", void 0);
+            var frame = GetAdvancedValue(config12, "frame", void 0);
             var renderTexture = new RenderTexture(this.scene, x, y, width, height, key, frame);
             if (addToScene !== void 0) {
-              config11.add = addToScene;
+              config12.add = addToScene;
             }
-            BuildGameObject(this.scene, renderTexture, config11);
+            BuildGameObject(this.scene, renderTexture, config12);
             return renderTexture;
           });
         },
@@ -58206,21 +58206,21 @@
           var GetAdvancedValue = __webpack_require__(15);
           var GetValue = __webpack_require__(6);
           var Rope = __webpack_require__(197);
-          GameObjectCreator.register("rope", function(config11, addToScene) {
-            if (config11 === void 0) {
-              config11 = {};
+          GameObjectCreator.register("rope", function(config12, addToScene) {
+            if (config12 === void 0) {
+              config12 = {};
             }
-            var key = GetAdvancedValue(config11, "key", null);
-            var frame = GetAdvancedValue(config11, "frame", null);
-            var horizontal = GetAdvancedValue(config11, "horizontal", true);
-            var points = GetValue(config11, "points", void 0);
-            var colors = GetValue(config11, "colors", void 0);
-            var alphas = GetValue(config11, "alphas", void 0);
+            var key = GetAdvancedValue(config12, "key", null);
+            var frame = GetAdvancedValue(config12, "frame", null);
+            var horizontal = GetAdvancedValue(config12, "horizontal", true);
+            var points = GetValue(config12, "points", void 0);
+            var colors = GetValue(config12, "colors", void 0);
+            var alphas = GetValue(config12, "alphas", void 0);
             var rope = new Rope(this.scene, 0, 0, key, frame, points, horizontal, colors, alphas);
             if (addToScene !== void 0) {
-              config11.add = addToScene;
+              config12.add = addToScene;
             }
-            BuildGameObject(this.scene, rope, config11);
+            BuildGameObject(this.scene, rope, config12);
             return rope;
           });
         },
@@ -58235,18 +58235,18 @@
           var GameObjectCreator = __webpack_require__(16);
           var GetAdvancedValue = __webpack_require__(15);
           var Sprite = __webpack_require__(75);
-          GameObjectCreator.register("sprite", function(config11, addToScene) {
-            if (config11 === void 0) {
-              config11 = {};
+          GameObjectCreator.register("sprite", function(config12, addToScene) {
+            if (config12 === void 0) {
+              config12 = {};
             }
-            var key = GetAdvancedValue(config11, "key", null);
-            var frame = GetAdvancedValue(config11, "frame", null);
+            var key = GetAdvancedValue(config12, "key", null);
+            var frame = GetAdvancedValue(config12, "frame", null);
             var sprite = new Sprite(this.scene, 0, 0, key, frame);
             if (addToScene !== void 0) {
-              config11.add = addToScene;
+              config12.add = addToScene;
             }
-            BuildGameObject(this.scene, sprite, config11);
-            BuildGameObjectAnimation(sprite, config11);
+            BuildGameObject(this.scene, sprite, config12);
+            BuildGameObjectAnimation(sprite, config12);
             return sprite;
           });
         },
@@ -58261,19 +58261,19 @@
           var GameObjectCreator = __webpack_require__(16);
           var GetAdvancedValue = __webpack_require__(15);
           var GetValue = __webpack_require__(6);
-          GameObjectCreator.register("bitmapText", function(config11, addToScene) {
-            if (config11 === void 0) {
-              config11 = {};
+          GameObjectCreator.register("bitmapText", function(config12, addToScene) {
+            if (config12 === void 0) {
+              config12 = {};
             }
-            var font = GetValue(config11, "font", "");
-            var text = GetAdvancedValue(config11, "text", "");
-            var size = GetAdvancedValue(config11, "size", false);
-            var align = GetValue(config11, "align", 0);
+            var font = GetValue(config12, "font", "");
+            var text = GetAdvancedValue(config12, "text", "");
+            var size = GetAdvancedValue(config12, "size", false);
+            var align = GetValue(config12, "align", 0);
             var bitmapText = new BitmapText(this.scene, 0, 0, font, text, size, align);
             if (addToScene !== void 0) {
-              config11.add = addToScene;
+              config12.add = addToScene;
             }
-            BuildGameObject(this.scene, bitmapText, config11);
+            BuildGameObject(this.scene, bitmapText, config12);
             return bitmapText;
           });
         },
@@ -58287,23 +58287,23 @@
           var GameObjectCreator = __webpack_require__(16);
           var GetAdvancedValue = __webpack_require__(15);
           var Text = __webpack_require__(198);
-          GameObjectCreator.register("text", function(config11, addToScene) {
-            if (config11 === void 0) {
-              config11 = {};
+          GameObjectCreator.register("text", function(config12, addToScene) {
+            if (config12 === void 0) {
+              config12 = {};
             }
-            var content = GetAdvancedValue(config11, "text", "");
-            var style = GetAdvancedValue(config11, "style", null);
-            var padding = GetAdvancedValue(config11, "padding", null);
+            var content = GetAdvancedValue(config12, "text", "");
+            var style = GetAdvancedValue(config12, "style", null);
+            var padding = GetAdvancedValue(config12, "padding", null);
             if (padding !== null) {
               style.padding = padding;
             }
             var text = new Text(this.scene, 0, 0, content, style);
             if (addToScene !== void 0) {
-              config11.add = addToScene;
+              config12.add = addToScene;
             }
-            BuildGameObject(this.scene, text, config11);
-            text.autoRound = GetAdvancedValue(config11, "autoRound", true);
-            text.resolution = GetAdvancedValue(config11, "resolution", 1);
+            BuildGameObject(this.scene, text, config12);
+            text.autoRound = GetAdvancedValue(config12, "autoRound", true);
+            text.resolution = GetAdvancedValue(config12, "resolution", 1);
             return text;
           });
         },
@@ -58317,21 +58317,21 @@
           var GameObjectCreator = __webpack_require__(16);
           var GetAdvancedValue = __webpack_require__(15);
           var TileSprite = __webpack_require__(199);
-          GameObjectCreator.register("tileSprite", function(config11, addToScene) {
-            if (config11 === void 0) {
-              config11 = {};
+          GameObjectCreator.register("tileSprite", function(config12, addToScene) {
+            if (config12 === void 0) {
+              config12 = {};
             }
-            var x = GetAdvancedValue(config11, "x", 0);
-            var y = GetAdvancedValue(config11, "y", 0);
-            var width = GetAdvancedValue(config11, "width", 512);
-            var height = GetAdvancedValue(config11, "height", 512);
-            var key = GetAdvancedValue(config11, "key", "");
-            var frame = GetAdvancedValue(config11, "frame", "");
+            var x = GetAdvancedValue(config12, "x", 0);
+            var y = GetAdvancedValue(config12, "y", 0);
+            var width = GetAdvancedValue(config12, "width", 512);
+            var height = GetAdvancedValue(config12, "height", 512);
+            var key = GetAdvancedValue(config12, "key", "");
+            var frame = GetAdvancedValue(config12, "frame", "");
             var tile = new TileSprite(this.scene, x, y, width, height, key, frame);
             if (addToScene !== void 0) {
-              config11.add = addToScene;
+              config12.add = addToScene;
             }
-            BuildGameObject(this.scene, tile, config11);
+            BuildGameObject(this.scene, tile, config12);
             return tile;
           });
         },
@@ -58344,11 +58344,11 @@
           var GameObjectCreator = __webpack_require__(16);
           var GetAdvancedValue = __webpack_require__(15);
           var Zone = __webpack_require__(110);
-          GameObjectCreator.register("zone", function(config11) {
-            var x = GetAdvancedValue(config11, "x", 0);
-            var y = GetAdvancedValue(config11, "y", 0);
-            var width = GetAdvancedValue(config11, "width", 1);
-            var height = GetAdvancedValue(config11, "height", width);
+          GameObjectCreator.register("zone", function(config12) {
+            var x = GetAdvancedValue(config12, "x", 0);
+            var y = GetAdvancedValue(config12, "y", 0);
+            var width = GetAdvancedValue(config12, "width", 1);
+            var height = GetAdvancedValue(config12, "height", width);
             return new Zone(this.scene, x, y, width, height);
           });
         },
@@ -58362,16 +58362,16 @@
           var GameObjectCreator = __webpack_require__(16);
           var GetAdvancedValue = __webpack_require__(15);
           var Video = __webpack_require__(200);
-          GameObjectCreator.register("video", function(config11, addToScene) {
-            if (config11 === void 0) {
-              config11 = {};
+          GameObjectCreator.register("video", function(config12, addToScene) {
+            if (config12 === void 0) {
+              config12 = {};
             }
-            var key = GetAdvancedValue(config11, "key", null);
+            var key = GetAdvancedValue(config12, "key", null);
             var video = new Video(this.scene, 0, 0, key);
             if (addToScene !== void 0) {
-              config11.add = addToScene;
+              config12.add = addToScene;
             }
-            BuildGameObject(this.scene, video, config11);
+            BuildGameObject(this.scene, video, config12);
             return video;
           });
         },
@@ -58589,21 +58589,21 @@
           var GetAdvancedValue = __webpack_require__(15);
           var GetValue = __webpack_require__(6);
           var Mesh = __webpack_require__(134);
-          GameObjectCreator.register("mesh", function(config11, addToScene) {
-            if (config11 === void 0) {
-              config11 = {};
+          GameObjectCreator.register("mesh", function(config12, addToScene) {
+            if (config12 === void 0) {
+              config12 = {};
             }
-            var key = GetAdvancedValue(config11, "key", null);
-            var frame = GetAdvancedValue(config11, "frame", null);
-            var vertices = GetValue(config11, "vertices", []);
-            var colors = GetValue(config11, "colors", []);
-            var alphas = GetValue(config11, "alphas", []);
-            var uv = GetValue(config11, "uv", []);
+            var key = GetAdvancedValue(config12, "key", null);
+            var frame = GetAdvancedValue(config12, "frame", null);
+            var vertices = GetValue(config12, "vertices", []);
+            var colors = GetValue(config12, "colors", []);
+            var alphas = GetValue(config12, "alphas", []);
+            var uv = GetValue(config12, "uv", []);
             var mesh = new Mesh(this.scene, 0, 0, vertices, uv, colors, alphas, key, frame);
             if (addToScene !== void 0) {
-              config11.add = addToScene;
+              config12.add = addToScene;
             }
-            BuildGameObject(this.scene, mesh, config11);
+            BuildGameObject(this.scene, mesh, config12);
             return mesh;
           });
         },
@@ -58617,19 +58617,19 @@
           var GameObjectCreator = __webpack_require__(16);
           var GetAdvancedValue = __webpack_require__(15);
           var Quad = __webpack_require__(203);
-          GameObjectCreator.register("quad", function(config11, addToScene) {
-            if (config11 === void 0) {
-              config11 = {};
+          GameObjectCreator.register("quad", function(config12, addToScene) {
+            if (config12 === void 0) {
+              config12 = {};
             }
-            var x = GetAdvancedValue(config11, "x", 0);
-            var y = GetAdvancedValue(config11, "y", 0);
-            var key = GetAdvancedValue(config11, "key", null);
-            var frame = GetAdvancedValue(config11, "frame", null);
+            var x = GetAdvancedValue(config12, "x", 0);
+            var y = GetAdvancedValue(config12, "y", 0);
+            var key = GetAdvancedValue(config12, "key", null);
+            var frame = GetAdvancedValue(config12, "frame", null);
             var quad = new Quad(this.scene, x, y, key, frame);
             if (addToScene !== void 0) {
-              config11.add = addToScene;
+              config12.add = addToScene;
             }
-            BuildGameObject(this.scene, quad, config11);
+            BuildGameObject(this.scene, quad, config12);
             return quad;
           });
         },
@@ -58643,20 +58643,20 @@
           var GameObjectCreator = __webpack_require__(16);
           var GetAdvancedValue = __webpack_require__(15);
           var Shader = __webpack_require__(204);
-          GameObjectCreator.register("shader", function(config11, addToScene) {
-            if (config11 === void 0) {
-              config11 = {};
+          GameObjectCreator.register("shader", function(config12, addToScene) {
+            if (config12 === void 0) {
+              config12 = {};
             }
-            var key = GetAdvancedValue(config11, "key", null);
-            var x = GetAdvancedValue(config11, "x", 0);
-            var y = GetAdvancedValue(config11, "y", 0);
-            var width = GetAdvancedValue(config11, "width", 128);
-            var height = GetAdvancedValue(config11, "height", 128);
+            var key = GetAdvancedValue(config12, "key", null);
+            var x = GetAdvancedValue(config12, "x", 0);
+            var y = GetAdvancedValue(config12, "y", 0);
+            var width = GetAdvancedValue(config12, "width", 128);
+            var height = GetAdvancedValue(config12, "height", 128);
             var shader = new Shader(this.scene, key, x, y, width, height);
             if (addToScene !== void 0) {
-              config11.add = addToScene;
+              config12.add = addToScene;
             }
-            BuildGameObject(this.scene, shader, config11);
+            BuildGameObject(this.scene, shader, config12);
             return shader;
           });
         },
@@ -60800,9 +60800,9 @@
             boot: function() {
               var game2 = this.scene.sys.game;
               var settings = this.settings.input;
-              var config11 = game2.config;
-              this.enabled = GetValue(settings, "gamepad", config11.inputGamepad) && game2.device.input.gamepads;
-              this.target = GetValue(settings, "gamepad.target", config11.inputGamepadEventTarget);
+              var config12 = game2.config;
+              this.enabled = GetValue(settings, "gamepad", config12.inputGamepad) && game2.device.input.gamepads;
+              this.target = GetValue(settings, "gamepad.target", config12.inputGamepadEventTarget);
               this.sceneInputPlugin.pluginEvents.once(InputEvents.DESTROY, this.destroy, this);
             },
             start: function() {
@@ -61860,15 +61860,15 @@
               var pixelPerfect = false;
               var customHitArea = true;
               if (IsPlainObject(shape)) {
-                var config11 = shape;
-                shape = GetFastValue(config11, "hitArea", null);
-                callback = GetFastValue(config11, "hitAreaCallback", null);
-                draggable = GetFastValue(config11, "draggable", false);
-                dropZone = GetFastValue(config11, "dropZone", false);
-                cursor = GetFastValue(config11, "cursor", false);
-                useHandCursor = GetFastValue(config11, "useHandCursor", false);
-                pixelPerfect = GetFastValue(config11, "pixelPerfect", false);
-                var alphaTolerance = GetFastValue(config11, "alphaTolerance", 1);
+                var config12 = shape;
+                shape = GetFastValue(config12, "hitArea", null);
+                callback = GetFastValue(config12, "hitAreaCallback", null);
+                draggable = GetFastValue(config12, "draggable", false);
+                dropZone = GetFastValue(config12, "dropZone", false);
+                cursor = GetFastValue(config12, "cursor", false);
+                useHandCursor = GetFastValue(config12, "useHandCursor", false);
+                pixelPerfect = GetFastValue(config12, "pixelPerfect", false);
+                var alphaTolerance = GetFastValue(config12, "alphaTolerance", 1);
                 if (pixelPerfect) {
                   shape = {};
                   callback = this.makePixelPerfect(alphaTolerance);
@@ -62500,8 +62500,8 @@
               }
               return this;
             },
-            createCombo: function(keys, config11) {
-              return new KeyCombo(this, keys, config11);
+            createCombo: function(keys, config12) {
+              return new KeyCombo(this, keys, config12);
             },
             checkDown: function(key, duration) {
               if (duration === void 0) {
@@ -62902,20 +62902,20 @@
               var image;
               var data;
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
+                var config12 = key;
+                key = GetFastValue(config12, "key");
                 image = new ImageFile(loader, {
                   key,
-                  url: GetFastValue(config11, "textureURL"),
-                  extension: GetFastValue(config11, "textureExtension", "png"),
-                  normalMap: GetFastValue(config11, "normalMap"),
-                  xhrSettings: GetFastValue(config11, "textureXhrSettings")
+                  url: GetFastValue(config12, "textureURL"),
+                  extension: GetFastValue(config12, "textureExtension", "png"),
+                  normalMap: GetFastValue(config12, "normalMap"),
+                  xhrSettings: GetFastValue(config12, "textureXhrSettings")
                 });
                 data = new JSONFile(loader, {
                   key,
-                  url: GetFastValue(config11, "atlasURL"),
-                  extension: GetFastValue(config11, "atlasExtension", "json"),
-                  xhrSettings: GetFastValue(config11, "atlasXhrSettings")
+                  url: GetFastValue(config12, "atlasURL"),
+                  extension: GetFastValue(config12, "atlasExtension", "json"),
+                  xhrSettings: GetFastValue(config12, "atlasXhrSettings")
                 });
               } else {
                 image = new ImageFile(loader, key, textureURL, textureXhrSettings);
@@ -62972,20 +62972,20 @@
               var image;
               var data;
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
+                var config12 = key;
+                key = GetFastValue(config12, "key");
                 image = new ImageFile(loader, {
                   key,
-                  url: GetFastValue(config11, "textureURL"),
-                  extension: GetFastValue(config11, "textureExtension", "png"),
-                  normalMap: GetFastValue(config11, "normalMap"),
-                  xhrSettings: GetFastValue(config11, "textureXhrSettings")
+                  url: GetFastValue(config12, "textureURL"),
+                  extension: GetFastValue(config12, "textureExtension", "png"),
+                  normalMap: GetFastValue(config12, "normalMap"),
+                  xhrSettings: GetFastValue(config12, "textureXhrSettings")
                 });
                 data = new XMLFile(loader, {
                   key,
-                  url: GetFastValue(config11, "atlasURL"),
-                  extension: GetFastValue(config11, "atlasExtension", "xml"),
-                  xhrSettings: GetFastValue(config11, "atlasXhrSettings")
+                  url: GetFastValue(config12, "atlasURL"),
+                  extension: GetFastValue(config12, "atlasExtension", "xml"),
+                  xhrSettings: GetFastValue(config12, "atlasXhrSettings")
                 });
               } else {
                 image = new ImageFile(loader, key, textureURL, textureXhrSettings);
@@ -63040,13 +63040,13 @@
             Extends: MultiFile,
             initialize: function AudioSpriteFile2(loader, key, jsonURL, audioURL, audioConfig, audioXhrSettings, jsonXhrSettings) {
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                jsonURL = GetFastValue(config11, "jsonURL");
-                audioURL = GetFastValue(config11, "audioURL");
-                audioConfig = GetFastValue(config11, "audioConfig");
-                audioXhrSettings = GetFastValue(config11, "audioXhrSettings");
-                jsonXhrSettings = GetFastValue(config11, "jsonXhrSettings");
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                jsonURL = GetFastValue(config12, "jsonURL");
+                audioURL = GetFastValue(config12, "audioURL");
+                audioConfig = GetFastValue(config12, "audioConfig");
+                audioXhrSettings = GetFastValue(config12, "audioXhrSettings");
+                jsonXhrSettings = GetFastValue(config12, "jsonXhrSettings");
               }
               var data;
               if (!audioURL) {
@@ -63131,12 +63131,12 @@
             initialize: function BinaryFile2(loader, key, url, xhrSettings, dataType) {
               var extension = "bin";
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                url = GetFastValue(config11, "url");
-                xhrSettings = GetFastValue(config11, "xhrSettings");
-                extension = GetFastValue(config11, "extension", extension);
-                dataType = GetFastValue(config11, "dataType", dataType);
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                url = GetFastValue(config12, "url");
+                xhrSettings = GetFastValue(config12, "xhrSettings");
+                extension = GetFastValue(config12, "extension", extension);
+                dataType = GetFastValue(config12, "dataType", dataType);
               }
               var fileConfig = {
                 type: "binary",
@@ -63189,20 +63189,20 @@
               var image;
               var data;
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
+                var config12 = key;
+                key = GetFastValue(config12, "key");
                 image = new ImageFile(loader, {
                   key,
-                  url: GetFastValue(config11, "textureURL"),
-                  extension: GetFastValue(config11, "textureExtension", "png"),
-                  normalMap: GetFastValue(config11, "normalMap"),
-                  xhrSettings: GetFastValue(config11, "textureXhrSettings")
+                  url: GetFastValue(config12, "textureURL"),
+                  extension: GetFastValue(config12, "textureExtension", "png"),
+                  normalMap: GetFastValue(config12, "normalMap"),
+                  xhrSettings: GetFastValue(config12, "textureXhrSettings")
                 });
                 data = new XMLFile(loader, {
                   key,
-                  url: GetFastValue(config11, "fontDataURL"),
-                  extension: GetFastValue(config11, "fontDataExtension", "xml"),
-                  xhrSettings: GetFastValue(config11, "fontDataXhrSettings")
+                  url: GetFastValue(config12, "fontDataURL"),
+                  extension: GetFastValue(config12, "fontDataExtension", "xml"),
+                  xhrSettings: GetFastValue(config12, "fontDataXhrSettings")
                 });
               } else {
                 image = new ImageFile(loader, key, textureURL, textureXhrSettings);
@@ -63257,11 +63257,11 @@
             initialize: function CSSFile2(loader, key, url, xhrSettings) {
               var extension = "css";
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                url = GetFastValue(config11, "url");
-                xhrSettings = GetFastValue(config11, "xhrSettings");
-                extension = GetFastValue(config11, "extension", extension);
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                url = GetFastValue(config12, "url");
+                xhrSettings = GetFastValue(config12, "xhrSettings");
+                extension = GetFastValue(config12, "extension", extension);
               }
               var fileConfig = {
                 type: "script",
@@ -63313,12 +63313,12 @@
             initialize: function GLSLFile2(loader, key, url, shaderType, xhrSettings) {
               var extension = "glsl";
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                url = GetFastValue(config11, "url");
-                shaderType = GetFastValue(config11, "shaderType", "fragment");
-                xhrSettings = GetFastValue(config11, "xhrSettings");
-                extension = GetFastValue(config11, "extension", extension);
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                url = GetFastValue(config12, "url");
+                shaderType = GetFastValue(config12, "shaderType", "fragment");
+                xhrSettings = GetFastValue(config12, "xhrSettings");
+                extension = GetFastValue(config12, "extension", extension);
               } else if (shaderType === void 0) {
                 shaderType = "fragment";
               }
@@ -63475,11 +63475,11 @@
             initialize: function HTMLFile2(loader, key, url, xhrSettings) {
               var extension = "html";
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                url = GetFastValue(config11, "url");
-                xhrSettings = GetFastValue(config11, "xhrSettings");
-                extension = GetFastValue(config11, "extension", extension);
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                url = GetFastValue(config12, "url");
+                xhrSettings = GetFastValue(config12, "xhrSettings");
+                extension = GetFastValue(config12, "extension", extension);
               }
               var fileConfig = {
                 type: "text",
@@ -63533,13 +63533,13 @@
               }
               var extension = "html";
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                url = GetFastValue(config11, "url");
-                xhrSettings = GetFastValue(config11, "xhrSettings");
-                extension = GetFastValue(config11, "extension", extension);
-                width = GetFastValue(config11, "width", width);
-                height = GetFastValue(config11, "height", height);
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                url = GetFastValue(config12, "url");
+                xhrSettings = GetFastValue(config12, "xhrSettings");
+                extension = GetFastValue(config12, "extension", extension);
+                width = GetFastValue(config12, "width", width);
+                height = GetFastValue(config12, "height", height);
               }
               var fileConfig = {
                 type: "html",
@@ -63623,17 +63623,17 @@
             Extends: MultiFile,
             initialize: function MultiAtlasFile2(loader, key, atlasURL, path, baseURL, atlasXhrSettings, textureXhrSettings) {
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                if (GetFastValue(config11, "url", false)) {
-                  atlasURL = GetFastValue(config11, "url");
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                if (GetFastValue(config12, "url", false)) {
+                  atlasURL = GetFastValue(config12, "url");
                 } else {
-                  atlasURL = GetFastValue(config11, "atlasURL");
+                  atlasURL = GetFastValue(config12, "atlasURL");
                 }
-                atlasXhrSettings = GetFastValue(config11, "xhrSettings");
-                path = GetFastValue(config11, "path");
-                baseURL = GetFastValue(config11, "baseURL");
-                textureXhrSettings = GetFastValue(config11, "textureXhrSettings");
+                atlasXhrSettings = GetFastValue(config12, "xhrSettings");
+                path = GetFastValue(config12, "path");
+                baseURL = GetFastValue(config12, "baseURL");
+                textureXhrSettings = GetFastValue(config12, "textureXhrSettings");
               }
               var data = new JSONFile(loader, key, atlasURL, atlasXhrSettings);
               MultiFile.call(this, loader, "multiatlas", key, [data]);
@@ -63647,15 +63647,15 @@
                 this.pending--;
                 if (file.type === "json" && file.data.hasOwnProperty("textures")) {
                   var textures = file.data.textures;
-                  var config11 = this.config;
+                  var config12 = this.config;
                   var loader = this.loader;
                   var currentBaseURL = loader.baseURL;
                   var currentPath = loader.path;
                   var currentPrefix = loader.prefix;
-                  var baseURL = GetFastValue(config11, "baseURL", this.baseURL);
-                  var path = GetFastValue(config11, "path", this.path);
-                  var prefix = GetFastValue(config11, "prefix", this.prefix);
-                  var textureXhrSettings = GetFastValue(config11, "textureXhrSettings");
+                  var baseURL = GetFastValue(config12, "baseURL", this.baseURL);
+                  var path = GetFastValue(config12, "path", this.path);
+                  var prefix = GetFastValue(config12, "prefix", this.prefix);
+                  var textureXhrSettings = GetFastValue(config12, "textureXhrSettings");
                   loader.setBaseURL(baseURL);
                   loader.setPath(path);
                   loader.setPrefix(prefix);
@@ -63749,11 +63749,11 @@
               var extension = "js";
               var files = [];
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                url = GetFastValue(config11, "url");
-                xhrSettings = GetFastValue(config11, "xhrSettings");
-                extension = GetFastValue(config11, "extension", extension);
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                url = GetFastValue(config12, "url");
+                xhrSettings = GetFastValue(config12, "xhrSettings");
+                extension = GetFastValue(config12, "extension", extension);
               }
               if (!Array.isArray(url)) {
                 url = [url];
@@ -63856,13 +63856,13 @@
             initialize: function PluginFile2(loader, key, url, start, mapping, xhrSettings) {
               var extension = "js";
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                url = GetFastValue(config11, "url");
-                xhrSettings = GetFastValue(config11, "xhrSettings");
-                extension = GetFastValue(config11, "extension", extension);
-                start = GetFastValue(config11, "start");
-                mapping = GetFastValue(config11, "mapping");
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                url = GetFastValue(config12, "url");
+                xhrSettings = GetFastValue(config12, "xhrSettings");
+                extension = GetFastValue(config12, "extension", extension);
+                start = GetFastValue(config12, "start");
+                mapping = GetFastValue(config12, "mapping");
               }
               var fileConfig = {
                 type: "plugin",
@@ -63885,9 +63885,9 @@
             },
             onProcess: function() {
               var pluginManager = this.loader.systems.plugins;
-              var config11 = this.config;
-              var start = GetFastValue(config11, "start", false);
-              var mapping = GetFastValue(config11, "mapping", null);
+              var config12 = this.config;
+              var start = GetFastValue(config12, "start", false);
+              var mapping = GetFastValue(config12, "mapping", null);
               if (this.state === CONST.FILE_POPULATED) {
                 pluginManager.install(this.key, this.data, start, mapping);
               } else {
@@ -63936,11 +63936,11 @@
             initialize: function SceneFile2(loader, key, url, xhrSettings) {
               var extension = "js";
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                url = GetFastValue(config11, "url");
-                xhrSettings = GetFastValue(config11, "xhrSettings");
-                extension = GetFastValue(config11, "extension", extension);
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                url = GetFastValue(config12, "url");
+                xhrSettings = GetFastValue(config12, "xhrSettings");
+                extension = GetFastValue(config12, "extension", extension);
               }
               var fileConfig = {
                 type: "text",
@@ -63994,13 +63994,13 @@
             initialize: function ScenePluginFile2(loader, key, url, systemKey, sceneKey, xhrSettings) {
               var extension = "js";
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                url = GetFastValue(config11, "url");
-                xhrSettings = GetFastValue(config11, "xhrSettings");
-                extension = GetFastValue(config11, "extension", extension);
-                systemKey = GetFastValue(config11, "systemKey");
-                sceneKey = GetFastValue(config11, "sceneKey");
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                url = GetFastValue(config12, "url");
+                xhrSettings = GetFastValue(config12, "xhrSettings");
+                extension = GetFastValue(config12, "extension", extension);
+                systemKey = GetFastValue(config12, "systemKey");
+                sceneKey = GetFastValue(config12, "sceneKey");
               }
               var fileConfig = {
                 type: "scenePlugin",
@@ -64023,10 +64023,10 @@
             },
             onProcess: function() {
               var pluginManager = this.loader.systems.plugins;
-              var config11 = this.config;
+              var config12 = this.config;
               var key = this.key;
-              var systemKey = GetFastValue(config11, "systemKey", key);
-              var sceneKey = GetFastValue(config11, "sceneKey", key);
+              var systemKey = GetFastValue(config12, "systemKey", key);
+              var sceneKey = GetFastValue(config12, "sceneKey", key);
               if (this.state === CONST.FILE_POPULATED) {
                 pluginManager.installScenePlugin(systemKey, this.data, sceneKey, this.loader.scene, true);
               } else {
@@ -64103,12 +64103,12 @@
             initialize: function SVGFile2(loader, key, url, svgConfig, xhrSettings) {
               var extension = "svg";
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                url = GetFastValue(config11, "url");
-                svgConfig = GetFastValue(config11, "svgConfig", {});
-                xhrSettings = GetFastValue(config11, "xhrSettings");
-                extension = GetFastValue(config11, "extension", extension);
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                url = GetFastValue(config12, "url");
+                svgConfig = GetFastValue(config12, "svgConfig", {});
+                xhrSettings = GetFastValue(config12, "xhrSettings");
+                extension = GetFastValue(config12, "extension", extension);
               }
               var fileConfig = {
                 type: "svg",
@@ -64223,11 +64223,11 @@
             initialize: function TilemapCSVFile2(loader, key, url, xhrSettings) {
               var extension = "csv";
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
-                url = GetFastValue(config11, "url");
-                xhrSettings = GetFastValue(config11, "xhrSettings");
-                extension = GetFastValue(config11, "extension", extension);
+                var config12 = key;
+                key = GetFastValue(config12, "key");
+                url = GetFastValue(config12, "url");
+                xhrSettings = GetFastValue(config12, "xhrSettings");
+                extension = GetFastValue(config12, "extension", extension);
               }
               var fileConfig = {
                 type: "tilemapCSV",
@@ -64353,20 +64353,20 @@
               var image;
               var data;
               if (IsPlainObject(key)) {
-                var config11 = key;
-                key = GetFastValue(config11, "key");
+                var config12 = key;
+                key = GetFastValue(config12, "key");
                 image = new ImageFile(loader, {
                   key,
-                  url: GetFastValue(config11, "textureURL"),
-                  extension: GetFastValue(config11, "textureExtension", "png"),
-                  normalMap: GetFastValue(config11, "normalMap"),
-                  xhrSettings: GetFastValue(config11, "textureXhrSettings")
+                  url: GetFastValue(config12, "textureURL"),
+                  extension: GetFastValue(config12, "textureExtension", "png"),
+                  normalMap: GetFastValue(config12, "normalMap"),
+                  xhrSettings: GetFastValue(config12, "textureXhrSettings")
                 });
                 data = new TextFile(loader, {
                   key,
-                  url: GetFastValue(config11, "atlasURL"),
-                  extension: GetFastValue(config11, "atlasExtension", "txt"),
-                  xhrSettings: GetFastValue(config11, "atlasXhrSettings")
+                  url: GetFastValue(config12, "atlasURL"),
+                  extension: GetFastValue(config12, "atlasExtension", "txt"),
+                  xhrSettings: GetFastValue(config12, "atlasXhrSettings")
                 });
               } else {
                 image = new ImageFile(loader, key, textureURL, textureXhrSettings);
@@ -64715,12 +64715,12 @@
                 if (!Object.prototype.hasOwnProperty.call(pack, key)) {
                   continue;
                 }
-                var config11 = pack[key];
-                var baseURL = GetFastValue(config11, "baseURL", currentBaseURL);
-                var path = GetFastValue(config11, "path", currentPath);
-                var prefix = GetFastValue(config11, "prefix", currentPrefix);
-                var files = GetFastValue(config11, "files", null);
-                var defaultType = GetFastValue(config11, "defaultType", "void");
+                var config12 = pack[key];
+                var baseURL = GetFastValue(config12, "baseURL", currentBaseURL);
+                var path = GetFastValue(config12, "path", currentPath);
+                var prefix = GetFastValue(config12, "prefix", currentPrefix);
+                var files = GetFastValue(config12, "files", null);
+                var defaultType = GetFastValue(config12, "defaultType", "void");
                 if (Array.isArray(files)) {
                   this.setBaseURL(baseURL);
                   this.setPath(path);
@@ -64971,8 +64971,8 @@
             getConfig: function() {
               var gameConfig = this.systems.game.config.physics;
               var sceneConfig = this.systems.settings.physics;
-              var config11 = Merge(GetFastValue(sceneConfig, "arcade", {}), GetFastValue(gameConfig, "arcade", {}));
-              return config11;
+              var config12 = Merge(GetFastValue(sceneConfig, "arcade", {}), GetFastValue(gameConfig, "arcade", {}));
+              return config12;
             },
             overlap: function(object1, object2, overlapCallback, processCallback, callbackContext) {
               if (overlapCallback === void 0) {
@@ -66157,11 +66157,11 @@
           var GetFastValue = __webpack_require__(2);
           var Vertices = __webpack_require__(86);
           var PhysicsEditorParser = {
-            parseBody: function(x, y, config11, options) {
+            parseBody: function(x, y, config12, options) {
               if (options === void 0) {
                 options = {};
               }
-              var fixtureConfigs = GetFastValue(config11, "fixtures", []);
+              var fixtureConfigs = GetFastValue(config12, "fixtures", []);
               var fixtures = [];
               for (var fc = 0; fc < fixtureConfigs.length; fc++) {
                 var fixtureParts = this.parseFixture(fixtureConfigs[fc]);
@@ -66169,7 +66169,7 @@
                   fixtures.push(fixtureParts[i]);
                 }
               }
-              var matterConfig = Common.clone(config11, true);
+              var matterConfig = Common.clone(config12, true);
               Common.extend(matterConfig, options, true);
               delete matterConfig.fixtures;
               delete matterConfig.type;
@@ -66219,12 +66219,12 @@
           var Bodies = __webpack_require__(109);
           var Body = __webpack_require__(62);
           var PhysicsJSONParser = {
-            parseBody: function(x, y, config11, options) {
+            parseBody: function(x, y, config12, options) {
               if (options === void 0) {
                 options = {};
               }
               var body;
-              var vertexSets = config11.vertices;
+              var vertexSets = config12.vertices;
               if (vertexSets.length === 1) {
                 options.vertices = vertexSets[0];
                 body = Body.create(options);
@@ -66241,7 +66241,7 @@
                 options.parts = parts;
                 body = Body.create(options);
               }
-              body.label = config11.label;
+              body.label = config12.label;
               Body.setPosition(body, {x, y});
               return body;
             }
@@ -67172,42 +67172,42 @@
               this.manager.queueOp("start", key, data);
               return this;
             },
-            transition: function(config11) {
-              if (config11 === void 0) {
-                config11 = {};
+            transition: function(config12) {
+              if (config12 === void 0) {
+                config12 = {};
               }
-              var key = GetFastValue(config11, "target", false);
+              var key = GetFastValue(config12, "target", false);
               var target = this.manager.getScene(key);
               if (!key || !this.checkValidTransition(target)) {
                 return false;
               }
-              var duration = GetFastValue(config11, "duration", 1e3);
+              var duration = GetFastValue(config12, "duration", 1e3);
               this._elapsed = 0;
               this._target = target;
               this._duration = duration;
-              this._willSleep = GetFastValue(config11, "sleep", false);
-              this._willRemove = GetFastValue(config11, "remove", false);
-              var callback = GetFastValue(config11, "onUpdate", null);
+              this._willSleep = GetFastValue(config12, "sleep", false);
+              this._willRemove = GetFastValue(config12, "remove", false);
+              var callback = GetFastValue(config12, "onUpdate", null);
               if (callback) {
                 this._onUpdate = callback;
-                this._onUpdateScope = GetFastValue(config11, "onUpdateScope", this.scene);
+                this._onUpdateScope = GetFastValue(config12, "onUpdateScope", this.scene);
               }
-              var allowInput = GetFastValue(config11, "allowInput", false);
+              var allowInput = GetFastValue(config12, "allowInput", false);
               this.settings.transitionAllowInput = allowInput;
               var targetSettings = target.sys.settings;
               targetSettings.isTransition = true;
               targetSettings.transitionFrom = this.scene;
               targetSettings.transitionDuration = duration;
               targetSettings.transitionAllowInput = allowInput;
-              if (GetFastValue(config11, "moveAbove", false)) {
+              if (GetFastValue(config12, "moveAbove", false)) {
                 this.manager.moveAbove(this.key, key);
-              } else if (GetFastValue(config11, "moveBelow", false)) {
+              } else if (GetFastValue(config12, "moveBelow", false)) {
                 this.manager.moveBelow(this.key, key);
               }
               if (target.sys.isSleeping()) {
-                target.sys.wake(GetFastValue(config11, "data"));
+                target.sys.wake(GetFastValue(config12, "data"));
               } else {
-                this.manager.start(key, GetFastValue(config11, "data"));
+                this.manager.start(key, GetFastValue(config12, "data"));
               }
               this.systems.events.emit(Events.TRANSITION_OUT, target, duration);
               this.systems.events.on(Events.UPDATE, this.step, this);
@@ -68690,8 +68690,8 @@
            */
           var GameObjectCreator = __webpack_require__(16);
           var ParseToTilemap = __webpack_require__(227);
-          GameObjectCreator.register("tilemap", function(config11) {
-            var c = config11 !== void 0 ? config11 : {};
+          GameObjectCreator.register("tilemap", function(config12) {
+            var c = config12 !== void 0 ? config12 : {};
             return ParseToTilemap(this.scene, c.key, c.tileWidth, c.tileHeight, c.width, c.height, c.data, c.insertNull);
           });
         },
@@ -68766,8 +68766,8 @@
               eventEmitter.on(SceneEvents.UPDATE, this.update, this);
               eventEmitter.once(SceneEvents.SHUTDOWN, this.shutdown, this);
             },
-            addEvent: function(config11) {
-              var event = new TimerEvent(config11);
+            addEvent: function(config12) {
+              var event = new TimerEvent(config12);
               this._pendingInsertion.push(event);
               return event;
             },
@@ -69104,22 +69104,22 @@
               eventEmitter.once(SceneEvents.SHUTDOWN, this.shutdown, this);
               this.timeScale = 1;
             },
-            createTimeline: function(config11) {
-              return TimelineBuilder(this, config11);
+            createTimeline: function(config12) {
+              return TimelineBuilder(this, config12);
             },
-            timeline: function(config11) {
-              var timeline = TimelineBuilder(this, config11);
+            timeline: function(config12) {
+              var timeline = TimelineBuilder(this, config12);
               if (!timeline.paused) {
                 this._add.push(timeline);
                 this._toProcess++;
               }
               return timeline;
             },
-            create: function(config11) {
-              return TweenBuilder(this, config11);
+            create: function(config12) {
+              return TweenBuilder(this, config12);
             },
-            add: function(config11) {
-              var tween = TweenBuilder(this, config11);
+            add: function(config12) {
+              var tween = TweenBuilder(this, config12);
               this._add.push(tween);
               this._toProcess++;
               return tween;
@@ -69129,8 +69129,8 @@
               this._toProcess++;
               return this;
             },
-            addCounter: function(config11) {
-              var tween = NumberTweenBuilder(this, config11);
+            addCounter: function(config12) {
+              var tween = NumberTweenBuilder(this, config12);
               this._add.push(tween);
               this._toProcess++;
               return tween;
@@ -69712,11 +69712,11 @@
               this.world.add(body);
               return body;
             },
-            fromPhysicsEditor: function(x, y, config11, options, addToWorld) {
+            fromPhysicsEditor: function(x, y, config12, options, addToWorld) {
               if (addToWorld === void 0) {
                 addToWorld = true;
               }
-              var body = PhysicsEditorParser.parseBody(x, y, config11, options);
+              var body = PhysicsEditorParser.parseBody(x, y, config12, options);
               if (addToWorld && !this.world.has(body)) {
                 this.world.add(body);
               }
@@ -69747,14 +69747,14 @@
               }
               return body;
             },
-            fromJSON: function(x, y, config11, options, addToWorld) {
+            fromJSON: function(x, y, config12, options, addToWorld) {
               if (options === void 0) {
                 options = {};
               }
               if (addToWorld === void 0) {
                 addToWorld = true;
               }
-              var body = PhysicsJSONParser.parseBody(x, y, config11, options);
+              var body = PhysicsJSONParser.parseBody(x, y, config12, options);
               if (body && addToWorld) {
                 this.world.add(body);
               }
@@ -70670,22 +70670,22 @@
           var Vector = __webpack_require__(99);
           var World = new Class({
             Extends: EventEmitter,
-            initialize: function World2(scene, config11) {
+            initialize: function World2(scene, config12) {
               EventEmitter.call(this);
               this.scene = scene;
-              this.engine = Engine.create(config11);
+              this.engine = Engine.create(config12);
               this.localWorld = this.engine.world;
-              var gravity = GetValue(config11, "gravity", null);
+              var gravity = GetValue(config12, "gravity", null);
               if (gravity) {
                 this.setGravity(gravity.x, gravity.y, gravity.scale);
               } else if (gravity === false) {
                 this.setGravity(0, 0, 0);
               }
               this.walls = {left: null, right: null, top: null, bottom: null};
-              this.enabled = GetValue(config11, "enabled", true);
-              this.correction = GetValue(config11, "correction", 1);
-              this.getDelta = GetValue(config11, "getDelta", this.update60Hz);
-              var runnerConfig = GetFastValue(config11, "runner", {});
+              this.enabled = GetValue(config12, "enabled", true);
+              this.correction = GetValue(config12, "correction", 1);
+              this.getDelta = GetValue(config12, "getDelta", this.update60Hz);
+              var runnerConfig = GetFastValue(config12, "runner", {});
               var hasFPS = GetFastValue(runnerConfig, "fps", false);
               var fps = GetFastValue(runnerConfig, "fps", 60);
               var delta = GetFastValue(runnerConfig, "delta", 1e3 / fps);
@@ -70709,8 +70709,8 @@
                 deltaMin,
                 deltaMax
               };
-              this.autoUpdate = GetValue(config11, "autoUpdate", true);
-              var debugConfig = GetValue(config11, "debug", false);
+              this.autoUpdate = GetValue(config12, "autoUpdate", true);
+              var debugConfig = GetValue(config12, "debug", false);
               this.drawDebug = typeof debugConfig === "object" ? true : debugConfig;
               this.debugGraphic;
               this.debugConfig = {
@@ -70765,8 +70765,8 @@
                 this.createDebugGraphic();
               }
               this.setEventsProxy();
-              if (GetFastValue(config11, "setBounds", false)) {
-                var boundsConfig = config11["setBounds"];
+              if (GetFastValue(config12, "setBounds", false)) {
+                var boundsConfig = config12["setBounds"];
                 if (typeof boundsConfig === "boolean") {
                   this.setBounds();
                 } else {
@@ -70808,24 +70808,24 @@
             },
             setBodyRenderStyle: function(body, lineColor, lineOpacity, lineThickness, fillColor, fillOpacity) {
               var render = body.render;
-              var config11 = this.debugConfig;
+              var config12 = this.debugConfig;
               if (!render) {
                 return this;
               }
               if (lineColor === void 0 || lineColor === null) {
-                lineColor = body.isStatic ? config11.staticLineColor : config11.lineColor;
+                lineColor = body.isStatic ? config12.staticLineColor : config12.lineColor;
               }
               if (lineOpacity === void 0 || lineOpacity === null) {
-                lineOpacity = config11.lineOpacity;
+                lineOpacity = config12.lineOpacity;
               }
               if (lineThickness === void 0 || lineThickness === null) {
-                lineThickness = config11.lineThickness;
+                lineThickness = config12.lineThickness;
               }
               if (fillColor === void 0 || fillColor === null) {
-                fillColor = body.isStatic ? config11.staticFillColor : config11.fillColor;
+                fillColor = body.isStatic ? config12.staticFillColor : config12.fillColor;
               }
               if (fillOpacity === void 0 || fillOpacity === null) {
-                fillOpacity = config11.fillOpacity;
+                fillOpacity = config12.fillOpacity;
               }
               if (lineColor !== false) {
                 render.lineColor = lineColor;
@@ -70846,34 +70846,34 @@
             },
             setConstraintRenderStyle: function(constraint, lineColor, lineOpacity, lineThickness, pinSize, anchorColor, anchorSize) {
               var render = constraint.render;
-              var config11 = this.debugConfig;
+              var config12 = this.debugConfig;
               if (!render) {
                 return this;
               }
               if (lineColor === void 0 || lineColor === null) {
                 var type = render.type;
                 if (type === "line") {
-                  lineColor = config11.jointColor;
+                  lineColor = config12.jointColor;
                 } else if (type === "pin") {
-                  lineColor = config11.pinColor;
+                  lineColor = config12.pinColor;
                 } else if (type === "spring") {
-                  lineColor = config11.springColor;
+                  lineColor = config12.springColor;
                 }
               }
               if (lineOpacity === void 0 || lineOpacity === null) {
-                lineOpacity = config11.jointLineOpacity;
+                lineOpacity = config12.jointLineOpacity;
               }
               if (lineThickness === void 0 || lineThickness === null) {
-                lineThickness = config11.jointLineThickness;
+                lineThickness = config12.jointLineThickness;
               }
               if (pinSize === void 0 || pinSize === null) {
-                pinSize = config11.pinSize;
+                pinSize = config12.pinSize;
               }
               if (anchorColor === void 0 || anchorColor === null) {
-                anchorColor = config11.anchorColor;
+                anchorColor = config12.anchorColor;
               }
               if (anchorSize === void 0 || anchorSize === null) {
-                anchorSize = config11.anchorSize;
+                anchorSize = config12.anchorSize;
               }
               if (lineColor !== false) {
                 render.lineColor = lineColor;
@@ -71162,34 +71162,34 @@
               if (!this.drawDebug) {
                 return;
               }
-              var config11 = this.debugConfig;
+              var config12 = this.debugConfig;
               var engine = this.engine;
               var graphics = this.debugGraphic;
               var bodies = Composite.allBodies(this.localWorld);
               this.debugGraphic.clear();
-              if (config11.showBroadphase && engine.broadphase.controller) {
-                this.renderGrid(engine.broadphase, graphics, config11.broadphaseColor, 0.5);
+              if (config12.showBroadphase && engine.broadphase.controller) {
+                this.renderGrid(engine.broadphase, graphics, config12.broadphaseColor, 0.5);
               }
-              if (config11.showBounds) {
-                this.renderBodyBounds(bodies, graphics, config11.boundsColor, 0.5);
+              if (config12.showBounds) {
+                this.renderBodyBounds(bodies, graphics, config12.boundsColor, 0.5);
               }
-              if (config11.showBody || config11.showStaticBody) {
+              if (config12.showBody || config12.showStaticBody) {
                 this.renderBodies(bodies);
               }
-              if (config11.showJoint) {
+              if (config12.showJoint) {
                 this.renderJoints();
               }
-              if (config11.showAxes || config11.showAngleIndicator) {
-                this.renderBodyAxes(bodies, graphics, config11.showAxes, config11.angleColor, 0.5);
+              if (config12.showAxes || config12.showAngleIndicator) {
+                this.renderBodyAxes(bodies, graphics, config12.showAxes, config12.angleColor, 0.5);
               }
-              if (config11.showVelocity) {
-                this.renderBodyVelocity(bodies, graphics, config11.velocityColor, 1, 2);
+              if (config12.showVelocity) {
+                this.renderBodyVelocity(bodies, graphics, config12.velocityColor, 1, 2);
               }
-              if (config11.showSeparations) {
-                this.renderSeparations(engine.pairs.list, graphics, config11.separationColor);
+              if (config12.showSeparations) {
+                this.renderSeparations(engine.pairs.list, graphics, config12.separationColor);
               }
-              if (config11.showCollisions) {
-                this.renderCollisions(engine.pairs.list, graphics, config11.collisionColor);
+              if (config12.showCollisions) {
+                this.renderCollisions(engine.pairs.list, graphics, config12.collisionColor);
               }
             },
             renderGrid: function(grid, graphics, lineColor, lineOpacity) {
@@ -71333,18 +71333,18 @@
             },
             renderBodies: function(bodies) {
               var graphics = this.debugGraphic;
-              var config11 = this.debugConfig;
-              var showBody = config11.showBody;
-              var showStaticBody = config11.showStaticBody;
-              var showSleeping = config11.showSleeping;
-              var showInternalEdges = config11.showInternalEdges;
-              var showConvexHulls = config11.showConvexHulls;
-              var renderFill = config11.renderFill;
-              var renderLine = config11.renderLine;
-              var staticBodySleepOpacity = config11.staticBodySleepOpacity;
-              var sleepFillColor = config11.sleepFillColor;
-              var sleepLineColor = config11.sleepLineColor;
-              var hullColor = config11.hullColor;
+              var config12 = this.debugConfig;
+              var showBody = config12.showBody;
+              var showStaticBody = config12.showStaticBody;
+              var showSleeping = config12.showSleeping;
+              var showInternalEdges = config12.showInternalEdges;
+              var showConvexHulls = config12.showConvexHulls;
+              var renderFill = config12.renderFill;
+              var renderLine = config12.renderLine;
+              var staticBodySleepOpacity = config12.staticBodySleepOpacity;
+              var sleepFillColor = config12.sleepFillColor;
+              var sleepLineColor = config12.sleepLineColor;
+              var hullColor = config12.hullColor;
               for (var i = 0; i < bodies.length; i++) {
                 var body = bodies[i];
                 if (!body.render.visible) {
@@ -71396,16 +71396,16 @@
               if (fillOpacity === void 0) {
                 fillOpacity = null;
               }
-              var config11 = this.debugConfig;
-              var sensorFillColor = config11.sensorFillColor;
-              var sensorLineColor = config11.sensorLineColor;
+              var config12 = this.debugConfig;
+              var sensorFillColor = config12.sensorFillColor;
+              var sensorLineColor = config12.sensorLineColor;
               var parts = body.parts;
               var partsLength = parts.length;
               for (var k = partsLength > 1 ? 1 : 0; k < partsLength; k++) {
                 var part = parts[k];
                 var render = part.render;
                 var opacity = render.opacity;
-                if (!render.visible || opacity === 0 || part.isSensor && !config11.showSensors) {
+                if (!render.visible || opacity === 0 || part.isSensor && !config12.showSensors) {
                   continue;
                 }
                 var circleRadius = part.circleRadius;
@@ -71452,12 +71452,12 @@
                   graphics.strokePath();
                 }
               }
-              if (config11.showPositions && !body.isStatic) {
+              if (config12.showPositions && !body.isStatic) {
                 var px = body.position.x;
                 var py = body.position.y;
-                var hs = Math.ceil(config11.positionSize / 2);
-                graphics.fillStyle(config11.positionColor, 1);
-                graphics.fillRect(px - hs, py - hs, config11.positionSize, config11.positionSize);
+                var hs = Math.ceil(config12.positionSize / 2);
+                graphics.fillStyle(config12.positionColor, 1);
+                graphics.fillRect(px - hs, py - hs, config12.positionSize, config12.positionSize);
               }
               return this;
             },
@@ -71484,13 +71484,13 @@
               var graphics = this.debugGraphic;
               var constraints = Composite.allConstraints(this.localWorld);
               for (var i = 0; i < constraints.length; i++) {
-                var config11 = constraints[i].render;
-                var lineColor = config11.lineColor;
-                var lineOpacity = config11.lineOpacity;
-                var lineThickness = config11.lineThickness;
-                var pinSize = config11.pinSize;
-                var anchorColor = config11.anchorColor;
-                var anchorSize = config11.anchorSize;
+                var config12 = constraints[i].render;
+                var lineColor = config12.lineColor;
+                var lineOpacity = config12.lineOpacity;
+                var lineThickness = config12.lineThickness;
+                var pinSize = config12.pinSize;
+                var anchorColor = config12.anchorColor;
+                var anchorSize = config12.anchorSize;
                 this.renderConstraint(constraints[i], graphics, lineColor, lineOpacity, lineThickness, pinSize, anchorColor, anchorSize);
               }
             },
@@ -71570,7 +71570,7 @@
             __webpack_require__(518);
             var CONST = __webpack_require__(33);
             var Extend = __webpack_require__(18);
-            var Phaser11 = {
+            var Phaser12 = {
               Actions: __webpack_require__(241),
               Animations: __webpack_require__(638),
               BlendModes: __webpack_require__(52),
@@ -71605,15 +71605,15 @@
               Utils: __webpack_require__(1373)
             };
             if (true) {
-              Phaser11.Sound = __webpack_require__(1383);
+              Phaser12.Sound = __webpack_require__(1383);
             }
             if (false) {
             }
             if (false) {
             }
-            Phaser11 = Extend(false, Phaser11, CONST);
-            module2.exports = Phaser11;
-            global.Phaser = Phaser11;
+            Phaser12 = Extend(false, Phaser12, CONST);
+            module2.exports = Phaser12;
+            global.Phaser = Phaser12;
           }).call(this, __webpack_require__(517));
         },
         function(module2, exports2, __webpack_require__) {
@@ -71992,40 +71992,40 @@
               }
               return this;
             },
-            setBody: function(config11, options) {
-              if (!config11) {
+            setBody: function(config12, options) {
+              if (!config12) {
                 return this;
               }
               var body;
-              if (typeof config11 === "string") {
-                config11 = {type: config11};
+              if (typeof config12 === "string") {
+                config12 = {type: config12};
               }
-              var shapeType = GetFastValue(config11, "type", "rectangle");
-              var bodyX = GetFastValue(config11, "x", this._tempVec2.x);
-              var bodyY = GetFastValue(config11, "y", this._tempVec2.y);
-              var bodyWidth = GetFastValue(config11, "width", this.width);
-              var bodyHeight = GetFastValue(config11, "height", this.height);
+              var shapeType = GetFastValue(config12, "type", "rectangle");
+              var bodyX = GetFastValue(config12, "x", this._tempVec2.x);
+              var bodyY = GetFastValue(config12, "y", this._tempVec2.y);
+              var bodyWidth = GetFastValue(config12, "width", this.width);
+              var bodyHeight = GetFastValue(config12, "height", this.height);
               switch (shapeType) {
                 case "rectangle":
                   body = Bodies.rectangle(bodyX, bodyY, bodyWidth, bodyHeight, options);
                   break;
                 case "circle":
-                  var radius = GetFastValue(config11, "radius", Math.max(bodyWidth, bodyHeight) / 2);
-                  var maxSides = GetFastValue(config11, "maxSides", 25);
+                  var radius = GetFastValue(config12, "radius", Math.max(bodyWidth, bodyHeight) / 2);
+                  var maxSides = GetFastValue(config12, "maxSides", 25);
                   body = Bodies.circle(bodyX, bodyY, radius, options, maxSides);
                   break;
                 case "trapezoid":
-                  var slope = GetFastValue(config11, "slope", 0.5);
+                  var slope = GetFastValue(config12, "slope", 0.5);
                   body = Bodies.trapezoid(bodyX, bodyY, bodyWidth, bodyHeight, slope, options);
                   break;
                 case "polygon":
-                  var sides = GetFastValue(config11, "sides", 5);
-                  var pRadius = GetFastValue(config11, "radius", Math.max(bodyWidth, bodyHeight) / 2);
+                  var sides = GetFastValue(config12, "sides", 5);
+                  var pRadius = GetFastValue(config12, "radius", Math.max(bodyWidth, bodyHeight) / 2);
                   body = Bodies.polygon(bodyX, bodyY, sides, pRadius, options);
                   break;
                 case "fromVertices":
                 case "fromVerts":
-                  var verts = GetFastValue(config11, "verts", null);
+                  var verts = GetFastValue(config12, "verts", null);
                   if (verts) {
                     if (typeof verts === "string") {
                       verts = Vertices.fromPath(verts);
@@ -72034,22 +72034,22 @@
                       Body.setVertices(this.body, verts);
                       body = this.body;
                     } else {
-                      var flagInternal = GetFastValue(config11, "flagInternal", false);
-                      var removeCollinear = GetFastValue(config11, "removeCollinear", 0.01);
-                      var minimumArea = GetFastValue(config11, "minimumArea", 10);
+                      var flagInternal = GetFastValue(config12, "flagInternal", false);
+                      var removeCollinear = GetFastValue(config12, "removeCollinear", 0.01);
+                      var minimumArea = GetFastValue(config12, "minimumArea", 10);
                       body = Bodies.fromVertices(bodyX, bodyY, verts, options, flagInternal, removeCollinear, minimumArea);
                     }
                   }
                   break;
                 case "fromPhysicsEditor":
-                  body = PhysicsEditorParser.parseBody(bodyX, bodyY, config11, options);
+                  body = PhysicsEditorParser.parseBody(bodyX, bodyY, config12, options);
                   break;
                 case "fromPhysicsTracer":
-                  body = PhysicsJSONParser.parseBody(bodyX, bodyY, config11, options);
+                  body = PhysicsJSONParser.parseBody(bodyX, bodyY, config12, options);
                   break;
               }
               if (body) {
-                this.setExistingBody(body, config11.addToWorld);
+                this.setExistingBody(body, config12.addToWorld);
               }
               return this;
             }
@@ -72700,8 +72700,8 @@
             getConfig: function() {
               var gameConfig = this.systems.game.config.physics;
               var sceneConfig = this.systems.settings.physics;
-              var config11 = Merge(GetFastValue(sceneConfig, "matter", {}), GetFastValue(gameConfig, "matter", {}));
-              return config11;
+              var config12 = Merge(GetFastValue(sceneConfig, "matter", {}), GetFastValue(gameConfig, "matter", {}));
+              return config12;
             },
             enableAttractorPlugin: function() {
               Plugin.register(MatterAttractors);
@@ -73324,10 +73324,11 @@
 
   // src/config.js
   const CONFIG = {
-    DEFAULT_HEIGHT: 666,
-    DEFAULT_WIDTH: 1e3,
-    DEFAULT_GRAVITY: 200,
-    WALK_SPEED: 100
+    DEFAULT_WIDTH: 717,
+    DEFAULT_HEIGHT: 556,
+    DEFAULT_GRAVITY: 500,
+    WALK_SPEED: 200,
+    JUMP_SPEED: 350
   };
   var config_default = CONFIG;
 
@@ -73376,14 +73377,14 @@
   var Example_default = ExampleScene;
 
   // src/sprites/Witch.js
-  const phaser10 = __toModule(require_phaser());
-  class WitchSprite extends phaser10.default.Physics.Arcade.Sprite {
+  const phaser11 = __toModule(require_phaser());
+  class WitchSprite extends phaser11.default.Physics.Arcade.Sprite {
     constructor(scene, x, y) {
       super(scene, x, y, "witch", 1);
       if (!WitchSprite.animInitialized) {
         WitchSprite.setupAnim(scene);
       }
-      scene.physics.world.enableBody(this, phaser10.default.Physics.Arcade.DYNAMIC_BODY);
+      scene.physics.world.enableBody(this, phaser11.default.Physics.Arcade.DYNAMIC_BODY);
       this.setImmovable(true);
       this.body.setAllowGravity(false);
       this.body.setCollideWorldBounds(true);
@@ -73440,8 +73441,8 @@
   var Witch_default = WitchSprite;
 
   // src/sprites/Slime.js
-  const phaser9 = __toModule(require_phaser());
-  class SlimeSprite extends phaser9.default.GameObjects.Sprite {
+  const phaser10 = __toModule(require_phaser());
+  class SlimeSprite extends phaser10.default.GameObjects.Sprite {
     constructor(scene, x, y) {
       super(scene, x, y, "slime", 1);
       if (!SlimeSprite.animInitialized) {
@@ -73462,57 +73463,6 @@
   };
   var Slime_default = SlimeSprite;
 
-  // src/sprites/HatGuy.js
-  const phaser7 = __toModule(require_phaser());
-  class HatGuySprite extends phaser7.default.Physics.Arcade.Sprite {
-    constructor(scene, x, y) {
-      super(scene, x, y, "hatGuy", 1);
-      if (!HatGuySprite.animInitialized) {
-        HatGuySprite.setupAnim(scene);
-      }
-      scene.physics.world.enableBody(this, phaser7.default.Physics.Arcade.DYNAMIC_BODY);
-      this.setImmovable(true);
-      this.body.setCollideWorldBounds(true);
-      scene.add.existing(this);
-    }
-    printMsg(msg) {
-      console.log("HatGuy Says: " + msg);
-    }
-    move(x, y) {
-      if (this.resetTween && this.resetTween.totalProgress < 1) {
-        return;
-      }
-      if (Math.abs(x) > 0) {
-        if (this.body.onFloor()) {
-          this.anims.play("hatGuyIDLE", true);
-        }
-        this.setFlipX(x < 0);
-        this.setVelocityX(x * config_default.WALK_SPEED);
-      } else {
-        if (this.body.onFloor()) {
-          this.anims.play("hatGuyIDLE", true);
-        }
-        this.setVelocityX(0);
-      }
-      if (y < 0 && this.body.onFloor()) {
-        this.anims.play("hatGuyIDLE", true);
-        this.sfx.play("jumpSound", {volume: 0.05});
-        this.setVelocityY(y * config_default.JUMP_SPEED);
-      }
-    }
-  }
-  HatGuySprite.animInitialized = false;
-  HatGuySprite.setupAnim = (scene) => {
-    scene.anims.create({
-      key: "hatGuyIDLE",
-      frameRate: 6,
-      repeat: -1,
-      frames: scene.anims.generateFrameNumbers("hatGuy", {start: 1, end: 4})
-    });
-    HatGuySprite.animInitialized = true;
-  };
-  var HatGuy_default = HatGuySprite;
-
   // src/scenes/Start.js
   const phaser5 = __toModule(require_phaser());
   class StartScene extends phaser5.default.Scene {
@@ -73527,7 +73477,6 @@
       this.load.image("red", "assets/particles/red.png");
       this.load.spritesheet("witch", "assets/sprites/WitchWalk.png", {frameWidth: 32, frameHeight: 32});
       this.load.spritesheet("slime", "assets/sprites/Slime.png", {frameWidth: 32, frameHeight: 42});
-      this.load.spritesheet("hatGuy", "assets/sprites/HighHatGuyIdle.png", {frameWidth: 32, frameHeight: 32});
       this.load.audioSprite("gameAudio", "assets/audio/gameAudioSprite.json", [
         "assets/audio/gameAudioSprite.ogg",
         "assets/audio/gameAudioSprite.m4a",
@@ -73546,7 +73495,6 @@
       this.witch3 = new Witch_default(this, 100, 200);
       this.slime1 = new Slime_default(this, 300, 300);
       this.slime2 = new Slime_default(this, 300, 400);
-      this.hatGuy = new HatGuy_default(this, 330, 155);
       this.witch.anims.play("witchWalkDown");
       this.witch1.anims.play("witchWalkUp");
       this.witch2.anims.play("witchWalkHoriz");
@@ -73555,8 +73503,9 @@
       this.slime1.anims.play("slimeWalkHoriz");
       this.slime2.anims.play("slimeWalkHoriz");
       this.slime2.setFlipX(true);
-      this.hatGuy.anims.play("hatGuyIDLE");
       this.cursors = this.input.keyboard.createCursorKeys();
+      this.music = this.sound.addAudioSprite("gameAudio");
+      this.music.play("BGMTrack1");
     }
     update() {
       const direction = {x: 0, y: 0};
@@ -73594,7 +73543,7 @@
 
   // src/scenes/TilemapScene.js
   const phaser6 = __toModule(require_phaser());
-  class TilemapScene2 extends phaser6.default.Scene {
+  class TilemapScene3 extends phaser6.default.Scene {
     parseTilemapJson(jsonKey) {
       this.mapData = this.make.tilemap({key: jsonKey});
       if (this.physics.world) {
@@ -73663,17 +73612,17 @@
       return colliderGroup;
     }
   }
-  var TilemapScene_default = TilemapScene2;
+  var TilemapScene_default = TilemapScene3;
 
   // src/sprites/Kenney.js
-  const phaser8 = __toModule(require_phaser());
-  class KenneySprite extends phaser8.default.Physics.Arcade.Sprite {
+  const phaser9 = __toModule(require_phaser());
+  class KenneySprite extends phaser9.default.Physics.Arcade.Sprite {
     constructor(scene, x, y) {
       super(scene, x, y, "kenney", 1);
       if (!KenneySprite.animInitialized) {
         KenneySprite.setupAnim(scene);
       }
-      scene.physics.world.enableBody(this, phaser8.default.Physics.Arcade.DYNAMIC_BODY);
+      scene.physics.world.enableBody(this, phaser9.default.Physics.Arcade.DYNAMIC_BODY);
       this.setImmovable(true);
       this.body.setCollideWorldBounds(true);
       this.body.setSize(56, 70);
@@ -73749,8 +73698,7 @@
       this.load.image("background", "assets/skies/background.png");
       this.load.spritesheet("platformTiles", "assets/tilesets/platformPack_tilesheet.png", {frameWidth: 64, frameHeight: 64});
       this.load.spritesheet("kenney", "assets/sprites/kenney_player.png", {frameWidth: 96, frameHeight: 96});
-      this.load.spritesheet("hatGuy", "assets/sprites/HighHatGuyIdle.png", {frameWidth: 32, frameHeight: 32});
-      this.load.tilemapTiledJSON("mapData", "assets/tilemaps/ExampleStage2.json");
+      this.load.tilemapTiledJSON("mapData", "assets/tilemaps/ExampleStage1.json");
       this.load.audioSprite("gameAudio", "assets/audio/gameAudioSprite.json", [
         "assets/audio/gameAudioSprite.ogg",
         "assets/audio/gameAudioSprite.m4a",
@@ -73762,7 +73710,7 @@
       const background = this.add.image(0, 0, "background");
       background.setOrigin(0, 0);
       this.parseTilemapJson("mapData");
-      this.createTileset("platformPack2", "platformTiles");
+      this.createTileset("platformPack", "platformTiles");
       this.platformLayer = this.createTileLayer("Platforms", true);
       this.blockLayer = this.createTileLayer("Blocks", true);
       this.spikes = this.parseObjectLayer("Spikes", "platformTiles", 70, {
@@ -73775,21 +73723,15 @@
       });
       background.setScale(this.mapData.widthInPixels / background.width, this.mapData.heightInPixels / background.height);
       this.kenney = new Kenney_default(this, 50, 300);
-      this.hatGuy = new HatGuy_default(this, 50, 100);
       this.physics.add.collider(this.kenney, this.platformLayer);
       this.physics.add.collider(this.kenney, this.blockLayer);
-      this.physics.add.collider(this.kenney, this.spikes, this.spikeHitBad, null, this);
-      this.physics.add.collider(this.hatGuy, this.platformLayer);
-      this.physics.add.collider(this.hatGuy, this.blockLayer);
-      this.physics.add.collider(this.hatGuy, this.spikes, this.spikeHitGood, null, this);
+      this.physics.add.collider(this.kenney, this.spikes, this.spikeHit, null, this);
       this.cursors = this.input.keyboard.createCursorKeys();
       this.music = this.sound.addAudioSprite("gameAudio");
+      this.music.play("Stage1", {volume: 0.05});
     }
-    spikeHitBad() {
+    spikeHit() {
       this.kenney.reset(50, 300);
-    }
-    spikeHitGood() {
-      this.hatGuy.printMsg("I am Immune to pain!");
     }
     update() {
       const direction = {x: 0, y: 0};
@@ -73803,10 +73745,203 @@
         direction.x -= 1;
       }
       this.kenney.move(direction.x, direction.y);
-      this.hatGuy.move(direction.x, direction.y);
     }
   }
   var Stage1_default = Stage1Scene;
+
+  // src/sprites/Ghost.js
+  const phaser7 = __toModule(require_phaser());
+  class GhostSprite extends phaser7.default.Physics.Arcade.Sprite {
+    constructor(scene, x, y) {
+      super(scene, x, y, "ghost", 1);
+      this.setOrigin(0.5, 1);
+      this.setAlpha(0.5);
+      this.depth = y;
+      this.lastY = y;
+      if (!GhostSprite.animInitialized) {
+        GhostSprite.setupAnim(scene);
+      }
+      scene.physics.world.enableBody(this, phaser7.default.Physics.Arcade.DYNAMIC_BODY);
+      this.body.setAllowGravity(false);
+      this.body.setCollideWorldBounds(true);
+      this.body.setSize(100, 30);
+      this.body.setOffset(95, 260);
+      scene.add.existing(this);
+      this.facingForward = true;
+    }
+    move(x, y) {
+      if (Math.abs(x) > 0) {
+        if (this.facingForward) {
+          this.anims.play("ghostWalkForward", true);
+        } else {
+          this.anims.play("ghostWalkBackward", true);
+        }
+      } else {
+        if (y < 0) {
+          this.facingForward = false;
+          this.anims.play("ghostWalkBackward", true);
+        } else if (y > 0) {
+          this.facingForward = true;
+          this.anims.play("ghostWalkForward", true);
+        } else {
+          if (this.facingForward) {
+            this.anims.play("ghostIdleForward", true);
+          } else {
+            this.anims.play("ghostIdleBackward", true);
+          }
+        }
+      }
+      this.setVelocity(x * config_default.WALK_SPEED, y * config_default.WALK_SPEED);
+    }
+    update() {
+      if (this.y !== this.lastY) {
+        this.depth = this.y;
+        this.lastY = this.y;
+      }
+    }
+  }
+  GhostSprite.animInitialized = false;
+  GhostSprite.setupAnim = (scene) => {
+    scene.anims.create({
+      key: "ghostIdleForward",
+      frameRate: 4,
+      repeat: -1,
+      frames: scene.anims.generateFrameNumbers("ghost", {start: 0, end: 7})
+    });
+    scene.anims.create({
+      key: "ghostIdleBackward",
+      frameRate: 4,
+      repeat: -1,
+      frames: scene.anims.generateFrameNumbers("ghost", {start: 8, end: 15})
+    });
+    scene.anims.create({
+      key: "ghostWalkForward",
+      frameRate: 10,
+      repeat: -1,
+      frames: scene.anims.generateFrameNumbers("ghost", {start: 16, end: 23})
+    });
+    scene.anims.create({
+      key: "ghostWalkBackward",
+      frameRate: 10,
+      repeat: -1,
+      frames: scene.anims.generateFrameNumbers("ghost", {start: 24, end: 31})
+    });
+    scene.anims.create({
+      key: "ghostInteractForward",
+      frameRate: 10,
+      repeat: -1,
+      frames: scene.anims.generateFrameNumbers("ghost", {start: 32, end: 39})
+    });
+    scene.anims.create({
+      key: "ghostInteractBackward",
+      frameRate: 10,
+      repeat: -1,
+      frames: scene.anims.generateFrameNumbers("ghost", {start: 40, end: 47})
+    });
+    GhostSprite.animInitialized = true;
+  };
+  var Ghost_default = GhostSprite;
+
+  // src/sprites/HatGuy.js
+  const phaser8 = __toModule(require_phaser());
+  class HatGuySprite extends phaser8.default.Physics.Arcade.Sprite {
+    constructor(scene, x, y) {
+      super(scene, x, y, "hatGuy", 1);
+      if (!HatGuySprite.animInitialized) {
+        HatGuySprite.setupAnim(scene);
+      }
+      scene.physics.world.enableBody(this, phaser8.default.Physics.Arcade.DYNAMIC_BODY);
+      this.setImmovable(true);
+      this.body.setCollideWorldBounds(true);
+      scene.add.existing(this);
+    }
+    printMsg(msg) {
+      console.log("HatGuy Says: " + msg);
+    }
+    move(x, y) {
+      if (this.resetTween && this.resetTween.totalProgress < 1) {
+        return;
+      }
+      if (Math.abs(x) > 0) {
+        if (this.body.onFloor()) {
+          this.anims.play("hatGuyIDLE", true);
+        }
+        this.setFlipX(x < 0);
+        this.setVelocityX(x * config_default.WALK_SPEED);
+      } else {
+        if (this.body.onFloor()) {
+          this.anims.play("hatGuyIDLE", true);
+        }
+        this.setVelocityX(0);
+      }
+      if (y < 0 && this.body.onFloor()) {
+        this.anims.play("hatGuyIDLE", true);
+        this.sfx.play("jumpSound", {volume: 0.05});
+        this.setVelocityY(y * config_default.JUMP_SPEED);
+      }
+    }
+  }
+  HatGuySprite.animInitialized = false;
+  HatGuySprite.setupAnim = (scene) => {
+    scene.anims.create({
+      key: "hatGuyIDLE",
+      frameRate: 6,
+      repeat: -1,
+      frames: scene.anims.generateFrameNumbers("hatGuy", {start: 1, end: 4})
+    });
+    HatGuySprite.animInitialized = true;
+  };
+
+  // src/scenes/PoliceLobby.js
+  class PoliceLobbyScene extends TilemapScene_default {
+    preload() {
+      this.load.image("policeHuman", "assets/tilesets/police-human.png");
+      this.load.image("policeHumanDesk1", "assets/tilesets/police-human-desk1.png");
+      this.load.image("policeHumanDesk2", "assets/tilesets/police-human-desk2.png");
+      this.load.image("policeHumanChair", "assets/tilesets/police-human-props1.png");
+      this.load.image("policeHumanBottomLeft", "assets/tilesets/police-human-bottomLeft.png");
+      this.load.image("policeHumanBottomRight", "assets/tilesets/police-human-bottomRight.png");
+      this.load.spritesheet("ghost", "assets/sprites/ghost-sheet.png", {frameWidth: 290, frameHeight: 290});
+      this.load.tilemapTiledJSON("mapData", "assets/tilemaps/ExampleRoom.json");
+    }
+    create() {
+      this.parseTilemapJson("mapData");
+      const [humanImage, humanProps] = this.parseImageAndPropsLayers("Human", "policeHuman");
+      this.colliderGroup = this.parseColliderObjects("Colliders");
+      this.player = new Ghost_default(this, this.mapData.widthInPixels / 2, this.mapData.heightInPixels / 2);
+      this.player.setScale(0.333);
+      this.colliderGroup.getChildren().forEach((curCollider) => {
+        if (curCollider.isEntrance) {
+          console.log("setting up entrance callback");
+          this.physics.add.collider(this.player, curCollider, this.atEntrance, null, this);
+        } else {
+          this.physics.add.collider(this.player, curCollider);
+        }
+      });
+      this.cursors = this.input.keyboard.createCursorKeys();
+    }
+    atEntrance() {
+      console.log("Leaving so soon?");
+    }
+    update() {
+      const direction = {x: 0, y: 0};
+      if (this.cursors.right.isDown) {
+        direction.x += 1;
+      }
+      if (this.cursors.left.isDown) {
+        direction.x -= 1;
+      }
+      if (this.cursors.up.isDown) {
+        direction.y -= 1;
+      }
+      if (this.cursors.down.isDown) {
+        direction.y += 1;
+      }
+      this.player.move(direction.x, direction.y);
+      this.player.update();
+    }
+  }
+  var PoliceLobby_default = PoliceLobbyScene;
 
   // src/main.js
   const phaser = __toModule(require_phaser());
@@ -73822,7 +73957,8 @@
     physics: {
       default: "arcade",
       arcade: {
-        gravity: {y: config_default.DEFAULT_GRAVITY}
+        gravity: {y: config_default.DEFAULT_GRAVITY},
+        debug: true
       }
     }
   };
@@ -73831,6 +73967,7 @@
   game.scene.add("ExampleScene", Example_default);
   game.scene.add("HUDScene", HUD_default);
   game.scene.add("Stage1", Stage1_default);
-  game.scene.start("Stage1");
+  game.scene.add("PoliceLobby", PoliceLobby_default);
+  game.scene.start("PoliceLobby");
 })();
 //# sourceMappingURL=bundle.js.map

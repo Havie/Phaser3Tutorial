@@ -7,8 +7,8 @@ import CONFIG from './config.js'
 import ExampleScene from './scenes/Example.js'
 import StartScene from './scenes/Start.js'
 import HUDScene from './scenes/HUD.js'
-import Stage1 from './scenes/Stage1.js'
-
+import Stage1Scene from './scenes/Stage1.js'
+import PoliceLobbyScene from './scenes/PoliceLobby.js'
 
 const config = {
   // Configure Phaser graphics settings
@@ -25,7 +25,8 @@ const config = {
   physics: {
     default: 'arcade',
     arcade: {
-      gravity: { y: CONFIG.DEFAULT_GRAVITY }
+      gravity: { y: CONFIG.DEFAULT_GRAVITY },
+      debug: true
     }
   }
 }
@@ -37,5 +38,7 @@ const game = new Phaser.Game(config)
 game.scene.add('StartScene', StartScene)
 game.scene.add('ExampleScene', ExampleScene)
 game.scene.add('HUDScene', HUDScene)
-game.scene.add('Stage1', Stage1)
-game.scene.start('Stage1')
+game.scene.add('Stage1', Stage1Scene)
+game.scene.add('PoliceLobby', PoliceLobbyScene)
+
+game.scene.start('PoliceLobby')
