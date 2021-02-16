@@ -73944,6 +73944,7 @@
       if (this.cursors.down.isDown) {
         direction.y += 1;
       }
+      this.player.move(-direction.x / 2, -direction.y);
       this.hatGuy.move(direction.x, direction.y);
       this.player.update();
     }

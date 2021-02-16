@@ -76,7 +76,7 @@ class PoliceLobbyScene extends TilemapScene {
       direction.y += 1
     }
 
-     // this.player.move(direction.x, direction.y)
+     this.player.move(-direction.x/2, -direction.y)
       this.hatGuy.move(direction.x, direction.y)
     this.player.update()
   }
